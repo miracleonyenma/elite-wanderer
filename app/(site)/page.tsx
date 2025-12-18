@@ -144,17 +144,6 @@ export default function Home() {
                   className="h-[600px]"
                 />
               </CarouselItem>
-              {/* Duplicate items for effect/filling carousel if needed, or assume user adds more later */}
-              <CarouselItem className="md:basis-1/2 lg:basis-1/3 pl-0">
-                <FeatureCard
-                  title="Private Travel"
-                  label="Example"
-                  description="Charter jets, yachts, and exclusive access to the world's most remote and beautiful destinations."
-                  image="/images/pexels-vincent-gerbouin-445991-1179156.webp"
-                  dark
-                  className="h-[600px]"
-                />
-              </CarouselItem>
             </CarouselContent>
             <div className="absolute top-1/2 left-4 z-10 block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
               <CarouselPrevious className="relative left-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-white/20 hover:border-transparent rounded-full size-12" />
@@ -183,7 +172,7 @@ export default function Home() {
 
       {/* Membership / Featured / Video Section */}
       <Section fullWidth className="p-0 py-0 md:py-0">
-        <div className="relative h-[80vh] w-full flex items-center justify-center bg-neutral-900 text-white overflow-hidden">
+        <div className="relative h-dvh w-full flex items-center justify-center bg-neutral-900 text-white overflow-hidden">
           <video
             autoPlay
             loop

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Podkova } from "next/font/google";
+import { Geist, Geist_Mono, Podkova, Hepta_Slab } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import NextToploader from "nextjs-toploader";
 import "./globals.css";
@@ -16,6 +16,11 @@ const geistMono = Geist_Mono({
 
 const podkova = Podkova({
   variable: "--font-podkova",
+  subsets: ["latin"],
+});
+
+const heptaSlab = Hepta_Slab({
+  variable: "--font-hepta-slab",
   subsets: ["latin"],
 });
 
@@ -71,7 +76,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${podkova.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${podkova.variable} ${heptaSlab.variable} antialiased`}
       >
         <ThemeProvider attribute="class" enableColorScheme enableSystem>
           <NextToploader color="#fff" />

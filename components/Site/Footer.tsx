@@ -97,7 +97,7 @@ export function Footer() {
         </h1>
       </div>
 
-      <div className="mt-8 flex justify-between text-[10px] uppercase tracking-widest text-neutral-400">
+      <div className="mt-8 flex text-right justify-between text-[10px] uppercase tracking-widest text-neutral-400">
         <span>&copy; {new Date().getFullYear()} Elite Wanderer</span>
         <span>Designed for the Extraordinary</span>
       </div>
