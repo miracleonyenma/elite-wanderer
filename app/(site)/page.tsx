@@ -96,7 +96,8 @@ export default function Home() {
             </p>
             <Button
               variant="secondary"
-              className="border-white text-white hover:bg-white hover:text-black uppercase tracking-widest text-sm px-10 py-6 rounded-none"
+              size={"lg"}
+              className="px-12 py-6 uppercase"
             >
               Request Invitation
             </Button>
