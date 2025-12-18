@@ -1,17 +1,54 @@
+"use client";
 import { Hero } from "@/components/Site/Hero";
 import { Section } from "@/components/Site/Section";
 import { FeatureCard } from "@/components/Site/FeatureCard";
 import { Button } from "@/components/ui/aevr/button";
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
+  const [servicesApi, setServicesApi] = useState<CarouselApi>();
+  const [marketplaceApi, setMarketplaceApi] = useState<CarouselApi>();
+  const [servicesCurrent, setServicesCurrent] = useState(0);
+  const [servicesCount, setServicesCount] = useState(0);
+  const [marketplaceCurrent, setMarketplaceCurrent] = useState(0);
+  const [marketplaceCount, setMarketplaceCount] = useState(0);
+
+  useEffect(() => {
+    if (!servicesApi) {
+      return;
+    }
+
+    setServicesCount(servicesApi.scrollSnapList().length);
+    setServicesCurrent(servicesApi.selectedScrollSnap() + 1);
+
+    servicesApi.on("select", () => {
+      setServicesCurrent(servicesApi.selectedScrollSnap() + 1);
+    });
+  }, [servicesApi]);
+
+  useEffect(() => {
+    if (!marketplaceApi) {
+      return;
+    }
+
+    setMarketplaceCount(marketplaceApi.scrollSnapList().length);
+    setMarketplaceCurrent(marketplaceApi.selectedScrollSnap() + 1);
+
+    marketplaceApi.on("select", () => {
+      setMarketplaceCurrent(marketplaceApi.selectedScrollSnap() + 1);
+    });
+  }, [marketplaceApi]);
+
   return (
     <>
       <Hero />
@@ -63,52 +100,85 @@ export default function Home() {
           </h3>
         </div>
 
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          plugins={[
-            Autoplay({
-              delay: 2000,
-            }),
-          ]}
-          className="w-full"
-        >
-          <CarouselContent className="gap-0 ml-0">
-            <CarouselItem className="md:basis-1/2 lg:basis-1/3 pl-0">
-              <FeatureCard
-                title="Private Travel"
-                label="Explore"
-                description="Charter jets, yachts, and exclusive access to the world's most remote and beautiful destinations."
-                image="/images/pexels-vincent-gerbouin-445991-1179156.webp"
-                dark
-                className="h-[600px] "
+        <div className="relative group">
+          <Carousel
+            setApi={setServicesApi}
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            plugins={[
+              Autoplay({
+                delay: 4000,
+              }),
+            ]}
+            className="w-full"
+          >
+            <CarouselContent className="gap-0 ml-0">
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3 pl-0">
+                <FeatureCard
+                  title="Private Travel"
+                  label="Explore"
+                  description="Charter jets, yachts, and exclusive access to the world's most remote and beautiful destinations."
+                  image="/images/pexels-vincent-gerbouin-445991-1179156.webp"
+                  dark
+                  className="h-[600px] border-r border-white/10"
+                />
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3 pl-0">
+                <FeatureCard
+                  title="Global Relocation"
+                  label="Settle"
+                  description="Seamless transition to your new life. From visa processing to property acquisition and school placement."
+                  image="/images/pexels-tracvu-35255960.webp"
+                  className="h-[600px] border-r border-black/5"
+                />
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3 pl-0">
+                <FeatureCard
+                  title="Concierge"
+                  label="Live"
+                  description="24/7 dedicated lifestyle management. Reservations, access, and desires fulfilled instantly."
+                  image="/images/pexels-absstpg-35255039.webp"
+                  dark
+                  className="h-[600px]"
+                />
+              </CarouselItem>
+              {/* Duplicate items for effect/filling carousel if needed, or assume user adds more later */}
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3 pl-0">
+                <FeatureCard
+                  title="Private Travel"
+                  label="Example"
+                  description="Charter jets, yachts, and exclusive access to the world's most remote and beautiful destinations."
+                  image="/images/pexels-vincent-gerbouin-445991-1179156.webp"
+                  dark
+                  className="h-[600px]"
+                />
+              </CarouselItem>
+            </CarouselContent>
+            <div className="absolute top-1/2 left-4 z-10 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <CarouselPrevious className="relative left-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-white/20 hover:border-transparent rounded-full size-12" />
+            </div>
+            <div className="absolute top-1/2 right-4 z-10 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <CarouselNext className="relative right-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-white/20 hover:border-transparent rounded-full size-12" />
+            </div>
+          </Carousel>
+          {/* Dots Indicator */}
+          <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-20">
+            {Array.from({ length: servicesCount }).map((_, index) => (
+              <button
+                key={index}
+                className={cn(
+                  "h-1.5 transition-all duration-300 rounded-full",
+                  index + 1 === servicesCurrent
+                    ? "w-8 bg-white"
+                    : "w-1.5 bg-white/40 hover:bg-white/60"
+                )}
+                onClick={() => servicesApi?.scrollTo(index)}
               />
-            </CarouselItem>
-            <CarouselItem className="md:basis-1/2 lg:basis-1/3 pl-0">
-              <FeatureCard
-                title="Global Relocation"
-                label="Settle"
-                description="Seamless transition to your new life. From visa processing to property acquisition and school placement."
-                image="/images/pexels-tracvu-35255960.webp"
-                className="h-[600px]"
-              />
-            </CarouselItem>
-            <CarouselItem className="md:basis-1/2 lg:basis-1/3 pl-0">
-              <FeatureCard
-                title="Concierge"
-                label="Live"
-                description="24/7 dedicated lifestyle management. Reservations, access, and desires fulfilled instantly."
-                image="/images/pexels-absstpg-35255039.webp"
-                dark
-                className="h-[600px]"
-              />
-            </CarouselItem>
-            {/* Duplicate items for effect/filling carousel if needed, or assume user adds more later */}
-          </CarouselContent>
-          {/* Controls optional or hidden as requested "seamless". Keeping it clean for now, users can swipe. */}
-        </Carousel>
+            ))}
+          </div>
+        </div>
       </Section>
 
       {/* Membership / Featured / Video Section */}
@@ -170,64 +240,77 @@ export default function Home() {
           </Button>
         </div>
 
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          plugins={[
-            Autoplay({
-              delay: 2000,
-            }),
-          ]}
-          className="w-full"
-        >
-          <CarouselContent className="gap-0 ml-0">
-            <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
-              <FeatureCard
-                title="Alpine Chalet"
-                label="Real Estate"
-                description="Gstaad, Switzerland. 8 Bedrooms, Private Spa, Ski-in/Ski-out."
-                image="/images/pexels-rada-aslanova-150604297-34567860.webp"
-                className="min-h-[600px] "
+        <div className="relative group pb-12">
+          <Carousel
+            setApi={setMarketplaceApi}
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="gap-0 ml-0">
+              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
+                <FeatureCard
+                  title="Alpine Chalet"
+                  label="Real Estate"
+                  description="Gstaad, Switzerland. 8 Bedrooms, Private Spa, Ski-in/Ski-out."
+                  image="/images/pexels-rada-aslanova-150604297-34567860.webp"
+                  className="min-h-[600px] border-r border-black/5"
+                />
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
+                <FeatureCard
+                  title="Limited Edition timepiece"
+                  label="Collectibles"
+                  description="Patek Philippe Nautilus. Factory sealed. Provenance verified."
+                  image="/images/pexels-geoffrey-currie-2153251493-33128243.webp"
+                  className="min-h-[600px] border-r border-black/5"
+                />
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
+                <FeatureCard
+                  title="Super Yacht"
+                  label="Marine"
+                  description="Azzam Class. 180m. Helipad. Submarine."
+                  image="/images/pexels-lamkien-35255292.webp"
+                  // Assuming mapping based on available images, if not exact file, placeholder logic applies, but using provided list info
+                  className="min-h-[600px] border-r border-black/5"
+                />
+              </CarouselItem>
+              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
+                <FeatureCard
+                  title="Classic Car"
+                  label="Automotive"
+                  description="1963 Ferrari 250 GTO. Mint condition. Racing history."
+                  image="/images/pexels-mahmudul-hasan-2004633-35257841.webp"
+                  className="min-h-[600px]"
+                />
+              </CarouselItem>
+            </CarouselContent>
+            <div className="absolute top-1/2 left-4 z-10 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <CarouselPrevious className="relative left-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-none rounded-full size-12" />
+            </div>
+            <div className="absolute top-1/2 right-4 z-10 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <CarouselNext className="relative right-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-none rounded-full size-12" />
+            </div>
+          </Carousel>
+          {/* Dots Indicator */}
+          <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-2 z-20">
+            {Array.from({ length: marketplaceCount }).map((_, index) => (
+              <button
+                key={index}
+                className={cn(
+                  "h-1.5 transition-all duration-300 rounded-full",
+                  index + 1 === marketplaceCurrent
+                    ? "w-8 bg-neutral-900"
+                    : "w-1.5 bg-neutral-300 hover:bg-neutral-400"
+                )}
+                onClick={() => marketplaceApi?.scrollTo(index)}
               />
-            </CarouselItem>
-            <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
-              <FeatureCard
-                title="Limited Edition timepiece"
-                label="Collectibles"
-                description="Patek Philippe Nautilus. Factory sealed. Provenance verified."
-                image="/images/pexels-geoffrey-currie-2153251493-33128243.webp"
-                className="min-h-[600px] "
-              />
-            </CarouselItem>
-            <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
-              <FeatureCard
-                title="Super Yacht"
-                label="Marine"
-                description="Azzam Class. 180m. Helipad. Submarine."
-                image="/images/pexels-lamkien-35255292.webp"
-                // Assuming mapping based on available images, if not exact file, placeholder logic applies, but using provided list info
-                className="min-h-[600px] "
-              />
-            </CarouselItem>
-            <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
-              <FeatureCard
-                title="Classic Car"
-                label="Automotive"
-                description="1963 Ferrari 250 GTO. Mint condition. Racing history."
-                image="/images/pexels-mahmudul-hasan-2004633-35257841.webp"
-                className="min-h-[600px]"
-              />
-            </CarouselItem>
-          </CarouselContent>
-          <div className="absolute top-1/2 left-4 z-10 hidden md:block">
-            <CarouselPrevious className="relative left-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-none" />
+            ))}
           </div>
-          <div className="absolute top-1/2 right-4 z-10 hidden md:block">
-            <CarouselNext className="relative right-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-none" />
-          </div>
-        </Carousel>
+        </div>
 
         <div className="mt-12 mb-16 text-center md:hidden px-6">
           <Button
