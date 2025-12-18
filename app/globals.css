@@ -254,3 +254,16 @@
 .icon {
   @apply w-4 h-4;
 }
+
+@keyframes scroll-indicator {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scroll-indicator {
+  animation: scroll-indicator 1.5s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
