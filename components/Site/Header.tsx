@@ -28,7 +28,7 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 md:px-12 transition-all duration-300",
         isScrolled
-          ? "bg-neutral-900/90 backdrop-blur-md py-4 text-white"
+          ? "bg-neutral-900/80 backdrop-blur-xl py-4 text-white"
           : "mix-blend-difference text-white"
       )}
     >
