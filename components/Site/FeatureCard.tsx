@@ -21,9 +21,9 @@ export function FeatureCard({
   return (
     <div
       className={cn(
-        "group relative flex flex-col justify-end p-8 md:p-12 min-h-[500px] w-full border border-neutral-200 dark:border-neutral-800 overflow-hidden transition-colors duration-500",
+        "group relative flex flex-col justify-end p-8 md:p-12 min-h-[500px] w-full overflow-hidden transition-colors duration-500",
         dark
-          ? "bg-neutral-900 border-neutral-800 text-white"
+          ? "bg-neutral-900 text-white"
           : "bg-white hover:bg-neutral-50 text-black",
         className
       )}
@@ -44,11 +44,11 @@ export function FeatureCard({
       {/* Content */}
       <div className={cn("relative z-10 space-y-4", image && "text-white")}>
         {label && (
-          <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase border-b border-current pb-1 mb-2">
+          <span className="inline-block text-xs font-bold tracking-[0.2em] uppercase  pb-1 mb-2">
             {label}
           </span>
         )}
-        <h3 className="text-3xl md:text-4xl font-bold uppercase tracking-tight">
+        <h3 className="font-heading text-3xl md:text-4xl font-bold uppercase tracking-tight">
           {title}
         </h3>
         <p
@@ -67,7 +67,7 @@ export function FeatureCard({
             variant={image ? "outline" : "default"}
             className={cn(
               "uppercase text-xs tracking-widest rounded-none",
-              image && "border-white text-white hover:bg-white hover:text-black"
+              image && " text-white hover:bg-white hover:text-black"
             )}
           >
             Learn More

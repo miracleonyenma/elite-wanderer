@@ -6,7 +6,7 @@ export function Footer() {
     <footer className="bg-white text-black pt-24 pb-4 px-6 md:px-12 overflow-hidden">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-24 max-w-screen-2xl mx-auto">
         <div className="col-span-2 md:col-span-1 space-y-6">
-          <h3 className="text-xl font-bold tracking-widest uppercase">
+          <h3 className="font-heading text-xl font-bold tracking-widest uppercase">
             Experience
           </h3>
           <p className="text-sm text-neutral-500 leading-relaxed max-w-xs">
@@ -92,7 +92,7 @@ export function Footer() {
 
       {/* Massive Brand Name */}
       <div className="border-t border-neutral-100 pt-8 w-full">
-        <h1 className="text-[12vw] leading-[0.8] font-bold tracking-tighter text-center uppercase select-none">
+        <h1 className="text-[12vw] font-heading leading-[0.8] font-bold tracking-tighter text-center uppercase select-none">
           Elite Wanderer
         </h1>
       </div>

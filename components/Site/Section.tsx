@@ -14,11 +14,14 @@ export function Section({
   fullWidth = false,
 }: SectionProps) {
   return (
-    <section id={id} className={cn("py-24 md:py-32 relative", className)}>
+    <section
+      id={id}
+      className={cn("py-24 md:py-32 site-section relative", className)}
+    >
       <div
         className={cn(
-          "mx-auto px-6 md:px-12",
-          !fullWidth && "max-w-screen-2xl"
+          "wrapper mx-auto  ",
+          !fullWidth && "max-w-screen-2xl px-6 md:px-12"
         )}
       >
         {children}

@@ -4,14 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sour: var(--font-sour);
-  --font-atkinson: var(--font-atkinson);
-  --font-press: var(--font-press);
-  --font-pixelify: var(--font-pixelify);
-  --font-cherry-bomb-one: var(--font-cherry-bomb-one);
-  --font-mynerve: var(--font-mynerve);
-  --font-bytesized: var(--font-bytesized);
-  --font-jacquard-24: var(--font-jacquard-24);
+  --font-heading: var(--font-podkova);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);

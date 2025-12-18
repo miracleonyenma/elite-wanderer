@@ -1,19 +1,52 @@
 "use client";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/aevr/button";
+import { useState, useRef, useEffect } from "react";
+import { Pause, Play } from "lucide-react";
+
+const VIDEOS = [
+  "/videos/14900479_1080_1920_30fps.mp4",
+  "/videos/14900532_1080_1920_30fps.mp4",
+];
 
 export function Hero() {
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleVideoEnded = () => {
+    setCurrentVideoIndex((prev) => (prev + 1) % VIDEOS.length);
+  };
+
+  const togglePlay = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.load();
+    }
+  }, [currentVideoIndex]);
+
   return (
     <div className="relative h-screen w-full overflow-hidden bg-neutral-900 text-white">
       {/* Background Video */}
       <video
+        ref={videoRef}
         autoPlay
-        loop
         muted
         playsInline
-        className="absolute top-0 left-0 h-full w-full object-cover opacity-60"
+        className="absolute top-0 left-0 h-full w-full object-cover opacity-60 transition-opacity duration-1000"
+        onEnded={handleVideoEnded}
       >
-        <source src="/videos/14900479_1080_1920_30fps.mp4" type="video/mp4" />
+        <source src={VIDEOS[currentVideoIndex]} type="video/mp4" />
       </video>
 
       {/* Overlay Gradient */}
@@ -27,10 +60,10 @@ export function Hero() {
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
           className="space-y-6 max-w-4xl"
         >
-          <h2 className="text-sm md:text-base font-semibold tracking-[0.3em] uppercase text-neutral-300">
+          <h2 className="  text-sm md:text-base font-semibold tracking-[0.3em] uppercase text-neutral-300">
             Define Your Legend
           </h2>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight uppercase leading-none">
+          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight uppercase leading-none">
             Elite <span className="text-white/80">Wanderer</span>
           </h1>
           <p className="max-w-xl mx-auto text-lg md:text-xl text-neutral-200 font-light leading-relaxed">
@@ -56,12 +89,22 @@ export function Hero() {
         </motion.div>
       </div>
 
+      {/* Controls */}
+      <div className="absolute bottom-12 right-12 z-20">
+        <button
+          onClick={togglePlay}
+          className="p-3 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors backdrop-blur-sm"
+        >
+          {isPlaying ? <Pause size={16} /> : <Play size={16} />}
+        </button>
+      </div>
+
       {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none"
       >
         <span className="text-[10px] uppercase tracking-widest text-white/70">
           Scroll
