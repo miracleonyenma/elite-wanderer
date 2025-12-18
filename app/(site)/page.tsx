@@ -156,10 +156,10 @@ export default function Home() {
                 />
               </CarouselItem>
             </CarouselContent>
-            <div className="absolute top-1/2 left-4 z-10 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute top-1/2 left-4 z-10 block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
               <CarouselPrevious className="relative left-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-white/20 hover:border-transparent rounded-full size-12" />
             </div>
-            <div className="absolute top-1/2 right-4 z-10 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute top-1/2 right-4 z-10 block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
               <CarouselNext className="relative right-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-white/20 hover:border-transparent rounded-full size-12" />
             </div>
           </Carousel>
@@ -288,10 +288,10 @@ export default function Home() {
                 />
               </CarouselItem>
             </CarouselContent>
-            <div className="absolute top-1/2 left-4 z-10 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute top-1/2 left-4 z-10 block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
               <CarouselPrevious className="relative left-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-none rounded-full size-12" />
             </div>
-            <div className="absolute top-1/2 right-4 z-10 hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute top-1/2 right-4 z-10 block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
               <CarouselNext className="relative right-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-none rounded-full size-12" />
             </div>
           </Carousel>

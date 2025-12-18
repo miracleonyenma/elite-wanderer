@@ -2,16 +2,9 @@
 import { useEffect } from "react";
 
 export function LayoutWrapper({ children }: { children: React.ReactNode }) {
+  // Locomotive scroll usage removed for performance
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let scroll: any;
-    (async () => {
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      scroll = new LocomotiveScroll();
-    })();
-    return () => {
-      if (scroll) scroll.destroy();
-    };
+    // Native scroll is used now
   }, []);
 
   return <main>{children}</main>;
