@@ -1,5 +1,7 @@
+// ./components/Site/Footer.tsx
 "use client";
 import Link from "next/link";
+import SiteThemeButton from "./ThemeButton";
 
 export function Footer() {
   return (
@@ -100,6 +102,9 @@ export function Footer() {
       <div className="mt-8 flex text-right justify-between text-[10px] uppercase tracking-widest text-neutral-400">
         <span>&copy; {new Date().getFullYear()} Elite Wanderer</span>
         <span>Designed for the Extraordinary</span>
+      </div>
+      <div className="mt-4 flex justify-end">
+        <SiteThemeButton showBorder={false} showBackground={false} />
       </div>
     </footer>
   );

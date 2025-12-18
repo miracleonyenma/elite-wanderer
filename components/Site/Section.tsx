@@ -1,3 +1,4 @@
+// ./components/Site/Section.tsx
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 

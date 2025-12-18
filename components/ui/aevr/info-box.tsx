@@ -1,3 +1,4 @@
+// ./components/ui/aevr/info-box.tsx
 "use client";
 
 import {

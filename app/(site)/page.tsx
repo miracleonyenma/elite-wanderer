@@ -1,3 +1,4 @@
+// ./app/(site)/page.tsx
 "use client";
 import { Hero } from "@/components/Site/Hero";
 import { Section } from "@/components/Site/Section";
