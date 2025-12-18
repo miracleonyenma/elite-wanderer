@@ -42,7 +42,7 @@ const SiteThemeButton: React.FC<SiteThemeButtonProps> = ({
   // Size configuration - md and lg now support text display
   const sizeConfig = {
     sm: {
-      container: "h-8 w-8",
+      container: "h-8 w-8 justify-between",
       icon: 18,
       showText: false,
       textSize: "",
@@ -105,7 +105,7 @@ const SiteThemeButton: React.FC<SiteThemeButtonProps> = ({
   return (
     <button
       onClick={cycleTheme}
-      className={`text-foreground justify-between hover:text-accent-foreground flex cursor-pointer items-center  rounded-none transition-colors ${
+      className={`text-foreground justify-center hover:text-accent-foreground flex cursor-pointer items-center  rounded-none transition-colors ${
         shouldShowText ? config.container : "h-8 w-8"
       } ${
         shouldShowText ? config.gap : ""

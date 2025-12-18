@@ -104,7 +104,7 @@ export function Footer() {
         <span>Designed for the Extraordinary</span>
       </div>
       <div className="mt-4 flex justify-end">
-        <SiteThemeButton showBorder={false} showBackground={false} />
+        <SiteThemeButton />
       </div>
     </footer>
   );
