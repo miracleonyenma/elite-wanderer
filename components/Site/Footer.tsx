@@ -92,7 +92,7 @@ export function Footer() {
 
       {/* Massive Brand Name */}
       <div className="border-t border-neutral-100 pt-8 w-full">
-        <h1 className="text-[12vw] font-heading leading-[0.8] font-bold tracking-tighter text-center uppercase select-none">
+        <h1 className="text-[12vw] font-heading font-black  leading-[0.8] tracking-tighter text-center uppercase select-none">
           Elite Wanderer
         </h1>
       </div>

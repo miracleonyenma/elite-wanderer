@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Podkova, Hepta_Slab } from "next/font/google";
+import {
+  Geist_Mono,
+  Podkova,
+  Hepta_Slab,
+  BioRhyme,
+  Hubot_Sans,
+} from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import NextToploader from "nextjs-toploader";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -21,6 +22,18 @@ const podkova = Podkova({
 
 const heptaSlab = Hepta_Slab({
   variable: "--font-hepta-slab",
+  subsets: ["latin"],
+});
+
+const bioRhyme = BioRhyme({
+  variable: "--font-bio-rhyme",
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+});
+
+const hubotSans = Hubot_Sans({
+  variable: "--font-hubot-sans",
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
   subsets: ["latin"],
 });
 
@@ -76,7 +89,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${podkova.variable} ${heptaSlab.variable} antialiased`}
+        className={`${hubotSans.variable} ${geistMono.variable} ${podkova.variable} ${heptaSlab.variable} ${bioRhyme.variable} antialiased`}
       >
         <ThemeProvider attribute="class" enableColorScheme enableSystem>
           <NextToploader color="#fff" />
