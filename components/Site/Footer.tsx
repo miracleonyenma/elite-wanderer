@@ -5,10 +5,10 @@ import SiteThemeButton from "./ThemeButton";
 
 export function Footer() {
   return (
-    <footer className="bg-white text-black pt-24 pb-4 px-6 md:px-12 overflow-hidden">
+    <footer className="bg-white dark:bg-neutral-950 text-black dark:text-neutral-200 pt-24 pb-4 px-6 md:px-12 overflow-hidden">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-24 max-w-screen-2xl mx-auto">
         <div className="col-span-2 md:col-span-1 space-y-6">
-          <h3 className="font-heading text-xl font-bold tracking-widest uppercase">
+          <h3 className="font-heading text-xl font-bold tracking-widest uppercase dark:text-white">
             Experience
           </h3>
           <p className="text-sm text-neutral-500 leading-relaxed max-w-xs">
@@ -23,22 +23,34 @@ export function Footer() {
           </h4>
           <ul className="space-y-3 text-sm text-neutral-600">
             <li>
-              <Link href="#" className="hover:text-black transition-colors">
+              <Link
+                href="#"
+                className="hover:text-black dark:hover:text-white transition-colors"
+              >
                 Destinations
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-black transition-colors">
+              <Link
+                href="#"
+                className="hover:text-black dark:hover:text-white transition-colors"
+              >
                 Private Jets
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-black transition-colors">
+              <Link
+                href="#"
+                className="hover:text-black dark:hover:text-white transition-colors"
+              >
                 Real Estate
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-black transition-colors">
+              <Link
+                href="#"
+                className="hover:text-black dark:hover:text-white transition-colors"
+              >
                 Marketplace
               </Link>
             </li>
@@ -51,22 +63,34 @@ export function Footer() {
           </h4>
           <ul className="space-y-3 text-sm text-neutral-600">
             <li>
-              <Link href="#" className="hover:text-black transition-colors">
+              <Link
+                href="#"
+                className="hover:text-black dark:hover:text-white transition-colors"
+              >
                 About Us
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-black transition-colors">
+              <Link
+                href="#"
+                className="hover:text-black dark:hover:text-white transition-colors"
+              >
                 Membership
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-black transition-colors">
+              <Link
+                href="#"
+                className="hover:text-black dark:hover:text-white transition-colors"
+              >
                 Careers
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-black transition-colors">
+              <Link
+                href="#"
+                className="hover:text-black dark:hover:text-white transition-colors"
+              >
                 Contact
               </Link>
             </li>
@@ -79,12 +103,18 @@ export function Footer() {
           </h4>
           <ul className="space-y-3 text-sm text-neutral-600">
             <li>
-              <Link href="#" className="hover:text-black transition-colors">
+              <Link
+                href="#"
+                className="hover:text-black dark:hover:text-white transition-colors"
+              >
                 Privacy Policy
               </Link>
             </li>
             <li>
-              <Link href="#" className="hover:text-black transition-colors">
+              <Link
+                href="#"
+                className="hover:text-black dark:hover:text-white transition-colors"
+              >
                 Terms of Service
               </Link>
             </li>
@@ -93,8 +123,8 @@ export function Footer() {
       </div>
 
       {/* Massive Brand Name */}
-      <div className="border-t border-neutral-100 pt-8 w-full">
-        <h1 className="text-[12vw] font-heading font-black  leading-[0.8] tracking-tighter text-center uppercase select-none">
+      <div className="border-t border-neutral-100 dark:border-neutral-800 pt-8 w-full">
+        <h1 className="text-[12vw] font-heading font-black  leading-[0.8] tracking-tighter text-center uppercase select-none text-black dark:text-neutral-800 transition-colors">
           Elite Wanderer
         </h1>
       </div>

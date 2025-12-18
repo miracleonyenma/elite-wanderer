@@ -30,7 +30,7 @@ export function FeatureCard({
         "group relative flex flex-col justify-end p-8 md:p-12 min-h-[500px] w-full overflow-hidden transition-colors duration-500",
         dark
           ? "bg-neutral-900 text-white"
-          : "bg-white hover:bg-neutral-50 text-black",
+          : "bg-white hover:bg-neutral-50 text-black dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800",
         className
       )}
     >
