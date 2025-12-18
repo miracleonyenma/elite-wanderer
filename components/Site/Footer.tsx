@@ -15,6 +15,36 @@ export function Footer() {
             Redefining luxury travel and global relocation for the discerning
             few.
           </p>
+
+          <form className="flex items-center gap-2 max-w-xs pt-4">
+            <div className="relative flex-1">
+              <input
+                type="email"
+                placeholder="Join our newsletter"
+                className="w-full bg-transparent border-b border-neutral-300 dark:border-neutral-700 py-2 text-sm focus:outline-none focus:border-black dark:focus:border-white transition-colors placeholder:text-neutral-400"
+              />
+            </div>
+            <button
+              type="submit"
+              className="p-2 text-neutral-400 hover:text-black dark:hover:text-white transition-colors"
+              aria-label="Subscribe"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </button>
+          </form>
         </div>
 
         <div>
