@@ -1,6 +1,3 @@
-import { LayoutWrapper } from "@/components/Site/LayoutWrapper";
-import { Header } from "@/components/Site/Header";
-import { Footer } from "@/components/Site/Footer";
 import { Hero } from "@/components/Site/Hero";
 import { Section } from "@/components/Site/Section";
 import { FeatureCard } from "@/components/Site/FeatureCard";
@@ -8,8 +5,7 @@ import { Button } from "@/components/ui/aevr/button";
 
 export default function Home() {
   return (
-    <LayoutWrapper>
-      <Header />
+    <>
       <Hero />
 
       {/* Intro / Philosophy */}
@@ -60,7 +56,7 @@ export default function Home() {
             title="Private Travel"
             label="Explore"
             description="Charter jets, yachts, and exclusive access to the world's most remote and beautiful destinations."
-            image="/uploaded_image_0_1766065762065.png" // Placeholder, assuming this might be scenic
+            image="/images/pexels-vincent-gerbouin-445991-1179156.webp"
             dark
           />
           <FeatureCard
@@ -81,7 +77,7 @@ export default function Home() {
       <Section fullWidth className="p-0 py-0 md:py-0">
         <div className="relative h-[80vh] w-full flex items-center justify-center bg-neutral-900 text-white overflow-hidden">
           {/* Use the second video if strictly needed, or a static image. Using second video for now or fallback */}
-          <div className="absolute inset-0 opacity-40 bg-[url('/uploaded_image_1_1766065762065.png')] bg-cover bg-center sm:bg-fixed" />
+          <div className="absolute inset-0 opacity-40 bg-[url('/images/pexels-code-mnml-185553186-35205820.webp')] bg-cover bg-center sm:bg-fixed" />
 
           <div className="relative z-10 text-center max-w-2xl px-6">
             <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-6 text-white/70">
@@ -128,14 +124,14 @@ export default function Home() {
             title="Alpine Chalet"
             label="Real Estate"
             description="Gstaad, Switzerland. 8 Bedrooms, Private Spa, Ski-in/Ski-out."
-            image="/uploaded_image_2_1766065762065.png"
+            image="/images/pexels-rada-aslanova-150604297-34567860.webp"
             className="min-h-[600px]"
           />
           <FeatureCard
             title="Limited Edition timepiece"
             label="Collectibles"
             description="Patek Philippe Nautilus. Factory sealed. Provenance verified."
-            image="/uploaded_image_3_1766065762065.png"
+            image="/images/pexels-geoffrey-currie-2153251493-33128243.webp"
             className="min-h-[600px]"
           />
         </div>
@@ -148,8 +144,6 @@ export default function Home() {
           </Button>
         </div>
       </Section>
-
-      <Footer />
-    </LayoutWrapper>
+    </>
   );
 }
