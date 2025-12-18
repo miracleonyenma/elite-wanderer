@@ -14,7 +14,7 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 md:px-12 mix-blend-difference text-white">
       <Link
         href="/"
-        className="font-heading text-2xl font-bold tracking-widest uppercase"
+        className="font-heading text-lg lg:text-2xl font-bold tracking-widest uppercase"
       >
         Elite Wanderer
       </Link>

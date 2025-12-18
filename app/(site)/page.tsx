@@ -175,6 +175,11 @@ export default function Home() {
             align: "start",
             loop: true,
           }}
+          plugins={[
+            Autoplay({
+              delay: 2000,
+            }),
+          ]}
           className="w-full"
         >
           <CarouselContent className="gap-0 ml-0">
