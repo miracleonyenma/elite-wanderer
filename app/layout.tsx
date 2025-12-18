@@ -4,7 +4,7 @@ import {
   Podkova,
   Hepta_Slab,
   BioRhyme,
-  Hubot_Sans,
+  Funnel_Sans,
 } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import NextToploader from "nextjs-toploader";
@@ -31,9 +31,8 @@ const bioRhyme = BioRhyme({
   subsets: ["latin"],
 });
 
-const hubotSans = Hubot_Sans({
-  variable: "--font-hubot-sans",
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
+const funnelSans = Funnel_Sans({
+  variable: "--font-funnel-sans",
   subsets: ["latin"],
 });
 
@@ -89,7 +88,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${hubotSans.variable} ${geistMono.variable} ${podkova.variable} ${heptaSlab.variable} ${bioRhyme.variable} antialiased`}
+        className={`${funnelSans.variable} ${geistMono.variable} ${podkova.variable} ${heptaSlab.variable} ${bioRhyme.variable} antialiased`}
       >
         <ThemeProvider attribute="class" enableColorScheme enableSystem>
           <NextToploader color="#fff" />

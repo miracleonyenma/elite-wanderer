@@ -4,9 +4,6 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: var(--font-hubot-sans);
-  --font-heading: var(--font-bio-rhyme);
-  --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -42,6 +39,10 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: var(--font-funnel-sans);
+  --font-heading: var(--font-bio-rhyme);
+  --font-mono: var(--font-geist-mono);
 
   --color-theme-50: var(--color-neutral-50);
   --color-theme-100: var(--color-neutral-100);
@@ -240,7 +241,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
 }
 
