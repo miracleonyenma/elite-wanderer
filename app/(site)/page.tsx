@@ -55,17 +55,17 @@ export default function Home() {
       <Hero />
 
       {/* Intro / Philosophy */}
-      <Section className="bg-white text-black">
+      <Section className="bg-white dark:bg-neutral-950 text-black dark:text-neutral-200">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-4 text-neutral-500">
+            <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-4 text-neutral-500 dark:text-neutral-400">
               The Philosophy
             </h2>
             <h3 className="font-heading text-4xl md:text-6xl font-bold uppercase leading-[0.9] mb-8">
               Luxury Beyond <br /> Boundaries.
             </h3>
           </div>
-          <div className="space-y-6 text-neutral-600 text-lg font-light leading-relaxed">
+          <div className="space-y-6 text-neutral-600 dark:text-neutral-400 text-lg font-light leading-relaxed">
             <p>
               Elite Wanderer is not just a service; it is a gateway to a life
               uninhibited. We specialize in curating bespoke travel experiences
@@ -78,7 +78,7 @@ export default function Home() {
             </p>
             <Button
               variant="default"
-              className="mt-4 uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800"
+              className="mt-4 uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
             >
               Discover Our Vision
             </Button>
@@ -88,15 +88,15 @@ export default function Home() {
 
       {/* Services Carousel */}
       <Section
-        className="bg-neutral-50 max-w-full! p-0!  overflow-hidden"
+        className="bg-neutral-50 dark:bg-neutral-900 max-w-full! p-0!  overflow-hidden"
         id="services"
         fullWidth
       >
         <div className="mb-12 md:mb-16 px-6 md:px-12 pt-16 md:pt-24">
-          <h2 className="text-center text-xs font-bold tracking-[0.3em] uppercase mb-4 text-neutral-500">
+          <h2 className="text-center text-xs font-bold tracking-[0.3em] uppercase mb-4 text-neutral-500 dark:text-neutral-400">
             Our Expertise
           </h2>
-          <h3 className="font-heading text-center text-4xl md:text-5xl font-bold uppercase text-neutral-900">
+          <h3 className="font-heading text-center text-4xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white">
             Curated Services
           </h3>
         </div>
@@ -215,16 +215,16 @@ export default function Home() {
       <Section id="marketplace" className="overflow-hidden p-0 md:p-0">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 px-6 md:px-12 pt-16 md:pt-24">
           <div>
-            <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2 text-neutral-500">
+            <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2 text-neutral-500 dark:text-neutral-400">
               The Marketplace
             </h2>
-            <h3 className="font-heading text-4xl md:text-5xl font-bold uppercase text-neutral-900">
+            <h3 className="font-heading text-4xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white">
               Acquire The Exceptional
             </h3>
           </div>
           <Button
             variant="default"
-            className="hidden md:inline-flex uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800"
+            className="hidden md:inline-flex uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
           >
             View All Listings
           </Button>
@@ -293,8 +293,8 @@ export default function Home() {
                 className={cn(
                   "h-1.5 transition-all duration-300 rounded-full",
                   index + 1 === marketplaceCurrent
-                    ? "w-8 bg-neutral-900"
-                    : "w-1.5 bg-neutral-300 hover:bg-neutral-400"
+                    ? "w-8 bg-neutral-900 dark:bg-white"
+                    : "w-1.5 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-400 dark:hover:bg-neutral-500"
                 )}
                 onClick={() => marketplaceApi?.scrollTo(index)}
               />
@@ -305,7 +305,7 @@ export default function Home() {
         <div className="mt-12 mb-16 text-center md:hidden px-6">
           <Button
             variant="default"
-            className="uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800"
+            className="uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
           >
             View All Listings
           </Button>
