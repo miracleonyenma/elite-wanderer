@@ -63,12 +63,16 @@ export default function Home() {
             title="Global Relocation"
             label="Settle"
             description="Seamless transition to your new life. From visa processing to property acquisition and school placement."
+            image="/images/pexels-tracvu-35255960.webp"
+            className="min-h-[400px]"
           />
           <FeatureCard
             title="Concierge"
             label="Live"
             description="24/7 dedicated lifestyle management. Reservations, access, and desires fulfilled instantly."
+            image="/images/pexels-absstpg-35255039.webp"
             dark
+            className="min-h-[400px]"
           />
         </div>
       </Section>

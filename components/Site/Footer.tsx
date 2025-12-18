@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import { Button } from "@/components/ui/aevr/button";
 
 export function Footer() {
   return (
