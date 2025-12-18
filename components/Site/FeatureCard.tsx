@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/aevr/button";
+import { motion } from "motion/react";
 
 interface FeatureCardProps {
   title: string;
@@ -19,7 +20,11 @@ export function FeatureCard({
   dark = false,
 }: FeatureCardProps) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={cn(
         "group relative flex flex-col justify-end p-8 md:p-12 min-h-[500px] w-full overflow-hidden transition-colors duration-500",
         dark
@@ -74,6 +79,6 @@ export function FeatureCard({
           </Button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -9,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function Home() {
   return (
@@ -67,9 +68,14 @@ export default function Home() {
             align: "start",
             loop: true,
           }}
+          plugins={[
+            Autoplay({
+              delay: 2000,
+            }),
+          ]}
           className="w-full"
         >
-          <CarouselContent className="gap-0 -ml-0">
+          <CarouselContent className="gap-0 ml-0">
             <CarouselItem className="md:basis-1/2 lg:basis-1/3 pl-0">
               <FeatureCard
                 title="Private Travel"
@@ -171,7 +177,7 @@ export default function Home() {
           }}
           className="w-full"
         >
-          <CarouselContent className="gap-0 -ml-0">
+          <CarouselContent className="gap-0 ml-0">
             <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
               <FeatureCard
                 title="Alpine Chalet"
