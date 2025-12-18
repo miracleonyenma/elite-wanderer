@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Podkova } from "next/font/google";
+import { ThemeProvider } from "next-themes";
+import NextToploader from "nextjs-toploader";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -71,7 +73,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${podkova.variable} antialiased`}
       >
-        {children}
+        <ThemeProvider attribute="class" enableColorScheme enableSystem>
+          <NextToploader color="#fff" />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
