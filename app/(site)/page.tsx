@@ -193,17 +193,17 @@ export default function Home() {
             <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-6 text-white/70">
               The Private Club
             </h2>
-            <h3 className="font-heading text-5xl md:text-7xl font-bold uppercase mb-8">
+            <h3 className="font-heading text-3xl md:text-7xl font-bold uppercase mb-8">
               Elite Membership
             </h3>
-            <p className="text-xl text-neutral-300 font-light mb-10">
+            <p className="lg:text-xl text-neutral-300 font-light mb-10">
               Join an exclusive circle of global citizens. Access events,
               networks, and privileges reserved for the few.
             </p>
             <Button
               variant="secondary"
               size={"lg"}
-              className="px-12 py-6 uppercase"
+              className="lg:px-12 lg:py-6 uppercase"
             >
               Request Invitation
             </Button>

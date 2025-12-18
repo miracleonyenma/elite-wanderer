@@ -64,10 +64,10 @@ export function Hero() {
           <h2 className="  text-sm md:text-base font-semibold tracking-[0.3em] uppercase text-neutral-300">
             Define Your Legend
           </h2>
-          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight uppercase leading-none">
+          <h1 className="font-heading text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight uppercase leading-none">
             Elite <span className="text-white/80">Wanderer</span>
           </h1>
-          <p className="max-w-xl mx-auto text-lg md:text-xl text-neutral-200 font-light leading-relaxed">
+          <p className="max-w-xl mx-auto md:text-xl text-neutral-200 font-light leading-relaxed">
             Curating the extraordinary for the world&apos;s most discerning
             individuals. Travel, relocation, and lifestyle without limits.
           </p>
@@ -75,14 +75,14 @@ export function Hero() {
           <div className="pt-8 flex flex-col md:flex-row gap-4 justify-center items-center">
             <Button
               size="lg"
-              className="uppercase tracking-widest px-8 py-6 text-sm bg-white text-black hover:bg-neutral-200"
+              className="uppercase tracking-widest lg:px-8 lg:py-6 text-sm"
             >
               Start Your Journey
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="uppercase tracking-widest px-8 py-6 text-sm border-white text-white hover:bg-white hover:text-black rounded-none"
+              className="uppercase tracking-widest lg:px-8 lg:py-6 text-sm border-white text-white hover:bg-white hover:text-black rounded-none"
             >
               Explore Services
             </Button>
