@@ -35,20 +35,20 @@ export function ParallaxGallery({ className }: { className?: string }) {
     <section
       ref={containerRef}
       className={cn(
-        "relative bg-neutral-100 dark:bg-neutral-900 py-24 overflow-hidden",
+        "relative bg-neutral-100 dark:bg-neutral-900 pt-24 overflow-hidden",
         className
       )}
     >
-      <div className="max-w-screen-2xl mx-auto px-6 md:px-12 mb-12">
+      <div className="max-w-screen-2xl mx-auto px-6 md:px-12 mb-24">
         <h2 className="text-center text-xs font-bold tracking-[0.3em] uppercase mb-4 text-neutral-500 dark:text-neutral-400">
           Visual Odyssey
         </h2>
-        <h3 className="font-heading text-center text-4xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white">
+        <h3 className="font-heading text-center text-2xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white">
           A Glimpse of the Extraordinary
         </h3>
       </div>
 
-      <div className="h-[120vh] md:h-[150vh] flex gap-4 md:gap-8 justify-center overflow-hidden">
+      <div className="h-[75vh] md:h-[150vh] flex gap-4 md:gap-8 justify-center overflow-hidden">
         {/* Column 1 */}
         <motion.div
           style={{ y: y1 }}
@@ -69,7 +69,7 @@ export function ParallaxGallery({ className }: { className?: string }) {
         {/* Column 2 */}
         <motion.div
           style={{ y: y2 }}
-          className="flex flex-col gap-4 md:gap-8 w-1/3 md:w-1/4 pt-24"
+          className="flex flex-col gap-4 md:gap-8 w-1/3 md:w-1/4 pt-0"
         >
           {images2.map((src, i) => (
             <div key={i} className="relative aspect-3/4 w-full overflow-hidden">

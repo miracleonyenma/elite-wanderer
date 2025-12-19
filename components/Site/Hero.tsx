@@ -65,7 +65,7 @@ export function Hero() {
           <h2 className="  text-sm md:text-base font-semibold tracking-[0.3em] uppercase text-neutral-300">
             Define Your Legend
           </h2>
-          <div className="font-heading text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight uppercase leading-none flex justify-center gap-4 mb-4">
+          <div className="font-heading text-4xl max-md:flex-col max-md:items-center md:text-7xl lg:text-8xl font-bold tracking-tight uppercase leading-none flex justify-center gap-4 mb-4">
             <BlurText text="Elite" delay={150} />
             <BlurText text="Wanderer" className="text-white/80" delay={150} />
           </div>

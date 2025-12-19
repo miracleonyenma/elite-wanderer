@@ -194,7 +194,7 @@ export default function Home() {
       </Section>
 
       {/* Marketplace Carousel */}
-      <Section id="marketplace" className="overflow-hidden p-0 md:p-0">
+      <Section id="marketplace" className="overflow-hidden p-0 md:p-0 md:pb-24">
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 px-6 md:px-12 pt-16 md:pt-24">
           <div>
             <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2 text-neutral-500 dark:text-neutral-400">
