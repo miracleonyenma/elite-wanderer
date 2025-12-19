@@ -105,23 +105,17 @@ export default function Home() {
       </Section>
 
       {/* Personalized travel */}
-      <Section id="marketplace" className="overflow-hidden p-0 md:p-0 md:pb-24">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 px-6 md:px-12 pt-16 md:pt-24">
-          <div>
-            <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2 text-neutral-500 dark:text-neutral-400">
-              The Marketplace
-            </h2>
-            <BlurText
-              text="Acquire The Exceptional"
-              className="font-heading text-4xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white"
-              delay={50}
-            />
-          </div>
+      <Section
+        id="personalized-travel"
+        className="overflow-hidden p-0 md:p-0 md:pb-24"
+        fullWidth
+      >
+        <div className="flex flex-col md:flex-row justify-end items-end mb-12 md:mb-16 px-6 md:px-12 pt-16 md:pt-24">
           <Button
             variant="default"
             className="hidden md:inline-flex uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
           >
-            View All Listings
+            View All Destinations
           </Button>
         </div>
 
@@ -130,11 +124,22 @@ export default function Home() {
             setApi={setMarketplaceApi}
             opts={{
               align: "start",
-              loop: true,
             }}
             className="w-full"
           >
             <CarouselContent className="gap-0 ml-0">
+              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
+                <div className="px-6 md:px-12">
+                  <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2 text-neutral-500 dark:text-neutral-400">
+                    Personalized Travel
+                  </h2>
+                  <BlurText
+                    text="Explore The Exceptional"
+                    className="font-heading text-4xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white"
+                    delay={50}
+                  />
+                </div>
+              </CarouselItem>
               <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
                 <FeatureCard
                   title="Alpine Chalet"
