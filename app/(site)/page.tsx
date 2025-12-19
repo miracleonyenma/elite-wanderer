@@ -1,5 +1,6 @@
 // ./app/(site)/page.tsx
 "use client";
+import Image from "next/image";
 import { Hero } from "@/components/Site/Hero";
 import { Section } from "@/components/Site/Section";
 import BlurText from "@/components/react-bits/BlurText";
@@ -124,12 +125,13 @@ export default function Home() {
             setApi={setMarketplaceApi}
             opts={{
               align: "start",
+              loop: false,
             }}
             className="w-full"
           >
             <CarouselContent className="gap-0 ml-0">
               <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
-                <div className="px-6 md:px-12">
+                <div className="px-6 md:px-12 flex flex-col justify-center h-full">
                   <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2 text-neutral-500 dark:text-neutral-400">
                     Personalized Travel
                   </h2>
@@ -140,42 +142,163 @@ export default function Home() {
                   />
                 </div>
               </CarouselItem>
+
+              {/* Destination 1 */}
               <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
-                <FeatureCard
-                  title="Alpine Chalet"
-                  label="Real Estate"
-                  description="Gstaad, Switzerland. 8 Bedrooms, Private Spa, Ski-in/Ski-out."
-                  image="/images/pexels-rada-aslanova-150604297-34567860.webp"
-                  className="min-h-[600px] border-r border-black/5"
-                />
+                <div className="relative group/card h-[600px] w-full overflow-hidden border-r border-black/5 cursor-pointer">
+                  <Image
+                    src="/images/pexels-rada-aslanova-150604297-34567860.webp"
+                    alt="Rome"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover/card:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover/card:bg-black/40 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80" />
+
+                  <div className="absolute top-8 right-8 z-10">
+                    <span className="text-white font-bold tracking-[0.2em] text-xs uppercase drop-shadow-md">
+                      9 Nights
+                    </span>
+                  </div>
+
+                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 transform translate-y-8 group-hover/card:translate-y-0 transition-transform duration-500">
+                    <h3 className="text-white font-heading text-3xl font-bold uppercase mb-4 leading-tight">
+                      Rome, Florence & Puglia
+                    </h3>
+                    <div className="opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 delay-100 space-y-4">
+                      <p className="text-neutral-200 text-sm leading-relaxed max-w-sm">
+                        Roman gladiators, handmade gelato and vintage Vespas. A
+                        luxury family Italy holiday through the ages.
+                      </p>
+                      <p className="text-white text-xs font-bold tracking-widest uppercase">
+                        From £8,550 per person
+                      </p>
+                      <Button
+                        variant="outline"
+                        className="text-white border-white hover:bg-white hover:text-black uppercase text-xs tracking-widest rounded-none mt-4"
+                      >
+                        Explore Trip
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               </CarouselItem>
+
+              {/* Destination 2 */}
               <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
-                <FeatureCard
-                  title="Limited Edition timepiece"
-                  label="Collectibles"
-                  description="Patek Philippe Nautilus. Factory sealed. Provenance verified."
-                  image="/images/pexels-geoffrey-currie-2153251493-33128243.webp"
-                  className="min-h-[600px] border-r border-black/5"
-                />
+                <div className="relative group/card h-[600px] w-full overflow-hidden border-r border-black/5 cursor-pointer">
+                  <Image
+                    src="/images/pexels-tracvu-35255960.webp"
+                    alt="Japan"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover/card:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover/card:bg-black/40 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80" />
+
+                  <div className="absolute top-8 right-8 z-10">
+                    <span className="text-white font-bold tracking-[0.2em] text-xs uppercase drop-shadow-md">
+                      10 Nights
+                    </span>
+                  </div>
+
+                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 transform translate-y-8 group-hover/card:translate-y-0 transition-transform duration-500">
+                    <h3 className="text-white font-heading text-3xl font-bold uppercase mb-4 leading-tight">
+                      A Journey Into Japan
+                    </h3>
+                    <div className="opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 delay-100 space-y-4">
+                      <p className="text-neutral-200 text-sm leading-relaxed max-w-sm">
+                        Immerse yourself in neon-lit cities, ancient temples,
+                        and serene landscapes on this ultimate Japanese
+                        adventure.
+                      </p>
+                      <p className="text-white text-xs font-bold tracking-widest uppercase">
+                        From £10,250 per person
+                      </p>
+                      <Button
+                        variant="outline"
+                        className="text-white border-white hover:bg-white hover:text-black uppercase text-xs tracking-widest rounded-none mt-4"
+                      >
+                        Explore Trip
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               </CarouselItem>
+
+              {/* Destination 3 */}
               <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
-                <FeatureCard
-                  title="Super Yacht"
-                  label="Marine"
-                  description="Azzam Class. 180m. Helipad. Submarine."
-                  image="/images/pexels-lamkien-35255292.webp"
-                  // Assuming mapping based on available images, if not exact file, placeholder logic applies, but using provided list info
-                  className="min-h-[600px] border-r border-black/5"
-                />
+                <div className="relative group/card h-[600px] w-full overflow-hidden border-r border-black/5 cursor-pointer">
+                  <Image
+                    src="/images/pexels-geoffrey-currie-2153251493-33128243.webp"
+                    alt="Costa Rica"
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover/card:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-black/20 group-hover/card:bg-black/40 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80" />
+
+                  <div className="absolute top-8 right-8 z-10">
+                    <span className="text-white font-bold tracking-[0.2em] text-xs uppercase drop-shadow-md">
+                      12 Nights
+                    </span>
+                  </div>
+
+                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 transform translate-y-8 group-hover/card:translate-y-0 transition-transform duration-500">
+                    <h3 className="text-white font-heading text-3xl font-bold uppercase mb-4 leading-tight">
+                      Adventure to Costa Rica
+                    </h3>
+                    <div className="opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 delay-100 space-y-4">
+                      <p className="text-neutral-200 text-sm leading-relaxed max-w-sm">
+                        Zip-line through cloud forests, relax on pristine
+                        beaches, and encounter unique wildlife in this
+                        eco-paradise.
+                      </p>
+                      <p className="text-white text-xs font-bold tracking-widest uppercase">
+                        From £6,800 per person
+                      </p>
+                      <Button
+                        variant="outline"
+                        className="text-white border-white hover:bg-white hover:text-black uppercase text-xs tracking-widest rounded-none mt-4"
+                      >
+                        Explore Trip
+                      </Button>
+                    </div>
+                  </div>
+                </div>
               </CarouselItem>
+
+              {/* Create Your Own */}
               <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
-                <FeatureCard
-                  title="Classic Car"
-                  label="Automotive"
-                  description="1963 Ferrari 250 GTO. Mint condition. Racing history."
-                  image="/images/pexels-mahmudul-hasan-2004633-35257841.webp"
-                  className="min-h-[600px]"
-                />
+                <div className="relative h-[600px] w-full overflow-hidden bg-[#0a2332] flex flex-col items-center justify-center p-8 text-center group/create cursor-pointer">
+                  {/* Background Image / Overlay */}
+                  <Image
+                    src="/images/pexels-lamkien-35255292.webp" // Using a darker/different image or just color
+                    alt="Create"
+                    fill
+                    className="object-cover opacity-20 transition-transform duration-700 group-hover/create:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-[#0a2332]/60" />
+
+                  <div className="relative z-10 flex flex-col items-center">
+                    <div className="mb-6">
+                      <span className="text-white/70 font-bold tracking-[0.2em] text-xs uppercase">
+                        Custom Trips
+                      </span>
+                    </div>
+
+                    <h3 className="text-white font-heading text-4xl md:text-5xl font-bold uppercase mb-8 leading-tight max-w-xs">
+                      Create Your Own Itinerary
+                    </h3>
+
+                    <Button
+                      variant="outline"
+                      className="text-white border-white hover:bg-white hover:text-black uppercase text-sm px-8 py-6 tracking-widest rounded-none"
+                    >
+                      Create Trip
+                    </Button>
+                  </div>
+                </div>
               </CarouselItem>
             </CarouselContent>
             <div className="absolute top-1/2 left-4 z-10 block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
@@ -207,7 +330,7 @@ export default function Home() {
             variant="default"
             className="uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
           >
-            View All Listings
+            View All Destinations
           </Button>
         </div>
       </Section>

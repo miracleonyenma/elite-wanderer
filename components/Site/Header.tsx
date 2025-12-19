@@ -35,9 +35,9 @@ export function Header() {
     >
       <Link
         href="/"
-        className="font-heading text-lg 2xl:text-2xl font-bold tracking-widest uppercase"
+        className="font-heading text-base 2xl:text-xl font-bold tracking-widest uppercase"
       >
-        Elite Wanderer
+        The Elite Wanderer
       </Link>
 
       <nav className="hidden md:flex items-center gap-8">

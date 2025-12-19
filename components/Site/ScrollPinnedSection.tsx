@@ -73,10 +73,10 @@ export function ScrollPinnedSection({ className }: { className?: string }) {
               rotationEnd="bottom bottom"
               wordAnimationEnd="bottom 80%"
             >
-              Elite Wanderer is not just a service; it is a gateway to a life
-              uninhibited. We specialize in curating bespoke travel experiences
-              and seamless global relocation for those who demand nothing but
-              the exceptional.
+              The Elite Wanderer is not just a service; it is a gateway to a
+              life uninhibited. We specialize in curating bespoke travel
+              experiences and seamless global relocation for those who demand
+              nothing but the exceptional.
             </ScrollReveal>
             <Button
               variant="default"

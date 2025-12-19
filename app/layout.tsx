@@ -39,9 +39,9 @@ const funnelSans = Funnel_Sans({
 });
 
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
-const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "Elite Wanderer";
-const APP_DEFAULT_TITLE = "Elite Wanderer";
-const APP_TITLE_TEMPLATE = "%s - Elite Wanderer";
+const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "The Elite Wanderer";
+const APP_DEFAULT_TITLE = "The Elite Wanderer";
+const APP_TITLE_TEMPLATE = "%s - The Elite Wanderer";
 const APP_DESCRIPTION =
   "Redefining luxury travel and global relocation for the discerning few.";
 

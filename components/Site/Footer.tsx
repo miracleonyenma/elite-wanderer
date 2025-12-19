@@ -188,13 +188,13 @@ export function Footer() {
       {/* Massive Brand Name */}
       <div className="border-t overflow-clip border-neutral-100 dark:border-neutral-800 pt-8 w-full">
         <ShinyText
-          text="Elite Wanderer"
+          text="The Elite Wanderer"
           className="text-[12vw] xl:text-[14vw] font-heading font-black  leading-[0.8] tracking-tighter text-center uppercase select-none text-app-theme-300 dark:text-app-theme-700 transition-colors"
         />
       </div>
 
       <div className="mt-8 flex justify-between text-[10px] uppercase tracking-widest text-neutral-400">
-        <span>&copy; {new Date().getFullYear()} Elite Wanderer</span>
+        <span>&copy; {new Date().getFullYear()} The Elite Wanderer</span>
         <span className="text-right">Designed for the Extraordinary</span>
       </div>
       <div className="mt-4 flex justify-end">
