@@ -7,29 +7,29 @@ import ScrollReveal from "../react-bits/ScrollReveal";
 
 const features = [
   {
-    title: "Unbounded Access",
+    title: "TEW Platinum Club",
     description:
-      "From sold-out galas to private islands, our network opens doors that remain closed to others. Your desire is our command.",
+      "Join an exclusive circle of global citizens. Access events, networks, and privileges reserved for the few. Your passport to the extraordinary.",
   },
   {
-    title: "Bespoke Curation",
+    title: "Luxury Personalised Travel",
     description:
-      "Every itinerary is a masterpiece, hand-crafted to your unique tastes. We don't just plan travel; we engineer memories.",
+      "Every itinerary is a masterpiece, hand-crafted to your unique tastes. From private islands to chartered jets, we engineer memories that last a lifetime.",
   },
   {
-    title: "Unbounded Access",
+    title: "TEW Marketplace",
     description:
-      "From sold-out galas to private islands, our network opens doors that remain closed to others. Your desire is our command.",
+      "Acquire the exceptional. A curated collection of rare assets, from off-market real estate to limited-edition timepieces and marine vessels.",
   },
   {
-    title: "Bespoke Curation",
+    title: "Global Mobility & Residency",
     description:
-      "Every itinerary is a masterpiece, hand-crafted to your unique tastes. We don't just plan travel; we engineer memories.",
+      "Building a life without borders. We facilitate dual citizenship, golden visas, and property acquisition to secure your legacy across continents.",
   },
   {
-    title: "Global Legacy",
+    title: "Investment Showcase",
     description:
-      "Building a life without borders. We facilitate dual citizenship, property acquisition, and legacy planning across continents.",
+      "Discover high-yield opportunities in emerging markets and luxury sectors. Exclusive deal flow for the astute investor.",
   },
 ];
 
@@ -105,6 +105,12 @@ export function ScrollPinnedSection({ className }: { className?: string }) {
               <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed text-lg max-w-sm">
                 {feature.description}
               </p>
+              <Button
+                variant="link"
+                className="p-0 h-auto text-black dark:text-white uppercase text-xs tracking-widest hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
+              >
+                Explore {feature.title.split(" ")[0]}
+              </Button>
             </motion.div>
           ))}
         </div>
