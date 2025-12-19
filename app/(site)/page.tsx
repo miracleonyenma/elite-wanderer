@@ -4,6 +4,8 @@ import { Hero } from "@/components/Site/Hero";
 import { Section } from "@/components/Site/Section";
 import { FeatureCard } from "@/components/Site/FeatureCard";
 import { Button } from "@/components/ui/aevr/button";
+import { ScrollPinnedSection } from "@/components/Site/ScrollPinnedSection";
+import { ParallaxGallery } from "@/components/Site/ParallaxGallery";
 import {
   Carousel,
   CarouselApi,
@@ -55,36 +57,7 @@ export default function Home() {
       <Hero />
 
       {/* Intro / Philosophy */}
-      <Section className="bg-white dark:bg-neutral-950 text-black dark:text-neutral-200">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-4 text-neutral-500 dark:text-neutral-400">
-              The Philosophy
-            </h2>
-            <h3 className="font-heading text-4xl md:text-6xl font-bold uppercase leading-[0.9] mb-8">
-              Luxury Beyond <br /> Boundaries.
-            </h3>
-          </div>
-          <div className="space-y-6 text-neutral-600 dark:text-neutral-400 text-lg font-light leading-relaxed">
-            <p>
-              Elite Wanderer is not just a service; it is a gateway to a life
-              uninhibited. We specialize in curating bespoke travel experiences
-              and seamless global relocation for those who demand nothing but
-              the exceptional.
-            </p>
-            <p>
-              From private islands to penthouses in bustling metropolises, our
-              network ensures that wherever you are, you are home.
-            </p>
-            <Button
-              variant="default"
-              className="mt-4 uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
-            >
-              Discover Our Vision
-            </Button>
-          </div>
-        </div>
-      </Section>
+      <ScrollPinnedSection />
 
       {/* Services Carousel */}
       <Section
@@ -311,6 +284,7 @@ export default function Home() {
           </Button>
         </div>
       </Section>
+      <ParallaxGallery />
     </>
   );
 }
