@@ -66,7 +66,7 @@ export function Header() {
         <Button
           variant="outline"
           className={cn(
-            "uppercase tracking-widest text-xs px-6 rounded-none",
+            "uppercase tracking-widest text-xs px-6 rounded-none dark:border-white dark:hover:bg-white dark:hover:text-black",
             isScrolled
               ? "text-black dark:text-white border-black dark:border-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black"
               : "text-white border-white hover:bg-white hover:text-black"

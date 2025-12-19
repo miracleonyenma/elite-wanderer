@@ -19,6 +19,7 @@
     "hooks": "@/hooks"
   },
   "registries": {
-    "@aevr": "https://ui.aevr.space/r/{name}.json"
+    "@aevr": "https://ui.aevr.space/r/{name}.json",
+    "@react-bits": "https://reactbits.dev/r/{name}.json"
   }
 }

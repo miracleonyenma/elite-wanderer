@@ -3,6 +3,7 @@ import Link from "next/link";
 import SiteThemeButton from "./ThemeButton";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import ShinyText from "../react-bits/ShinyText";
 
 export function Footer() {
   const formik = useFormik({
@@ -186,9 +187,10 @@ export function Footer() {
 
       {/* Massive Brand Name */}
       <div className="border-t overflow-clip border-neutral-100 dark:border-neutral-800 pt-8 w-full">
-        <h1 className="text-[12vw] font-heading font-black  leading-[0.8] tracking-tighter text-center uppercase select-none text-app-theme-300 dark:text-app-theme-700 transition-colors">
-          Elite Wanderer
-        </h1>
+        <ShinyText
+          text="Elite Wanderer"
+          className="text-[12vw] xl:text-[14vw] font-heading font-black  leading-[0.8] tracking-tighter text-center uppercase select-none text-app-theme-300 dark:text-app-theme-700 transition-colors"
+        />
       </div>
 
       <div className="mt-8 flex justify-between text-[10px] uppercase tracking-widest text-neutral-400">
