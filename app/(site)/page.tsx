@@ -186,11 +186,11 @@ export default function Home() {
                     </span>
                   </div>
 
-                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 transform translate-y-8 group-hover/card:translate-y-0 transition-transform duration-500">
+                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 transform translate-y-0 md:translate-y-8 md:group-hover/card:translate-y-0 transition-transform duration-500">
                     <h3 className="text-white font-heading text-3xl font-bold uppercase mb-4 leading-tight">
                       Rome, Florence & Puglia
                     </h3>
-                    <div className="opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 delay-100 space-y-4">
+                    <div className="opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-100 space-y-4">
                       <p className="text-neutral-200 text-sm leading-relaxed max-w-sm">
                         Roman gladiators, handmade gelato and vintage Vespas. A
                         luxury family Italy holiday through the ages.
@@ -227,11 +227,11 @@ export default function Home() {
                     </span>
                   </div>
 
-                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 transform translate-y-8 group-hover/card:translate-y-0 transition-transform duration-500">
+                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 transform translate-y-0 md:translate-y-8 md:group-hover/card:translate-y-0 transition-transform duration-500">
                     <h3 className="text-white font-heading text-3xl font-bold uppercase mb-4 leading-tight">
                       A Journey Into Japan
                     </h3>
-                    <div className="opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 delay-100 space-y-4">
+                    <div className="opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-100 space-y-4">
                       <p className="text-neutral-200 text-sm leading-relaxed max-w-sm">
                         Immerse yourself in neon-lit cities, ancient temples,
                         and serene landscapes on this ultimate Japanese
@@ -269,11 +269,11 @@ export default function Home() {
                     </span>
                   </div>
 
-                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 transform translate-y-8 group-hover/card:translate-y-0 transition-transform duration-500">
+                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 transform translate-y-0 md:translate-y-8 md:group-hover/card:translate-y-0 transition-transform duration-500">
                     <h3 className="text-white font-heading text-3xl font-bold uppercase mb-4 leading-tight">
                       Adventure to Costa Rica
                     </h3>
-                    <div className="opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 delay-100 space-y-4">
+                    <div className="opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-100 space-y-4">
                       <p className="text-neutral-200 text-sm leading-relaxed max-w-sm">
                         Zip-line through cloud forests, relax on pristine
                         beaches, and encounter unique wildlife in this
@@ -401,7 +401,7 @@ export default function Home() {
                   title="Alpine Chalet"
                   label="Real Estate"
                   description="Gstaad, Switzerland. 8 Bedrooms, Private Spa, Ski-in/Ski-out."
-                  image="/images/pexels-rada-aslanova-150604297-34567860.webp"
+                  image="/images/products-investments/pexels-expect-best-79873-323780.webp"
                   className="min-h-[600px] "
                 />
               </CarouselItem>
@@ -410,7 +410,7 @@ export default function Home() {
                   title="Limited Edition timepiece"
                   label="Collectibles"
                   description="Patek Philippe Nautilus. Factory sealed. Provenance verified."
-                  image="/images/pexels-geoffrey-currie-2153251493-33128243.webp"
+                  image="/images/products-investments/pexels-mali-42091.webp"
                   className="min-h-[600px] "
                 />
               </CarouselItem>
@@ -419,7 +419,7 @@ export default function Home() {
                   title="Super Yacht"
                   label="Marine"
                   description="Azzam Class. 180m. Helipad. Submarine."
-                  image="/images/pexels-lamkien-35255292.webp"
+                  image="/images/products-investments/pexels-trvlust-3221163.webp"
                   // Assuming mapping based on available images, if not exact file, placeholder logic applies, but using provided list info
                   className="min-h-[600px] "
                 />
@@ -429,7 +429,7 @@ export default function Home() {
                   title="Classic Car"
                   label="Automotive"
                   description="1963 Ferrari 250 GTO. Mint condition. Racing history."
-                  image="/images/pexels-mahmudul-hasan-2004633-35257841.webp"
+                  image="/images/products-investments/pexels-binyaminmellish-1396132.webp"
                   className="min-h-[600px]"
                 />
               </CarouselItem>
@@ -510,7 +510,7 @@ export default function Home() {
                   title="Private Travel"
                   label="Explore"
                   description="Charter jets, yachts, and exclusive access to the world's most remote and beautiful destinations."
-                  image="/images/pexels-vincent-gerbouin-445991-1179156.webp"
+                  image="/images/products-investments/pexels-heyho-6394590.webp"
                   dark
                   className="h-[600px] border-r border-white/10"
                 />
@@ -520,7 +520,7 @@ export default function Home() {
                   title="Global Relocation"
                   label="Settle"
                   description="Seamless transition to your new life. From visa processing to property acquisition and school placement."
-                  image="/images/pexels-tracvu-35255960.webp"
+                  image="/images/products-investments/pexels-pixabay-358189.webp"
                   className="h-[600px] border-r border-black/5"
                 />
               </CarouselItem>

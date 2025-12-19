@@ -68,7 +68,7 @@ export function FeatureCard({
           {description}
         </p>
 
-        <div className="pt-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
+        <div className="pt-6 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 transform translate-y-0 md:translate-y-4 md:group-hover:translate-y-0">
           <Button
             variant={image ? "outline" : "default"}
             className={cn(
