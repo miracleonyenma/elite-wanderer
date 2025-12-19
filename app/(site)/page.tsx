@@ -19,6 +19,10 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { UserReviews } from "@/components/Site/UserReviews";
+import { BrandReviews } from "@/components/Site/BrandReviews";
+import { BlogList } from "@/components/Site/BlogList";
+import { CTASection } from "@/components/Site/CTASection";
 
 export default function Home() {
   const [servicesApi, setServicesApi] = useState<CarouselApi>();
@@ -560,7 +564,15 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* Blog */}
+      {/* Social Proof & Validation */}
+      <UserReviews />
+      <BrandReviews />
+
+      {/* Content & Journal */}
+      <BlogList />
+
+      {/* Final CTA */}
+      <CTASection />
     </>
   );
 }
