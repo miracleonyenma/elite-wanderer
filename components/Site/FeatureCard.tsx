@@ -73,7 +73,8 @@ export function FeatureCard({
             variant={image ? "outline" : "default"}
             className={cn(
               "uppercase text-xs tracking-widest rounded-none",
-              image && " text-white hover:bg-white hover:text-black"
+              image &&
+                " text-white hover:bg-white dark:border-white/30 dark:hover:bg-white dark:hover:text-black hover:text-black"
             )}
           >
             Learn More

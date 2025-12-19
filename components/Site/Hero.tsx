@@ -75,14 +75,14 @@ export function Hero() {
           <div className="pt-8 flex flex-col md:flex-row gap-4 justify-center items-center">
             <Button
               size="lg"
-              className="uppercase tracking-widest lg:px-8 lg:py-6 text-sm"
+              className="uppercase tracking-widest dark:bg-white dark:text-black hover:dark:bg-app-theme-200 lg:px-8 lg:py-6 text-sm"
             >
               Start Your Journey
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="uppercase tracking-widest lg:px-8 lg:py-6 text-sm border-white text-white hover:bg-white hover:text-black rounded-none"
+              className="uppercase tracking-widest lg:px-8 lg:py-6 text-sm border-white dark:border-white text-white hover:bg-white dark:hover:bg-white dark:hover:text-black hover:text-black rounded-none"
             >
               Explore Services
             </Button>
