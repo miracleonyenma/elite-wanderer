@@ -44,7 +44,7 @@ export function ParallaxGallery({ className }: { className?: string }) {
           Visual Odyssey
         </h2>
         <h3 className="font-heading text-center text-2xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white">
-          A Glimpse of the Extraordinary
+          Global Mobility and Residency
         </h3>
       </div>
 
