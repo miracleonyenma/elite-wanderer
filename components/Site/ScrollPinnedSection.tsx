@@ -17,6 +17,16 @@ const features = [
       "Every itinerary is a masterpiece, hand-crafted to your unique tastes. We don't just plan travel; we engineer memories.",
   },
   {
+    title: "Unbounded Access",
+    description:
+      "From sold-out galas to private islands, our network opens doors that remain closed to others. Your desire is our command.",
+  },
+  {
+    title: "Bespoke Curation",
+    description:
+      "Every itinerary is a masterpiece, hand-crafted to your unique tastes. We don't just plan travel; we engineer memories.",
+  },
+  {
     title: "Global Legacy",
     description:
       "Building a life without borders. We facilitate dual citizenship, property acquisition, and legacy planning across continents.",
