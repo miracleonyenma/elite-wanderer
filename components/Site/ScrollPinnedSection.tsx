@@ -30,13 +30,13 @@ export function ScrollPinnedSection({ className }: { className?: string }) {
     <section
       ref={containerRef}
       className={cn(
-        "relative bg-white dark:bg-neutral-950 text-black dark:text-neutral-200 py-24 md:py-48 px-6 md:px-12",
+        "relative bg-white  dark:bg-neutral-950 text-black dark:text-neutral-200 py-24 md:py-48 px-6 md:px-12",
         className
       )}
     >
-      <div className="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
+      <div className="max-w-screen-2xl min-h-[150dvh] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24">
         {/* Sticky Left Content */}
-        <div className="relative h-fit md:sticky md:top-64">
+        <div className="relative col-span-2 h-fit md:sticky md:pt-24 md:top-[10dvh]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -58,10 +58,10 @@ export function ScrollPinnedSection({ className }: { className?: string }) {
               enableBlur={true}
               baseRotation={5}
               blurStrength={10}
-              textClassName="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 font-light leading-relaxed max-w-md"
+              textClassName="text-2xl md:text-5xl text-neutral-800 dark:text-neutral-200 font-thin leading-tight! max-w-4xl tracking-tighter"
               containerClassName="my-0 mb-8"
               rotationEnd="bottom bottom"
-              wordAnimationEnd="bottom bottom"
+              wordAnimationEnd="bottom 80%"
             >
               Elite Wanderer is not just a service; it is a gateway to a life
               uninhibited. We specialize in curating bespoke travel experiences
@@ -70,7 +70,7 @@ export function ScrollPinnedSection({ className }: { className?: string }) {
             </ScrollReveal>
             <Button
               variant="default"
-              className="uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 lg:px-8 lg:py-6"
+              className="uppercase  tracking-widest text-xs rounded-none bg-black text-white  hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 lg:px-8 lg:py-6"
             >
               Discover Our Vision
             </Button>
@@ -78,7 +78,7 @@ export function ScrollPinnedSection({ className }: { className?: string }) {
         </div>
 
         {/* Scrolling Right Content */}
-        <div className="flex flex-col gap-24 md:gap-48 pt-12 md:pt-0">
+        <div className="flex flex-col col-span-1 gap-24 md:gap-48 pt-12 md:pt-0">
           {features.map((feature, index) => (
             <motion.div
               key={index}
