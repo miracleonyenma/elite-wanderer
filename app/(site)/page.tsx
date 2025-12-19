@@ -123,6 +123,22 @@ export default function Home() {
 
       {/* Personalized travel */}
       <Section id="personalized-travel" className="overflow-hidden " fullWidth>
+        <div className="p-6 md:px-12 flex flex-col gap-2 justify-center h-full md:hidden">
+          <h2 className="text-xs font-bold tracking-[0.3em] uppercase  text-neutral-500 dark:text-neutral-400">
+            Personalized Travel
+          </h2>
+          <BlurText
+            text="Explore The Exceptional"
+            className="font-heading text-4xl md:text-5xl font-bold  uppercase text-neutral-900 dark:text-white"
+            delay={50}
+          />
+          <Button
+            variant="default"
+            className="hidden md:inline-flex uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+          >
+            View All Destinations
+          </Button>
+        </div>
         <div className="relative group pb-12">
           <Carousel
             setApi={setDestinationsApi}
@@ -140,7 +156,7 @@ export default function Home() {
                   </h2>
                   <BlurText
                     text="Explore The Exceptional"
-                    className="font-heading text-4xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white"
+                    className="font-heading text-2xl md:text-3xl xl:text-5xl  font-bold uppercase text-neutral-900 dark:text-white"
                     delay={50}
                   />
                   <Button
@@ -334,7 +350,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-12 mb-16 text-center md:hidden px-6">
+        <div className="mt-12 text-center md:hidden px-6">
           <Button
             variant="default"
             className="uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
@@ -376,6 +392,7 @@ export default function Home() {
               align: "start",
               loop: true,
             }}
+            plugins={[Autoplay()]}
             className="w-full"
           >
             <CarouselContent className="gap-0 ml-0">
@@ -444,7 +461,7 @@ export default function Home() {
         <div className="mt-12 mb-16 text-center md:hidden px-6">
           <Button
             variant="default"
-            className="uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+            className="uppercase tracking-widest text-xs rounded-none "
           >
             View All Listings
           </Button>
