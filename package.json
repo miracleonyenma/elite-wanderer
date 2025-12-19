@@ -22,6 +22,7 @@
     "formik": "^2.4.9",
     "iconsax-react": "^0.0.8",
     "iso-country-currency": "^0.7.2",
+    "lenis": "^1.3.16",
     "lucide-react": "^0.562.0",
     "motion": "^12.23.26",
     "next": "16.0.10",

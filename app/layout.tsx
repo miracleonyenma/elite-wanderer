@@ -10,6 +10,7 @@ import {
 import { ThemeProvider } from "next-themes";
 import NextToploader from "nextjs-toploader";
 import "./globals.css";
+import SmoothScrolling from "@/components/providers/SmoothScrolling";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -93,7 +94,7 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" enableColorScheme enableSystem>
           <NextToploader color="#fff" />
-          {children}
+          <SmoothScrolling>{children}</SmoothScrolling>
         </ThemeProvider>
       </body>
     </html>
