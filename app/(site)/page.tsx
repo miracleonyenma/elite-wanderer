@@ -2,6 +2,7 @@
 "use client";
 import { Hero } from "@/components/Site/Hero";
 import { Section } from "@/components/Site/Section";
+import BlurText from "@/components/react-bits/BlurText";
 import { FeatureCard } from "@/components/Site/FeatureCard";
 import { Button } from "@/components/ui/aevr/button";
 import { ScrollPinnedSection } from "@/components/Site/ScrollPinnedSection";
@@ -69,9 +70,13 @@ export default function Home() {
           <h2 className="text-center text-xs font-bold tracking-[0.3em] uppercase mb-4 text-neutral-500 dark:text-neutral-400">
             Our Expertise
           </h2>
-          <h3 className="font-heading text-center text-4xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white">
-            Curated Services
-          </h3>
+          <div className="flex justify-center">
+            <BlurText
+              text="Curated Services"
+              className="font-heading text-center text-4xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white justify-center"
+              delay={50}
+            />
+          </div>
         </div>
 
         <div className="relative group">
@@ -166,9 +171,13 @@ export default function Home() {
             <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-6 text-white/70">
               The Private Club
             </h2>
-            <h3 className="font-heading text-3xl md:text-7xl font-bold uppercase mb-8">
-              Elite Membership
-            </h3>
+            <div className="flex justify-center mb-8">
+              <BlurText
+                text="Elite Membership"
+                className="font-heading text-3xl md:text-7xl font-bold uppercase justify-center"
+                delay={50}
+              />
+            </div>
             <p className="lg:text-xl text-neutral-300 font-light mb-10">
               Join an exclusive circle of global citizens. Access events,
               networks, and privileges reserved for the few.
@@ -191,9 +200,11 @@ export default function Home() {
             <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2 text-neutral-500 dark:text-neutral-400">
               The Marketplace
             </h2>
-            <h3 className="font-heading text-4xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white">
-              Acquire The Exceptional
-            </h3>
+            <BlurText
+              text="Acquire The Exceptional"
+              className="font-heading text-4xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white"
+              delay={50}
+            />
           </div>
           <Button
             variant="default"

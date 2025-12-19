@@ -2,6 +2,8 @@ import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import { useRef } from "react";
 import { Button } from "../ui/button";
+import BlurText from "../react-bits/BlurText";
+import ScrollReveal from "../react-bits/ScrollReveal";
 
 const features = [
   {
@@ -43,15 +45,29 @@ export function ScrollPinnedSection({ className }: { className?: string }) {
             <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-4 text-neutral-500 dark:text-neutral-400">
               The Philosophy
             </h2>
-            <h3 className="font-heading text-4xl md:text-6xl font-black uppercase leading-[0.9] mb-8">
-              Luxury Beyond <br /> Boundaries.
-            </h3>
-            <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 font-light leading-relaxed max-w-md mb-8">
+            <div className="mb-8">
+              <BlurText
+                text="Luxury Beyond Boundaries."
+                className="font-heading text-4xl md:text-6xl font-black uppercase leading-[0.9]"
+                delay={50}
+              />
+            </div>
+
+            <ScrollReveal
+              baseOpacity={0}
+              enableBlur={true}
+              baseRotation={5}
+              blurStrength={10}
+              textClassName="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 font-light leading-relaxed max-w-md"
+              containerClassName="my-0 mb-8"
+              rotationEnd="bottom bottom"
+              wordAnimationEnd="bottom bottom"
+            >
               Elite Wanderer is not just a service; it is a gateway to a life
               uninhibited. We specialize in curating bespoke travel experiences
               and seamless global relocation for those who demand nothing but
               the exceptional.
-            </p>
+            </ScrollReveal>
             <Button
               variant="default"
               className="uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 lg:px-8 lg:py-6"

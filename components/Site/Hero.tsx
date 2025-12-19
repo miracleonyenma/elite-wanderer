@@ -2,6 +2,7 @@
 "use client";
 import { motion } from "motion/react";
 import { Button } from "@/components/ui/aevr/button";
+import BlurText from "../react-bits/BlurText";
 import { useState, useRef, useEffect } from "react";
 import { Pause, Play } from "lucide-react";
 
@@ -64,9 +65,10 @@ export function Hero() {
           <h2 className="  text-sm md:text-base font-semibold tracking-[0.3em] uppercase text-neutral-300">
             Define Your Legend
           </h2>
-          <h1 className="font-heading text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight uppercase leading-none">
-            Elite <span className="text-white/80">Wanderer</span>
-          </h1>
+          <div className="font-heading text-4xl md:text-7xl lg:text-8xl font-bold tracking-tight uppercase leading-none flex justify-center gap-4 mb-4">
+            <BlurText text="Elite" delay={150} />
+            <BlurText text="Wanderer" className="text-white/80" delay={150} />
+          </div>
           <p className="max-w-xl mx-auto md:text-xl text-neutral-200 font-light leading-relaxed">
             Curating the extraordinary for the world&apos;s most discerning
             individuals. Travel, relocation, and lifestyle without limits.
