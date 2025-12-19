@@ -23,10 +23,13 @@ import { cn } from "@/lib/utils";
 export default function Home() {
   const [servicesApi, setServicesApi] = useState<CarouselApi>();
   const [marketplaceApi, setMarketplaceApi] = useState<CarouselApi>();
+  const [destinationsApi, setDestinationsApi] = useState<CarouselApi>();
   const [servicesCurrent, setServicesCurrent] = useState(0);
   const [servicesCount, setServicesCount] = useState(0);
   const [marketplaceCurrent, setMarketplaceCurrent] = useState(0);
   const [marketplaceCount, setMarketplaceCount] = useState(0);
+  const [destinationsCurrent, setDestinationsCurrent] = useState(0);
+  const [destinationsCount, setDestinationsCount] = useState(0);
 
   useEffect(() => {
     if (!servicesApi) {
@@ -53,6 +56,19 @@ export default function Home() {
       setMarketplaceCurrent(marketplaceApi.selectedScrollSnap() + 1);
     });
   }, [marketplaceApi]);
+
+  useEffect(() => {
+    if (!destinationsApi) {
+      return;
+    }
+
+    setDestinationsCount(destinationsApi.scrollSnapList().length);
+    setDestinationsCurrent(destinationsApi.selectedScrollSnap() + 1);
+
+    destinationsApi.on("select", () => {
+      setDestinationsCurrent(destinationsApi.selectedScrollSnap() + 1);
+    });
+  }, [destinationsApi]);
 
   return (
     <>
@@ -106,23 +122,10 @@ export default function Home() {
       </Section>
 
       {/* Personalized travel */}
-      <Section
-        id="personalized-travel"
-        className="overflow-hidden p-0 md:p-0 md:pb-24"
-        fullWidth
-      >
-        <div className="flex flex-col md:flex-row justify-end items-end mb-12 md:mb-16 px-6 md:px-12 pt-16 md:pt-24">
-          <Button
-            variant="default"
-            className="hidden md:inline-flex uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
-          >
-            View All Destinations
-          </Button>
-        </div>
-
+      <Section id="personalized-travel" className="overflow-hidden " fullWidth>
         <div className="relative group pb-12">
           <Carousel
-            setApi={setMarketplaceApi}
+            setApi={setDestinationsApi}
             opts={{
               align: "start",
               loop: false,
@@ -130,8 +133,8 @@ export default function Home() {
             className="w-full"
           >
             <CarouselContent className="gap-0 ml-0">
-              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
-                <div className="px-6 md:px-12 flex flex-col justify-center h-full">
+              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0 hidden md:flex">
+                <div className="px-6 md:px-12 flex flex-col gap-4 justify-center h-full">
                   <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2 text-neutral-500 dark:text-neutral-400">
                     Personalized Travel
                   </h2>
@@ -140,6 +143,12 @@ export default function Home() {
                     className="font-heading text-4xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white"
                     delay={50}
                   />
+                  <Button
+                    variant="default"
+                    className="hidden md:inline-flex uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+                  >
+                    View All Destinations
+                  </Button>
                 </div>
               </CarouselItem>
 
@@ -310,16 +319,16 @@ export default function Home() {
           </Carousel>
           {/* Dots Indicator */}
           <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-2 z-20">
-            {Array.from({ length: marketplaceCount }).map((_, index) => (
+            {Array.from({ length: destinationsCount }).map((_, index) => (
               <button
                 key={index}
                 className={cn(
                   "h-1.5 transition-all duration-300 rounded-full",
-                  index + 1 === marketplaceCurrent
+                  index + 1 === destinationsCurrent
                     ? "w-8 bg-neutral-900 dark:bg-white"
                     : "w-1.5 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-400 dark:hover:bg-neutral-500"
                 )}
-                onClick={() => marketplaceApi?.scrollTo(index)}
+                onClick={() => destinationsApi?.scrollTo(index)}
               />
             ))}
           </div>
@@ -336,21 +345,25 @@ export default function Home() {
       </Section>
 
       {/* Tew Marketplace Carousel */}
-      <Section id="marketplace" className="overflow-hidden p-0 md:p-0 md:pb-24">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-16 px-6 md:px-12 pt-16 md:pt-24">
+      <Section
+        id="marketplace"
+        fullWidth
+        className="overflow-hidden p-0 md:p-0 md:pb-24 bg-app-theme-900 text-app-theme-50"
+      >
+        <div className="flex  w-full max-w-screen-2xl mx-auto flex-col md:flex-row justify-between items-end mb-12 md:mb-16 px-6 md:px-12 pt-16 md:pt-24">
           <div>
-            <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2 text-neutral-500 dark:text-neutral-400">
-              The Marketplace
+            <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2">
+              TEW Marketplace
             </h2>
             <BlurText
               text="Acquire The Exceptional"
-              className="font-heading text-4xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white"
+              className="font-heading text-4xl md:text-5xl font-bold uppercase text-app-theme-50"
               delay={50}
             />
           </div>
           <Button
             variant="default"
-            className="hidden md:inline-flex uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+            className="hidden md:inline-flex uppercase tracking-widest text-xs rounded-none "
           >
             View All Listings
           </Button>
@@ -366,13 +379,13 @@ export default function Home() {
             className="w-full"
           >
             <CarouselContent className="gap-0 ml-0">
-              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
+              <CarouselItem className="md:basis-1/2 ml-24 md:ml-40 lg:basis-2/5 pl-0">
                 <FeatureCard
                   title="Alpine Chalet"
                   label="Real Estate"
                   description="Gstaad, Switzerland. 8 Bedrooms, Private Spa, Ski-in/Ski-out."
                   image="/images/pexels-rada-aslanova-150604297-34567860.webp"
-                  className="min-h-[600px] border-r border-black/5"
+                  className="min-h-[600px] "
                 />
               </CarouselItem>
               <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
@@ -381,7 +394,7 @@ export default function Home() {
                   label="Collectibles"
                   description="Patek Philippe Nautilus. Factory sealed. Provenance verified."
                   image="/images/pexels-geoffrey-currie-2153251493-33128243.webp"
-                  className="min-h-[600px] border-r border-black/5"
+                  className="min-h-[600px] "
                 />
               </CarouselItem>
               <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
@@ -391,7 +404,7 @@ export default function Home() {
                   description="Azzam Class. 180m. Helipad. Submarine."
                   image="/images/pexels-lamkien-35255292.webp"
                   // Assuming mapping based on available images, if not exact file, placeholder logic applies, but using provided list info
-                  className="min-h-[600px] border-r border-black/5"
+                  className="min-h-[600px] "
                 />
               </CarouselItem>
               <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
@@ -419,7 +432,7 @@ export default function Home() {
                 className={cn(
                   "h-1.5 transition-all duration-300 rounded-full",
                   index + 1 === marketplaceCurrent
-                    ? "w-8 bg-neutral-900 dark:bg-white"
+                    ? "w-8 bg-app-theme-50 dark:bg-white"
                     : "w-1.5 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-400 dark:hover:bg-neutral-500"
                 )}
                 onClick={() => marketplaceApi?.scrollTo(index)}
@@ -449,11 +462,11 @@ export default function Home() {
       >
         <div className="mb-12 md:mb-16 px-6 md:px-12 pt-16 md:pt-24">
           <h2 className="text-center text-xs font-bold tracking-[0.3em] uppercase mb-4 text-neutral-500 dark:text-neutral-400">
-            Explore destinations
+            Investment Showcase
           </h2>
           <div className="flex justify-center">
             <BlurText
-              text="Personalized Travel"
+              text="Opportunities for the discerning investor"
               className="font-heading text-center text-4xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white justify-center"
               delay={50}
             />
