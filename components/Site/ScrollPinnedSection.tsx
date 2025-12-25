@@ -4,32 +4,53 @@ import { useRef } from "react";
 import { Button } from "../ui/button";
 import BlurText from "../react-bits/BlurText";
 import ScrollReveal from "../react-bits/ScrollReveal";
+import Link from "next/link";
 
 const features = [
   {
     title: "TEW Platinum Club",
     description:
-      "Join an exclusive circle of global citizens. Access events, networks, and privileges reserved for the few. Your passport to the extraordinary.",
+      "Join an elite circle of global elite citizens. Access private events, networks, and privileges reserved for the few. Your passport to the extraordinary.",
+    cta: {
+      text: "Discover TEW Platinum",
+      href: "#platinum-club",
+    },
   },
   {
-    title: "Luxury Personalised Travel",
+    title: "Personalized Luxury Travel",
     description:
-      "Every itinerary is a masterpiece, hand-crafted to your unique tastes. From private islands to chartered jets, we engineer memories that last a lifetime.",
+      "Every journey is meticulously crafted to your tastes. From private islands to chartered jets, we design experiences that leave lasting memories",
+    cta: {
+      text: "Plan Your Journey",
+      href: "#travel",
+    },
   },
   {
     title: "TEW Marketplace",
     description:
-      "Acquire the exceptional. A curated collection of rare assets, from off-market real estate to limited-edition timepieces and marine vessels.",
+      "Acquire the exceptional. A curated collection of rare assets, from off-market real estate to limited-edition timepieces and luxury vessels.",
+    cta: {
+      text: "Explore the Marketplace",
+      href: "#marketplace",
+    },
   },
   {
-    title: "Global Mobility & Residency",
+    title: "⁠Global Mobility & Residency",
     description:
-      "Building a life without borders. We facilitate dual citizenship, golden visas, and property acquisition to secure your legacy across continents.",
+      "Create a life without borders. We facilitate dual citizenship, golden visas, and strategic property acquisition to secure your global legacy",
+    cta: {
+      text: "Unlock Global Access",
+      href: "#global-mobility",
+    },
   },
   {
     title: "Investment Showcase",
     description:
-      "Discover high-yield opportunities in emerging markets and luxury sectors. Exclusive deal flow for the astute investor.",
+      "Access high-yield opportunities across emerging markets and luxury sectors. Exclusive deal flow for the discerning investor.",
+    cta: {
+      text: "View Investment Opportunities",
+      href: "#investment-showcase",
+    },
   },
 ];
 
@@ -73,16 +94,18 @@ export function ScrollPinnedSection({ className }: { className?: string }) {
               rotationEnd="bottom bottom"
               wordAnimationEnd="bottom 80%"
             >
-              The Elite Wanderer is not just a service; it is a gateway to a
-              life uninhibited. We specialize in curating bespoke travel
-              experiences and seamless global relocation for those who demand
-              nothing but the exceptional.
+              Our purpose is to create a world where access, opportunity, and
+              possibility are limitless for those who dare to reach beyond the
+              ordinary. Every journey, connection, and experience is designed to
+              open doors, spark new perspectives, and enable a life of freedom,
+              influence, and impact.
             </ScrollReveal>
             <Button
+              asChild
               variant="default"
               className="uppercase  tracking-widest text-xs rounded-none bg-black text-white  hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 lg:px-8 lg:py-6"
             >
-              Discover Our Vision
+              <Link href="#about">Learn More About Us</Link>
             </Button>
           </motion.div>
         </div>
@@ -106,10 +129,14 @@ export function ScrollPinnedSection({ className }: { className?: string }) {
                 {feature.description}
               </p>
               <Button
+                asChild={!!feature?.cta?.href}
                 variant="link"
                 className="p-0 h-auto text-black dark:text-white uppercase text-xs tracking-widest hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
               >
-                Explore {feature.title.split(" ")[0]}
+                <Link href={feature?.cta?.href || "#"}>
+                  {feature?.cta?.text ||
+                    `Explore ${feature.title.split(" ")[0]}`}
+                </Link>
               </Button>
             </motion.div>
           ))}

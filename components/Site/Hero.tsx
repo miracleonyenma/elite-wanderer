@@ -52,7 +52,7 @@ export function Hero() {
       </video>
 
       {/* Overlay Gradient */}
-      <div className="absolute inset-0 bg-linear-to-b from-black/30 via-transparent to-black/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/50 via-transparent to-black/80 pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 flex h-full flex-col items-center justify-center text-center px-4">
@@ -63,16 +63,18 @@ export function Hero() {
           className="space-y-6 max-w-4xl"
         >
           <h2 className="  text-sm md:text-base font-semibold tracking-[0.3em] uppercase text-neutral-300">
-            Define Your Legend
+            Be Borderless
           </h2>
           <div className="font-heading text-4xl max-md:flex-col max-md:items-center md:text-5xl lg:text-7xl font-bold tracking-tight uppercase leading-none flex justify-center gap-4 mb-4">
             <BlurText text="The" delay={150} />
             <BlurText text="Elite" delay={150} />
             <BlurText text="Wanderer" className="text-white/80" delay={150} />
           </div>
-          <p className="max-w-xl mx-auto md:text-xl text-neutral-200 font-light leading-relaxed">
+          <p className="max-w-3xl mx-auto md:text-xl text-neutral-200 font-light leading-relaxed">
             Curating the extraordinary for the world&apos;s most discerning
-            individuals. Travel, relocation, and lifestyle without limits.
+            individuals. Global mobility, strategic investment access, private
+            membership, personalized luxury travel, and elite assets delivered
+            without limits.
           </p>
 
           <div className="pt-8 flex flex-col md:flex-row gap-4 justify-center items-center">
@@ -80,14 +82,14 @@ export function Hero() {
               size="lg"
               className="uppercase tracking-widest bg-white dark:bg-white text-black dark:text-black hover:bg-app-theme-200 hover:dark:bg-app-theme-200 lg:px-8 lg:py-6 text-sm"
             >
-              Start Your Journey
+              Request Private Session
             </Button>
             <Button
               size="lg"
               variant="outline"
               className="uppercase tracking-widest lg:px-8 lg:py-6 text-sm border-white dark:border-white text-white hover:bg-white dark:hover:bg-white dark:hover:text-black hover:text-black rounded-none"
             >
-              Explore Services
+              Explore Our World
             </Button>
           </div>
         </motion.div>

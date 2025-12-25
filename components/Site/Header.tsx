@@ -6,10 +6,13 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { name: "Destinations", href: "#destinations" },
-  { name: "Membership", href: "#membership" },
-  { name: "Services", href: "#services" },
+  { name: "About", href: "#about" },
+  { name: "Contact", href: "#contact" },
+  { name: "Global Mobility", href: "#global-mobility" },
+  { name: "TEW Platinum", href: "#platinum" },
   { name: "Marketplace", href: "#marketplace" },
+  { name: "Destinations", href: "#destinations" },
+  { name: "Investment Showcase", href: "#investments" },
 ];
 
 export function Header() {
@@ -50,19 +53,6 @@ export function Header() {
             {item.name}
           </Link>
         ))}
-      </nav>
-
-      <div className="flex items-center gap-4">
-        <Button
-          variant="ghost"
-          className={cn(
-            "text-white hover:text-white/70 uppercase tracking-widest text-xs hidden md:inline-flex",
-            isScrolled &&
-              "text-black dark:text-white hover:text-black/70 dark:hover:text-white/70"
-          )}
-        >
-          Sign In
-        </Button>
         <Button
           variant="outline"
           className={cn(
@@ -74,7 +64,7 @@ export function Header() {
         >
           Join
         </Button>
-      </div>
+      </nav>
     </header>
   );
 }

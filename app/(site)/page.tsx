@@ -105,14 +105,15 @@ export default function Home() {
             </h2>
             <div className="flex justify-center mb-8">
               <BlurText
-                text="TEW PLATINUM CLUB"
+                text="TEW PLATINUM"
                 className="font-heading text-3xl md:text-7xl font-bold uppercase justify-center"
                 delay={50}
               />
             </div>
             <p className="lg:text-xl text-neutral-300 font-light mb-10">
-              Join an exclusive circle of global citizens. Access events,
-              networks, and privileges reserved for the few.
+              Join an elite circle of global elite citizens. Access private
+              events, networks, and privileges reserved for the few. Your
+              passport to the extraordinary.
             </p>
             <Button
               variant="secondary"
@@ -132,7 +133,7 @@ export default function Home() {
             Personalized Travel
           </h2>
           <BlurText
-            text="Explore The Exceptional"
+            text="Explore our trips"
             className="font-heading text-4xl md:text-5xl font-bold  uppercase text-neutral-900 dark:text-white"
             delay={50}
           />
