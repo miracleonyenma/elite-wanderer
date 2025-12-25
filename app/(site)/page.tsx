@@ -84,7 +84,7 @@ export default function Home() {
 
       {/* Membership / Featured / Video Section */}
       <Section fullWidth className="p-0 py-0 md:py-0">
-        <div className="relative h-dvh w-full flex items-center justify-center bg-neutral-900 text-white overflow-hidden">
+        <div className="relative flex h-dvh w-full items-center justify-center overflow-hidden bg-neutral-900 text-white">
           <video
             autoPlay
             loop
@@ -100,18 +100,18 @@ export default function Home() {
 
           <div className="absolute inset-0 bg-black/40" />
 
-          <div className="relative z-10 text-center max-w-2xl px-6">
-            <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-6 text-white/70">
+          <div className="relative z-10 max-w-2xl px-6 text-center">
+            <h2 className="mb-6 text-xs font-bold tracking-[0.3em] text-white/70 uppercase">
               The Private Club
             </h2>
-            <div className="flex justify-center mb-8">
+            <div className="mb-8 flex justify-center">
               <BlurText
                 text="TEW PLATINUM"
-                className="font-heading text-3xl md:text-7xl font-bold uppercase justify-center"
+                className="justify-center font-heading text-3xl font-bold uppercase md:text-7xl"
                 delay={50}
               />
             </div>
-            <p className="lg:text-xl text-neutral-300 font-light mb-10">
+            <p className="mb-10 font-light text-neutral-300 lg:text-xl">
               Join an elite circle of global elite citizens. Access private
               events, networks, and privileges reserved for the few. Your
               passport to the extraordinary.
@@ -119,7 +119,7 @@ export default function Home() {
             <Button
               variant="secondary"
               size={"lg"}
-              className="lg:px-12 lg:py-6 uppercase"
+              className="uppercase lg:px-12 lg:py-6"
             >
               Request Invitation
             </Button>
@@ -128,25 +128,25 @@ export default function Home() {
       </Section>
 
       {/* Personalized travel */}
-      <Section id="personalized-travel" className="overflow-hidden " fullWidth>
-        <div className="p-6 md:px-12 flex flex-col gap-2 justify-center h-full md:hidden">
-          <h2 className="text-xs font-bold tracking-[0.3em] uppercase  text-neutral-500 dark:text-neutral-400">
+      <Section id="personalized-travel" className="overflow-hidden" fullWidth>
+        <div className="flex h-full flex-col justify-center gap-2 p-6 md:hidden md:px-12">
+          <h2 className="text-xs font-bold tracking-[0.3em] text-neutral-500 uppercase dark:text-neutral-400">
             Personalized Travel
           </h2>
           <BlurText
             text="Explore our trips"
-            className="font-heading text-4xl md:text-5xl font-bold  uppercase text-neutral-900 dark:text-white"
+            className="font-heading text-4xl font-bold text-neutral-900 uppercase md:text-5xl dark:text-white"
             delay={50}
           />
 
           <Button
             variant="default"
-            className="hidden md:inline-flex uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+            className="hidden rounded-none bg-black text-xs tracking-widest text-white uppercase hover:bg-neutral-800 md:inline-flex dark:bg-white dark:text-black dark:hover:bg-neutral-200"
           >
             View All Destinations
           </Button>
         </div>
-        <div className="relative group pb-12">
+        <div className="group relative pb-12">
           <Carousel
             setApi={setDestinationsApi}
             opts={{
@@ -155,23 +155,23 @@ export default function Home() {
             }}
             className="w-full"
           >
-            <CarouselContent className="gap-0 ml-0">
-              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0 hidden md:flex">
-                <div className="px-6 md:px-12 flex flex-col gap-4 justify-center h-full">
-                  <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2 text-neutral-500 dark:text-neutral-400">
+            <CarouselContent className="ml-0 gap-0">
+              <CarouselItem className="hidden pl-0 md:flex md:basis-1/2 lg:basis-2/5">
+                <div className="flex h-full flex-col justify-center gap-4 px-6 md:px-12">
+                  <h2 className="mb-2 text-xs font-bold tracking-[0.3em] text-neutral-500 uppercase dark:text-neutral-400">
                     Personalized Travel
                   </h2>
                   <BlurText
                     text="Explore The Exceptional"
-                    className="font-heading text-2xl md:text-3xl xl:text-5xl  font-bold uppercase text-neutral-900 dark:text-white"
+                    className="font-heading text-2xl font-bold text-neutral-900 uppercase md:text-3xl xl:text-5xl dark:text-white"
                     delay={50}
                   />
-                  <p className="lg:text-xl  font-light mb-10">
+                  <p className="mb-10 font-light lg:text-xl">
                     Remarkable experiences to inspire the mind
                   </p>
                   <Button
                     variant="default"
-                    className="hidden md:inline-flex uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+                    className="hidden rounded-none bg-black text-xs tracking-widest text-white uppercase hover:bg-neutral-800 md:inline-flex dark:bg-white dark:text-black dark:hover:bg-neutral-200"
                   >
                     View All Destinations
                   </Button>
@@ -183,9 +183,9 @@ export default function Home() {
                   return (
                     <CarouselItem
                       key={index}
-                      className="md:basis-1/2 lg:basis-2/5 pl-0"
+                      className="pl-0 md:basis-1/2 lg:basis-2/5"
                     >
-                      <div className="relative h-[600px] w-full overflow-hidden bg-[#0a2332] flex flex-col items-center justify-center p-8 text-center group/create cursor-pointer">
+                      <div className="group/create relative flex h-[600px] w-full cursor-pointer flex-col items-center justify-center overflow-hidden bg-[#0a2332] p-8 text-center">
                         {/* Background Image / Overlay */}
                         <Image
                           src={destination.image} // Using dynamic image from data
@@ -197,24 +197,24 @@ export default function Home() {
 
                         <div className="relative z-10 flex flex-col items-center">
                           <div className="mb-6">
-                            <span className="text-white/70 font-bold tracking-[0.2em] text-xs uppercase">
+                            <span className="text-xs font-bold tracking-[0.2em] text-white/70 uppercase">
                               Custom Trips
                             </span>
                           </div>
 
-                          <h3 className="text-white font-heading text-4xl md:text-5xl font-bold uppercase mb-8 leading-tight max-w-xs">
+                          <h3 className="mb-8 max-w-xs font-heading text-4xl leading-tight font-bold text-white uppercase md:text-5xl">
                             {destination.title}
                           </h3>
 
                           {destination.description && (
-                            <p className="text-neutral-300 text-sm leading-relaxed max-w-xl mb-8 hidden md:block">
+                            <p className="mb-8 hidden max-w-xl text-sm leading-relaxed text-neutral-300 md:block">
                               {destination.description}
                             </p>
                           )}
 
                           <Button
                             variant="outline"
-                            className="text-white border-white hover:bg-white hover:text-black uppercase text-sm px-8 py-6 tracking-widest rounded-none"
+                            className="rounded-none border-white px-8 py-6 text-sm tracking-widest text-white uppercase hover:bg-white hover:text-black"
                           >
                             {destination.buttonText}
                           </Button>
@@ -227,38 +227,38 @@ export default function Home() {
                 return (
                   <CarouselItem
                     key={index}
-                    className="md:basis-1/2 lg:basis-2/5 pl-0"
+                    className="pl-0 md:basis-1/2 lg:basis-2/5"
                   >
-                    <div className="relative group/card h-[600px] w-full overflow-hidden border-r border-black/5 cursor-pointer">
+                    <div className="group/card relative h-[600px] w-full cursor-pointer overflow-hidden border-r border-black/5">
                       <Image
                         src={destination.image}
                         alt={destination.title}
                         fill
                         className="object-cover transition-transform duration-700 group-hover/card:scale-110"
                       />
-                      <div className="absolute inset-0 bg-black/20 group-hover/card:bg-black/40 transition-colors duration-500" />
+                      <div className="absolute inset-0 bg-black/20 transition-colors duration-500 group-hover/card:bg-black/40" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80" />
 
                       <div className="absolute top-8 right-8 z-10">
-                        <span className="text-white font-bold tracking-[0.2em] text-xs uppercase drop-shadow-md">
+                        <span className="text-xs font-bold tracking-[0.2em] text-white uppercase drop-shadow-md">
                           {destination.subtitle}
                         </span>
                       </div>
 
-                      <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 transform translate-y-0 md:translate-y-8 md:group-hover/card:translate-y-0 transition-transform duration-500">
-                        <h3 className="text-white font-heading text-3xl font-bold uppercase mb-4 leading-tight">
+                      <div className="absolute right-0 bottom-0 left-0 translate-y-0 transform p-8 transition-transform duration-500 md:translate-y-8 md:p-12 md:group-hover/card:translate-y-0">
+                        <h3 className="mb-4 font-heading text-3xl leading-tight font-bold text-white uppercase">
                           {destination.title}
                         </h3>
-                        <div className="opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-100 space-y-4">
-                          <p className="text-neutral-200 text-sm leading-relaxed max-w-xl">
+                        <div className="space-y-4 opacity-100 transition-opacity delay-100 duration-500 md:opacity-0 md:group-hover/card:opacity-100">
+                          <p className="max-w-xl text-sm leading-relaxed text-neutral-200">
                             {destination.description}
                           </p>
-                          <p className="text-white text-xs font-bold tracking-widest uppercase">
+                          <p className="text-xs font-bold tracking-widest text-white uppercase">
                             {destination.price}
                           </p>
                           <Button
                             variant="outline"
-                            className="text-white border-white hover:bg-white hover:text-black uppercase text-xs tracking-widest rounded-none mt-4"
+                            className="mt-4 rounded-none border-white text-xs tracking-widest text-white uppercase hover:bg-white hover:text-black"
                           >
                             {destination.buttonText}
                           </Button>
@@ -269,23 +269,23 @@ export default function Home() {
                 );
               })}
             </CarouselContent>
-            <div className="absolute top-1/2 left-4 z-10 block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-              <CarouselPrevious className="relative left-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black dark:hover:text-white dark:hover:bg-black/90 border-none rounded-full size-12" />
+            <div className="absolute top-1/2 left-4 z-10 block opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
+              <CarouselPrevious className="relative left-0 size-12 translate-x-0 rounded-full border-none bg-white/10 text-white hover:bg-white hover:text-black dark:hover:bg-black/90 dark:hover:text-white" />
             </div>
-            <div className="absolute top-1/2 right-4 z-10 block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-              <CarouselNext className="relative right-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black dark:hover:text-white dark:hover:bg-black/90 border-none rounded-full size-12" />
+            <div className="absolute top-1/2 right-4 z-10 block opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
+              <CarouselNext className="relative right-0 size-12 translate-x-0 rounded-full border-none bg-white/10 text-white hover:bg-white hover:text-black dark:hover:bg-black/90 dark:hover:text-white" />
             </div>
           </Carousel>
           {/* Dots Indicator */}
-          <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-2 z-20">
+          <div className="absolute right-0 bottom-0 left-0 z-20 flex justify-center gap-2">
             {Array.from({ length: destinationsCount }).map((_, index) => (
               <button
                 key={index}
                 className={cn(
-                  "h-1.5 transition-all duration-300 rounded-full",
+                  "h-1.5 cursor-pointer rounded-full transition-all duration-300",
                   index + 1 === destinationsCurrent
                     ? "w-8 bg-neutral-900 dark:bg-white"
-                    : "w-1.5 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-400 dark:hover:bg-neutral-500"
+                    : "w-1.5 bg-neutral-300 hover:bg-neutral-400 dark:bg-neutral-700 dark:hover:bg-neutral-500",
                 )}
                 onClick={() => destinationsApi?.scrollTo(index)}
               />
@@ -293,10 +293,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-12 text-center md:hidden px-6">
+        <div className="mt-12 px-6 text-center md:hidden">
           <Button
             variant="default"
-            className="uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+            className="rounded-none bg-black text-xs tracking-widest text-white uppercase hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
           >
             View All Destinations
           </Button>
@@ -307,28 +307,28 @@ export default function Home() {
       <Section
         id="marketplace"
         fullWidth
-        className="overflow-hidden p-0 md:p-0 md:pb-24 bg-app-theme-900 text-app-theme-50"
+        className="overflow-hidden bg-app-theme-900 p-0 text-app-theme-50 md:p-0 md:pb-24"
       >
-        <div className="flex  w-full max-w-screen-2xl mx-auto flex-col md:flex-row justify-between items-end mb-12 md:mb-16 px-6 md:px-12 pt-16 md:pt-24">
+        <div className="mx-auto mb-12 flex w-full max-w-screen-2xl flex-col items-end justify-between px-6 pt-16 md:mb-16 md:flex-row md:px-12 md:pt-24">
           <div>
-            <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-2">
+            <h2 className="mb-2 text-xs font-bold tracking-[0.3em] uppercase">
               TEW Marketplace
             </h2>
             <BlurText
               text="Acquire The Exceptional"
-              className="font-heading text-4xl md:text-5xl font-bold uppercase text-app-theme-50"
+              className="font-heading text-4xl font-bold text-app-theme-50 uppercase md:text-5xl"
               delay={50}
             />
           </div>
           <Button
             variant="default"
-            className="hidden md:inline-flex uppercase tracking-widest text-xs rounded-none "
+            className="hidden rounded-none text-xs tracking-widest uppercase md:inline-flex"
           >
             View All Listings
           </Button>
         </div>
 
-        <div className="relative group pb-12">
+        <div className="group relative pb-12">
           <Carousel
             setApi={setMarketplaceApi}
             opts={{
@@ -338,36 +338,36 @@ export default function Home() {
             plugins={[Autoplay()]}
             className="w-full"
           >
-            <CarouselContent className="gap-0 ml-0">
-              <CarouselItem className="md:basis-1/2 ml-24 md:ml-40 lg:basis-2/5 pl-0">
+            <CarouselContent className="ml-0 gap-0">
+              <CarouselItem className="ml-24 pl-0 md:ml-40 md:basis-1/2 lg:basis-2/5">
                 <FeatureCard
                   title="Alpine Chalet"
                   label="Real Estate"
                   description="Gstaad, Switzerland. 8 Bedrooms, Private Spa, Ski-in/Ski-out."
                   image="/images/products-investments/pexels-expect-best-79873-323780.webp"
-                  className="min-h-[600px] "
+                  className="min-h-[600px]"
                 />
               </CarouselItem>
-              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
+              <CarouselItem className="pl-0 md:basis-1/2 lg:basis-2/5">
                 <FeatureCard
                   title="Limited Edition timepiece"
                   label="Collectibles"
                   description="Patek Philippe Nautilus. Factory sealed. Provenance verified."
                   image="/images/products-investments/pexels-mali-42091.webp"
-                  className="min-h-[600px] "
+                  className="min-h-[600px]"
                 />
               </CarouselItem>
-              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
+              <CarouselItem className="pl-0 md:basis-1/2 lg:basis-2/5">
                 <FeatureCard
                   title="Super Yacht"
                   label="Marine"
                   description="Azzam Class. 180m. Helipad. Submarine."
                   image="/images/products-investments/pexels-trvlust-3221163.webp"
                   // Assuming mapping based on available images, if not exact file, placeholder logic applies, but using provided list info
-                  className="min-h-[600px] "
+                  className="min-h-[600px]"
                 />
               </CarouselItem>
-              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
+              <CarouselItem className="pl-0 md:basis-1/2 lg:basis-2/5">
                 <FeatureCard
                   title="Classic Car"
                   label="Automotive"
@@ -377,23 +377,23 @@ export default function Home() {
                 />
               </CarouselItem>
             </CarouselContent>
-            <div className="absolute top-1/2 left-4 z-10 block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-              <CarouselPrevious className="relative left-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-none rounded-full size-12" />
+            <div className="absolute top-1/2 left-4 z-10 block opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
+              <CarouselPrevious className="relative left-0 size-12 translate-x-0 rounded-full border-none bg-white/10 text-white hover:bg-white hover:text-black" />
             </div>
-            <div className="absolute top-1/2 right-4 z-10 block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-              <CarouselNext className="relative right-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-none rounded-full size-12" />
+            <div className="absolute top-1/2 right-4 z-10 block opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
+              <CarouselNext className="relative right-0 size-12 translate-x-0 rounded-full border-none bg-white/10 text-white hover:bg-white hover:text-black" />
             </div>
           </Carousel>
           {/* Dots Indicator */}
-          <div className="absolute bottom-0 left-0 right-0 flex justify-center gap-2 z-20">
+          <div className="absolute right-0 bottom-0 left-0 z-20 flex justify-center gap-2">
             {Array.from({ length: marketplaceCount }).map((_, index) => (
               <button
                 key={index}
                 className={cn(
-                  "h-1.5 transition-all duration-300 rounded-full",
+                  "h-1.5 rounded-full transition-all duration-300",
                   index + 1 === marketplaceCurrent
                     ? "w-8 bg-app-theme-50 dark:bg-white"
-                    : "w-1.5 bg-neutral-300 dark:bg-neutral-700 hover:bg-neutral-400 dark:hover:bg-neutral-500"
+                    : "w-1.5 bg-neutral-300 hover:bg-neutral-400 dark:bg-neutral-700 dark:hover:bg-neutral-500",
                 )}
                 onClick={() => marketplaceApi?.scrollTo(index)}
               />
@@ -401,10 +401,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-12 mb-16 text-center md:hidden px-6">
+        <div className="mt-12 mb-16 px-6 text-center md:hidden">
           <Button
             variant="default"
-            className="uppercase tracking-widest text-xs rounded-none "
+            className="rounded-none text-xs tracking-widest uppercase"
           >
             View All Listings
           </Button>
@@ -416,24 +416,24 @@ export default function Home() {
 
       {/* Investment showcase */}
       <Section
-        className="bg-neutral-50 dark:bg-neutral-900 max-w-full! p-0!  overflow-hidden"
+        className="max-w-full! overflow-hidden bg-neutral-50 p-0! dark:bg-neutral-900"
         id="services"
         fullWidth
       >
-        <div className="mb-12 md:mb-16 px-6 md:px-12 pt-16 md:pt-24">
-          <h2 className="text-center text-xs font-bold tracking-[0.3em] uppercase mb-4 text-neutral-500 dark:text-neutral-400">
+        <div className="mb-12 px-6 pt-16 md:mb-16 md:px-12 md:pt-24">
+          <h2 className="mb-4 text-center text-xs font-bold tracking-[0.3em] text-neutral-500 uppercase dark:text-neutral-400">
             Investment Showcase
           </h2>
           <div className="flex justify-center">
             <BlurText
               text="Opportunities for the discerning investor"
-              className="font-heading text-center text-4xl md:text-5xl font-bold uppercase text-neutral-900 dark:text-white justify-center"
+              className="justify-center text-center font-heading text-4xl font-bold text-neutral-900 uppercase md:text-5xl dark:text-white"
               delay={50}
             />
           </div>
         </div>
 
-        <div className="relative group">
+        <div className="group relative">
           <Carousel
             setApi={setServicesApi}
             opts={{
@@ -447,8 +447,8 @@ export default function Home() {
             ]}
             className="w-full"
           >
-            <CarouselContent className="gap-0 ml-0">
-              <CarouselItem className="md:basis-1/2 lg:basis-1/3 pl-0">
+            <CarouselContent className="ml-0 gap-0">
+              <CarouselItem className="pl-0 md:basis-1/2 lg:basis-1/3">
                 <FeatureCard
                   title="Private Travel"
                   label="Explore"
@@ -458,7 +458,7 @@ export default function Home() {
                   className="h-[600px] border-r border-white/10"
                 />
               </CarouselItem>
-              <CarouselItem className="md:basis-1/2 lg:basis-1/3 pl-0">
+              <CarouselItem className="pl-0 md:basis-1/2 lg:basis-1/3">
                 <FeatureCard
                   title="Global Relocation"
                   label="Settle"
@@ -467,7 +467,7 @@ export default function Home() {
                   className="h-[600px] border-r border-black/5"
                 />
               </CarouselItem>
-              <CarouselItem className="md:basis-1/2 lg:basis-1/3 pl-0">
+              <CarouselItem className="pl-0 md:basis-1/2 lg:basis-1/3">
                 <FeatureCard
                   title="Concierge"
                   label="Live"
@@ -478,23 +478,23 @@ export default function Home() {
                 />
               </CarouselItem>
             </CarouselContent>
-            <div className="absolute top-1/2 left-4 z-10 block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-              <CarouselPrevious className="relative left-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-white/20 hover:border-transparent rounded-full size-12" />
+            <div className="absolute top-1/2 left-4 z-10 block opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
+              <CarouselPrevious className="relative left-0 size-12 translate-x-0 rounded-full border-white/20 bg-white/10 text-white hover:border-transparent hover:bg-white hover:text-black" />
             </div>
-            <div className="absolute top-1/2 right-4 z-10 block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-              <CarouselNext className="relative right-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-white/20 hover:border-transparent rounded-full size-12" />
+            <div className="absolute top-1/2 right-4 z-10 block opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
+              <CarouselNext className="relative right-0 size-12 translate-x-0 rounded-full border-white/20 bg-white/10 text-white hover:border-transparent hover:bg-white hover:text-black" />
             </div>
           </Carousel>
           {/* Dots Indicator */}
-          <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-2 z-20">
+          <div className="absolute right-0 bottom-6 left-0 z-20 flex justify-center gap-2">
             {Array.from({ length: servicesCount }).map((_, index) => (
               <button
                 key={index}
                 className={cn(
-                  "h-1.5 transition-all duration-300 rounded-full",
+                  "h-1.5 rounded-full transition-all duration-300",
                   index + 1 === servicesCurrent
                     ? "w-8 bg-white"
-                    : "w-1.5 bg-white/40 hover:bg-white/60"
+                    : "w-1.5 bg-white/40 hover:bg-white/60",
                 )}
                 onClick={() => servicesApi?.scrollTo(index)}
               />
