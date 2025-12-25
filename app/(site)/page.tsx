@@ -24,6 +24,7 @@ import { BrandReviews } from "@/components/Site/BrandReviews";
 import { BlogList } from "@/components/Site/BlogList";
 import { CTASection } from "@/components/Site/CTASection";
 import { destinations } from "./destinations-data";
+import { marketplaceItems } from "./marketplace-data";
 
 export default function Home() {
   const [servicesApi, setServicesApi] = useState<CarouselApi>();
@@ -339,43 +340,23 @@ export default function Home() {
             className="w-full"
           >
             <CarouselContent className="ml-0 gap-0">
-              <CarouselItem className="ml-24 pl-0 md:ml-40 md:basis-1/2 lg:basis-2/5">
-                <FeatureCard
-                  title="Alpine Chalet"
-                  label="Real Estate"
-                  description="Gstaad, Switzerland. 8 Bedrooms, Private Spa, Ski-in/Ski-out."
-                  image="/images/products-investments/pexels-expect-best-79873-323780.webp"
-                  className="min-h-[600px]"
-                />
-              </CarouselItem>
-              <CarouselItem className="pl-0 md:basis-1/2 lg:basis-2/5">
-                <FeatureCard
-                  title="Limited Edition timepiece"
-                  label="Collectibles"
-                  description="Patek Philippe Nautilus. Factory sealed. Provenance verified."
-                  image="/images/products-investments/pexels-mali-42091.webp"
-                  className="min-h-[600px]"
-                />
-              </CarouselItem>
-              <CarouselItem className="pl-0 md:basis-1/2 lg:basis-2/5">
-                <FeatureCard
-                  title="Super Yacht"
-                  label="Marine"
-                  description="Azzam Class. 180m. Helipad. Submarine."
-                  image="/images/products-investments/pexels-trvlust-3221163.webp"
-                  // Assuming mapping based on available images, if not exact file, placeholder logic applies, but using provided list info
-                  className="min-h-[600px]"
-                />
-              </CarouselItem>
-              <CarouselItem className="pl-0 md:basis-1/2 lg:basis-2/5">
-                <FeatureCard
-                  title="Classic Car"
-                  label="Automotive"
-                  description="1963 Ferrari 250 GTO. Mint condition. Racing history."
-                  image="/images/products-investments/pexels-binyaminmellish-1396132.webp"
-                  className="min-h-[600px]"
-                />
-              </CarouselItem>
+              {marketplaceItems.map((item, index) => (
+                <CarouselItem
+                  key={index}
+                  className={cn(
+                    "pl-0 md:basis-1/2 lg:basis-2/5",
+                    index === 0 && "",
+                  )}
+                >
+                  <FeatureCard
+                    title={item.title}
+                    label={item.label}
+                    description={item.description}
+                    image={item.image}
+                    className="min-h-[600px]"
+                  />
+                </CarouselItem>
+              ))}
             </CarouselContent>
             <div className="absolute top-1/2 left-4 z-10 block opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
               <CarouselPrevious className="relative left-0 size-12 translate-x-0 rounded-full border-none bg-white/10 text-white hover:bg-white hover:text-black" />
