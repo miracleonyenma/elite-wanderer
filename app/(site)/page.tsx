@@ -137,6 +137,7 @@ export default function Home() {
             className="font-heading text-4xl md:text-5xl font-bold  uppercase text-neutral-900 dark:text-white"
             delay={50}
           />
+
           <Button
             variant="default"
             className="hidden md:inline-flex uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
@@ -164,6 +165,9 @@ export default function Home() {
                     className="font-heading text-2xl md:text-3xl xl:text-5xl  font-bold uppercase text-neutral-900 dark:text-white"
                     delay={50}
                   />
+                  <p className="lg:text-xl text-neutral-300 font-light mb-10">
+                    Remarkable experiences to inspire the mind
+                  </p>
                   <Button
                     variant="default"
                     className="hidden md:inline-flex uppercase tracking-widest text-xs rounded-none bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
