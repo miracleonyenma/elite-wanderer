@@ -71,7 +71,7 @@ export function ParallaxGallery({ className }: { className?: string }) {
         </h3>
       </div>
 
-      <div className="flex h-[75vh] justify-center gap-4 overflow-hidden md:h-[150vh] md:gap-8">
+      <div className="flex h-[75vh] justify-center gap-4 overflow-hidden pb-24 md:h-[200vh] md:gap-8">
         {/* Column 1 */}
         <motion.div
           style={{ y: y1 }}
