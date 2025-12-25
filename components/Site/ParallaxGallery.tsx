@@ -16,10 +16,13 @@ export function ParallaxGallery({ className }: { className?: string }) {
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
 
-  // Split data into 3 columns
-  const col1 = residencyPrograms.slice(0, 2);
-  const col2 = residencyPrograms.slice(2, 4);
-  const col3 = residencyPrograms.slice(4, 6);
+  // Split data into 3 columns dynamically
+  const totalItems = residencyPrograms.length;
+  const itemsPerCol = Math.ceil(totalItems / 3);
+
+  const col1 = residencyPrograms.slice(0, itemsPerCol);
+  const col2 = residencyPrograms.slice(itemsPerCol, itemsPerCol * 2);
+  const col3 = residencyPrograms.slice(itemsPerCol * 2);
 
   const ImageCard = ({
     item,
