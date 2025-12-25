@@ -23,6 +23,7 @@ import { UserReviews } from "@/components/Site/UserReviews";
 import { BrandReviews } from "@/components/Site/BrandReviews";
 import { BlogList } from "@/components/Site/BlogList";
 import { CTASection } from "@/components/Site/CTASection";
+import { destinations } from "./destinations-data";
 
 export default function Home() {
   const [servicesApi, setServicesApi] = useState<CarouselApi>();
@@ -165,7 +166,7 @@ export default function Home() {
                     className="font-heading text-2xl md:text-3xl xl:text-5xl  font-bold uppercase text-neutral-900 dark:text-white"
                     delay={50}
                   />
-                  <p className="lg:text-xl text-neutral-300 font-light mb-10">
+                  <p className="lg:text-xl  font-light mb-10">
                     Remarkable experiences to inspire the mind
                   </p>
                   <Button
@@ -177,169 +178,102 @@ export default function Home() {
                 </div>
               </CarouselItem>
 
-              {/* Destination 1 */}
-              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
-                <div className="relative group/card h-[600px] w-full overflow-hidden border-r border-black/5 cursor-pointer">
-                  <Image
-                    src="/images/pexels-rada-aslanova-150604297-34567860.webp"
-                    alt="Rome"
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover/card:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black/20 group-hover/card:bg-black/40 transition-colors duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80" />
-
-                  <div className="absolute top-8 right-8 z-10">
-                    <span className="text-white font-bold tracking-[0.2em] text-xs uppercase drop-shadow-md">
-                      9 Nights
-                    </span>
-                  </div>
-
-                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 transform translate-y-0 md:translate-y-8 md:group-hover/card:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-white font-heading text-3xl font-bold uppercase mb-4 leading-tight">
-                      Rome, Florence & Puglia
-                    </h3>
-                    <div className="opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-100 space-y-4">
-                      <p className="text-neutral-200 text-sm leading-relaxed max-w-sm">
-                        Roman gladiators, handmade gelato and vintage Vespas. A
-                        luxury family Italy holiday through the ages.
-                      </p>
-                      <p className="text-white text-xs font-bold tracking-widest uppercase">
-                        From £8,550 per person
-                      </p>
-                      <Button
-                        variant="outline"
-                        className="text-white border-white hover:bg-white hover:text-black uppercase text-xs tracking-widest rounded-none mt-4"
-                      >
-                        Explore Trip
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </CarouselItem>
-
-              {/* Destination 2 */}
-              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
-                <div className="relative group/card h-[600px] w-full overflow-hidden border-r border-black/5 cursor-pointer">
-                  <Image
-                    src="/images/pexels-tracvu-35255960.webp"
-                    alt="Japan"
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover/card:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black/20 group-hover/card:bg-black/40 transition-colors duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80" />
-
-                  <div className="absolute top-8 right-8 z-10">
-                    <span className="text-white font-bold tracking-[0.2em] text-xs uppercase drop-shadow-md">
-                      10 Nights
-                    </span>
-                  </div>
-
-                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 transform translate-y-0 md:translate-y-8 md:group-hover/card:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-white font-heading text-3xl font-bold uppercase mb-4 leading-tight">
-                      A Journey Into Japan
-                    </h3>
-                    <div className="opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-100 space-y-4">
-                      <p className="text-neutral-200 text-sm leading-relaxed max-w-sm">
-                        Immerse yourself in neon-lit cities, ancient temples,
-                        and serene landscapes on this ultimate Japanese
-                        adventure.
-                      </p>
-                      <p className="text-white text-xs font-bold tracking-widest uppercase">
-                        From £10,250 per person
-                      </p>
-                      <Button
-                        variant="outline"
-                        className="text-white border-white hover:bg-white hover:text-black uppercase text-xs tracking-widest rounded-none mt-4"
-                      >
-                        Explore Trip
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </CarouselItem>
-
-              {/* Destination 3 */}
-              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
-                <div className="relative group/card h-[600px] w-full overflow-hidden border-r border-black/5 cursor-pointer">
-                  <Image
-                    src="/images/pexels-geoffrey-currie-2153251493-33128243.webp"
-                    alt="Costa Rica"
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover/card:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-black/20 group-hover/card:bg-black/40 transition-colors duration-500" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80" />
-
-                  <div className="absolute top-8 right-8 z-10">
-                    <span className="text-white font-bold tracking-[0.2em] text-xs uppercase drop-shadow-md">
-                      12 Nights
-                    </span>
-                  </div>
-
-                  <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 transform translate-y-0 md:translate-y-8 md:group-hover/card:translate-y-0 transition-transform duration-500">
-                    <h3 className="text-white font-heading text-3xl font-bold uppercase mb-4 leading-tight">
-                      Adventure to Costa Rica
-                    </h3>
-                    <div className="opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-100 space-y-4">
-                      <p className="text-neutral-200 text-sm leading-relaxed max-w-sm">
-                        Zip-line through cloud forests, relax on pristine
-                        beaches, and encounter unique wildlife in this
-                        eco-paradise.
-                      </p>
-                      <p className="text-white text-xs font-bold tracking-widest uppercase">
-                        From £6,800 per person
-                      </p>
-                      <Button
-                        variant="outline"
-                        className="text-white border-white hover:bg-white hover:text-black uppercase text-xs tracking-widest rounded-none mt-4"
-                      >
-                        Explore Trip
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </CarouselItem>
-
-              {/* Create Your Own */}
-              <CarouselItem className="md:basis-1/2 lg:basis-2/5 pl-0">
-                <div className="relative h-[600px] w-full overflow-hidden bg-[#0a2332] flex flex-col items-center justify-center p-8 text-center group/create cursor-pointer">
-                  {/* Background Image / Overlay */}
-                  <Image
-                    src="/images/pexels-lamkien-35255292.webp" // Using a darker/different image or just color
-                    alt="Create"
-                    fill
-                    className="object-cover opacity-20 transition-transform duration-700 group-hover/create:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-[#0a2332]/60" />
-
-                  <div className="relative z-10 flex flex-col items-center">
-                    <div className="mb-6">
-                      <span className="text-white/70 font-bold tracking-[0.2em] text-xs uppercase">
-                        Custom Trips
-                      </span>
-                    </div>
-
-                    <h3 className="text-white font-heading text-4xl md:text-5xl font-bold uppercase mb-8 leading-tight max-w-xs">
-                      Create Your Own Itinerary
-                    </h3>
-
-                    <Button
-                      variant="outline"
-                      className="text-white border-white hover:bg-white hover:text-black uppercase text-sm px-8 py-6 tracking-widest rounded-none"
+              {destinations.map((destination, index) => {
+                if (destination.type === "create") {
+                  return (
+                    <CarouselItem
+                      key={index}
+                      className="md:basis-1/2 lg:basis-2/5 pl-0"
                     >
-                      Create Trip
-                    </Button>
-                  </div>
-                </div>
-              </CarouselItem>
+                      <div className="relative h-[600px] w-full overflow-hidden bg-[#0a2332] flex flex-col items-center justify-center p-8 text-center group/create cursor-pointer">
+                        {/* Background Image / Overlay */}
+                        <Image
+                          src={destination.image} // Using dynamic image from data
+                          alt="Create"
+                          fill
+                          className="object-cover opacity-20 transition-transform duration-700 group-hover/create:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-[#0a2332]/60" />
+
+                        <div className="relative z-10 flex flex-col items-center">
+                          <div className="mb-6">
+                            <span className="text-white/70 font-bold tracking-[0.2em] text-xs uppercase">
+                              Custom Trips
+                            </span>
+                          </div>
+
+                          <h3 className="text-white font-heading text-4xl md:text-5xl font-bold uppercase mb-8 leading-tight max-w-xs">
+                            {destination.title}
+                          </h3>
+
+                          {destination.description && (
+                            <p className="text-neutral-300 text-sm leading-relaxed max-w-xl mb-8 hidden md:block">
+                              {destination.description}
+                            </p>
+                          )}
+
+                          <Button
+                            variant="outline"
+                            className="text-white border-white hover:bg-white hover:text-black uppercase text-sm px-8 py-6 tracking-widest rounded-none"
+                          >
+                            {destination.buttonText}
+                          </Button>
+                        </div>
+                      </div>
+                    </CarouselItem>
+                  );
+                }
+
+                return (
+                  <CarouselItem
+                    key={index}
+                    className="md:basis-1/2 lg:basis-2/5 pl-0"
+                  >
+                    <div className="relative group/card h-[600px] w-full overflow-hidden border-r border-black/5 cursor-pointer">
+                      <Image
+                        src={destination.image}
+                        alt={destination.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover/card:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-black/20 group-hover/card:bg-black/40 transition-colors duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80" />
+
+                      <div className="absolute top-8 right-8 z-10">
+                        <span className="text-white font-bold tracking-[0.2em] text-xs uppercase drop-shadow-md">
+                          {destination.subtitle}
+                        </span>
+                      </div>
+
+                      <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12 transform translate-y-0 md:translate-y-8 md:group-hover/card:translate-y-0 transition-transform duration-500">
+                        <h3 className="text-white font-heading text-3xl font-bold uppercase mb-4 leading-tight">
+                          {destination.title}
+                        </h3>
+                        <div className="opacity-100 md:opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-500 delay-100 space-y-4">
+                          <p className="text-neutral-200 text-sm leading-relaxed max-w-xl">
+                            {destination.description}
+                          </p>
+                          <p className="text-white text-xs font-bold tracking-widest uppercase">
+                            {destination.price}
+                          </p>
+                          <Button
+                            variant="outline"
+                            className="text-white border-white hover:bg-white hover:text-black uppercase text-xs tracking-widest rounded-none mt-4"
+                          >
+                            {destination.buttonText}
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  </CarouselItem>
+                );
+              })}
             </CarouselContent>
             <div className="absolute top-1/2 left-4 z-10 block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-              <CarouselPrevious className="relative left-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-none rounded-full size-12" />
+              <CarouselPrevious className="relative left-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black dark:hover:text-white dark:hover:bg-black/90 border-none rounded-full size-12" />
             </div>
             <div className="absolute top-1/2 right-4 z-10 block opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
-              <CarouselNext className="relative right-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black border-none rounded-full size-12" />
+              <CarouselNext className="relative right-0 translate-x-0 bg-white/10 hover:bg-white text-white hover:text-black dark:hover:text-white dark:hover:bg-black/90 border-none rounded-full size-12" />
             </div>
           </Carousel>
           {/* Dots Indicator */}
