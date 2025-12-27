@@ -127,7 +127,7 @@ export function Footer() {
           <ul className="space-y-3 text-sm text-neutral-600">
             <li>
               <Link
-                href="#"
+                href="/about"
                 className="transition-colors hover:text-black dark:hover:text-white"
               >
                 About Us
@@ -151,7 +151,7 @@ export function Footer() {
             </li>
             <li>
               <Link
-                href="#"
+                href="/contact"
                 className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Contact

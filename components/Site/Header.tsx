@@ -6,8 +6,8 @@ import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
   { name: "Global Mobility", href: "/global-mobility" },
   { name: "TEW Platinum", href: "/platinum-club" },
   { name: "Marketplace", href: "/marketplace" },

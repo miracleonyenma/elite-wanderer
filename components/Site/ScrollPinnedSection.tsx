@@ -105,7 +105,7 @@ export function ScrollPinnedSection({ className }: { className?: string }) {
               variant="default"
               className="rounded-none bg-black text-xs tracking-widest text-white uppercase hover:bg-neutral-800 lg:px-8 lg:py-6 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
             >
-              <Link href="#about">Learn More About Us</Link>
+              <Link href="/about">Learn More About Us</Link>
             </Button>
           </motion.div>
         </div>
