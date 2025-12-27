@@ -183,7 +183,7 @@ export default async function CardinalPage({
         <Button
           variant="outline"
           size="lg"
-          className="rounded-none border-white px-12 py-6 text-sm tracking-widest uppercase hover:bg-white hover:text-black"
+          className="rounded-none border-white px-12 py-6 text-sm tracking-widest text-white uppercase hover:bg-white hover:text-black"
         >
           Contact Concierge
         </Button>
