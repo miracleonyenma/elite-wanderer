@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { UserReviews } from "@/components/Site/UserReviews";
 import { BrandReviews } from "@/components/Site/BrandReviews";
@@ -142,10 +143,11 @@ export default function Home() {
           />
 
           <Button
+            asChild
             variant="default"
             className="hidden rounded-none bg-black text-xs tracking-widest text-white uppercase hover:bg-neutral-800 md:inline-flex dark:bg-white dark:text-black dark:hover:bg-neutral-200"
           >
-            View All Destinations
+            <Link href="/travel">View All Destinations</Link>
           </Button>
         </div>
         <div className="group relative pb-12">
@@ -172,10 +174,11 @@ export default function Home() {
                     Remarkable experiences to inspire the mind
                   </p>
                   <Button
+                    asChild
                     variant="default"
                     className="hidden rounded-none bg-black text-xs tracking-widest text-white uppercase hover:bg-neutral-800 md:inline-flex dark:bg-white dark:text-black dark:hover:bg-neutral-200"
                   >
-                    View All Destinations
+                    <Link href="/travel">View All Destinations</Link>
                   </Button>
                 </div>
               </CarouselItem>
@@ -297,10 +300,11 @@ export default function Home() {
 
         <div className="mt-12 px-6 text-center md:hidden">
           <Button
+            asChild
             variant="default"
             className="rounded-none bg-black text-xs tracking-widest text-white uppercase hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
           >
-            View All Destinations
+            <Link href="/travel">View All Destinations</Link>
           </Button>
         </div>
       </Section>
@@ -323,10 +327,11 @@ export default function Home() {
             />
           </div>
           <Button
+            asChild
             variant="default"
             className="hidden rounded-none text-xs tracking-widest uppercase md:inline-flex"
           >
-            View All Listings
+            <Link href="/marketplace">View All Listings</Link>
           </Button>
         </div>
 
@@ -385,10 +390,11 @@ export default function Home() {
 
         <div className="mt-12 mb-16 px-6 text-center md:hidden">
           <Button
+            asChild
             variant="default"
             className="rounded-none text-xs tracking-widest uppercase"
           >
-            View All Listings
+            <Link href="/marketplace">View All Listings</Link>
           </Button>
         </div>
       </Section>

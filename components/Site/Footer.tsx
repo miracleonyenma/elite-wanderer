@@ -23,22 +23,22 @@ export function Footer() {
   });
 
   return (
-    <footer className="bg-white dark:bg-neutral-950 text-black dark:text-neutral-200 pt-24 pb-4 px-6 md:px-12 overflow-hidden">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 mb-24 max-w-screen-2xl mx-auto">
-        <div className="col-span-2 md:col-span-1 space-y-6">
+    <footer className="overflow-hidden bg-white px-6 pt-24 pb-4 text-black md:px-12 dark:bg-neutral-950 dark:text-neutral-200">
+      <div className="mx-auto mb-24 grid max-w-screen-2xl grid-cols-2 gap-8 md:grid-cols-4 md:gap-12">
+        <div className="col-span-2 space-y-6 md:col-span-1">
           <h3 className="font-heading text-xl font-bold tracking-widest uppercase dark:text-white">
             Experience
           </h3>
-          <p className="text-sm text-neutral-500 leading-relaxed max-w-xs">
+          <p className="max-w-xs text-sm leading-relaxed text-neutral-500">
             Redefining luxury travel and global relocation for the discerning
             few.
           </p>
 
           <form
             onSubmit={formik.handleSubmit}
-            className="flex flex-col gap-1 max-w-xs pt-4"
+            className="flex max-w-xs flex-col gap-1 pt-4"
           >
-            <div className="flex items-center gap-2 relative">
+            <div className="relative flex items-center gap-2">
               <div className="relative flex-1">
                 <input
                   type="email"
@@ -47,13 +47,13 @@ export function Footer() {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.email}
-                  className="w-full bg-transparent border-b border-neutral-300 dark:border-neutral-700 py-2 text-sm focus:outline-none focus:border-black dark:focus:border-white transition-colors placeholder:text-neutral-400"
+                  className="w-full border-b border-neutral-300 bg-transparent py-2 text-sm transition-colors placeholder:text-neutral-400 focus:border-black focus:outline-none dark:border-neutral-700 dark:focus:border-white"
                 />
               </div>
               <button
                 type="submit"
                 disabled={!formik.isValid || !formik.dirty}
-                className="p-2 text-neutral-400 hover:text-black dark:hover:text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="p-2 text-neutral-400 transition-colors hover:text-black disabled:cursor-not-allowed disabled:opacity-50 dark:hover:text-white"
                 aria-label="Subscribe"
               >
                 <svg
@@ -73,7 +73,7 @@ export function Footer() {
               </button>
             </div>
             {formik.touched.email && formik.errors.email ? (
-              <div className="text-[10px] text-red-500 font-medium pl-1">
+              <div className="pl-1 text-[10px] font-medium text-red-500">
                 {formik.errors.email}
               </div>
             ) : null}
@@ -81,14 +81,14 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="font-bold uppercase tracking-widest mb-6 text-xs">
+          <h4 className="mb-6 text-xs font-bold tracking-widest uppercase">
             Explore
           </h4>
           <ul className="space-y-3 text-sm text-neutral-600">
             <li>
               <Link
-                href="#"
-                className="hover:text-black dark:hover:text-white transition-colors"
+                href="/travel"
+                className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Destinations
               </Link>
@@ -96,7 +96,7 @@ export function Footer() {
             <li>
               <Link
                 href="#"
-                className="hover:text-black dark:hover:text-white transition-colors"
+                className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Private Jets
               </Link>
@@ -104,15 +104,15 @@ export function Footer() {
             <li>
               <Link
                 href="#"
-                className="hover:text-black dark:hover:text-white transition-colors"
+                className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Real Estate
               </Link>
             </li>
             <li>
               <Link
-                href="#"
-                className="hover:text-black dark:hover:text-white transition-colors"
+                href="/marketplace"
+                className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Marketplace
               </Link>
@@ -121,14 +121,14 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="font-bold uppercase tracking-widest mb-6 text-xs">
+          <h4 className="mb-6 text-xs font-bold tracking-widest uppercase">
             Company
           </h4>
           <ul className="space-y-3 text-sm text-neutral-600">
             <li>
               <Link
                 href="#"
-                className="hover:text-black dark:hover:text-white transition-colors"
+                className="transition-colors hover:text-black dark:hover:text-white"
               >
                 About Us
               </Link>
@@ -136,7 +136,7 @@ export function Footer() {
             <li>
               <Link
                 href="#"
-                className="hover:text-black dark:hover:text-white transition-colors"
+                className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Membership
               </Link>
@@ -144,7 +144,7 @@ export function Footer() {
             <li>
               <Link
                 href="#"
-                className="hover:text-black dark:hover:text-white transition-colors"
+                className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Careers
               </Link>
@@ -152,7 +152,7 @@ export function Footer() {
             <li>
               <Link
                 href="#"
-                className="hover:text-black dark:hover:text-white transition-colors"
+                className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Contact
               </Link>
@@ -161,14 +161,14 @@ export function Footer() {
         </div>
 
         <div>
-          <h4 className="font-bold uppercase tracking-widest mb-6 text-xs">
+          <h4 className="mb-6 text-xs font-bold tracking-widest uppercase">
             Legal
           </h4>
           <ul className="space-y-3 text-sm text-neutral-600">
             <li>
               <Link
                 href="#"
-                className="hover:text-black dark:hover:text-white transition-colors"
+                className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Privacy Policy
               </Link>
@@ -176,7 +176,7 @@ export function Footer() {
             <li>
               <Link
                 href="#"
-                className="hover:text-black dark:hover:text-white transition-colors"
+                className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Terms of Service
               </Link>
@@ -186,14 +186,14 @@ export function Footer() {
       </div>
 
       {/* Massive Brand Name */}
-      <div className="border-t overflow-clip border-neutral-100 dark:border-neutral-800 pt-8 w-full">
+      <div className="w-full overflow-clip border-t border-neutral-100 pt-8 dark:border-neutral-800">
         <ShinyText
           text="The Elite Wanderer"
-          className="text-[12vw] xl:text-[14vw] font-heading font-black  leading-[0.8] tracking-tighter text-center uppercase select-none text-app-theme-300 dark:text-app-theme-700 transition-colors"
+          className="text-center font-heading text-[12vw] leading-[0.8] font-black tracking-tighter text-app-theme-300 uppercase transition-colors select-none xl:text-[14vw] dark:text-app-theme-700"
         />
       </div>
 
-      <div className="mt-8 flex justify-between text-[10px] uppercase tracking-widest text-neutral-400">
+      <div className="mt-8 flex justify-between text-[10px] tracking-widest text-neutral-400 uppercase">
         <span>&copy; {new Date().getFullYear()} The Elite Wanderer</span>
         <span className="text-right">Designed for the Extraordinary</span>
       </div>

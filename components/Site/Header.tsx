@@ -8,11 +8,11 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { name: "About", href: "#about" },
   { name: "Contact", href: "#contact" },
-  { name: "Global Mobility", href: "#global-mobility" },
-  { name: "TEW Platinum", href: "#platinum" },
-  { name: "Marketplace", href: "#marketplace" },
-  { name: "Destinations", href: "#destinations" },
-  { name: "Investment Showcase", href: "#investments" },
+  { name: "Global Mobility", href: "/global-mobility" },
+  { name: "TEW Platinum", href: "/platinum-club" },
+  { name: "Marketplace", href: "/marketplace" },
+  { name: "Destinations", href: "/travel" },
+  { name: "Investment Showcase", href: "/investments" },
 ];
 
 export function Header() {
@@ -30,25 +30,25 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6 md:px-12 transition-all duration-300",
+        "fixed top-0 right-0 left-0 z-50 flex items-center justify-between px-6 py-6 transition-all duration-300 md:px-12",
         isScrolled
-          ? "bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl py-4 text-black dark:text-white border-b border-neutral-200 dark:border-neutral-800"
-          : "mix-blend-difference text-white"
+          ? "border-b border-neutral-200 bg-white/80 py-4 text-black backdrop-blur-xl dark:border-neutral-800 dark:bg-neutral-900/80 dark:text-white"
+          : "text-white mix-blend-difference",
       )}
     >
       <Link
         href="/"
-        className="font-heading text-base 2xl:text-xl font-bold tracking-widest uppercase"
+        className="font-heading text-base font-bold tracking-widest uppercase 2xl:text-xl"
       >
         The Elite Wanderer
       </Link>
 
-      <nav className="hidden md:flex items-center gap-8">
+      <nav className="hidden items-center gap-8 md:flex">
         {navItems.map((item) => (
           <Link
             key={item.name}
             href={item.href}
-            className="text-sm font-medium tracking-widest uppercase hover:opacity-70 transition-opacity"
+            className="text-sm font-medium tracking-widest uppercase transition-opacity hover:opacity-70"
           >
             {item.name}
           </Link>
@@ -56,10 +56,10 @@ export function Header() {
         <Button
           variant="outline"
           className={cn(
-            "uppercase tracking-widest text-xs px-6 rounded-none dark:border-white dark:hover:bg-white dark:hover:text-black",
+            "rounded-none px-6 text-xs tracking-widest uppercase dark:border-white dark:hover:bg-white dark:hover:text-black",
             isScrolled
-              ? "text-black dark:text-white border-black dark:border-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black"
-              : "text-white border-white hover:bg-white hover:text-black"
+              ? "border-black text-black hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black"
+              : "border-white text-white hover:bg-white hover:text-black",
           )}
         >
           Join

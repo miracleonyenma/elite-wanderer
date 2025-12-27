@@ -2,6 +2,7 @@ import { destinations } from "./destinations-data";
 import { marketplaceItems } from "./marketplace-data";
 import { residencyPrograms } from "./residency-data";
 import { investmentItems } from "./investments-data";
+import { platinumItems } from "./platinum-data";
 
 export interface BaseItem {
   title?: string;
@@ -46,7 +47,7 @@ export interface CardinalData {
   heroImage: string;
   heroVideo?: string; // Optional video for hero
   data: CardinalItem[];
-  type: "travel" | "marketplace" | "residency" | "investment";
+  type: "travel" | "marketplace" | "residency" | "investment" | "platinum";
 }
 
 export const cardinalsData: Record<string, CardinalData> = {
@@ -90,5 +91,16 @@ export const cardinalsData: Record<string, CardinalData> = {
     heroImage: "/images/products-investments/pexels-heyho-6394590.webp",
     data: investmentItems,
     type: "investment",
+  },
+  "platinum-club": {
+    slug: "platinum-club",
+    title: "TEW Platinum Club",
+    subtitle: "The Private Club",
+    description:
+      "Join an elite circle of global elite citizens. Access private events, networks, and privileges reserved for the few. Your passport to the extraordinary.",
+    heroImage: "/images/pexels-tracvu-35255960.webp",
+    heroVideo: "/videos/5167964-hd_1080_1920_30fps.mp4",
+    data: platinumItems,
+    type: "travel", // Reusing travel/create layout for now or generic
   },
 };

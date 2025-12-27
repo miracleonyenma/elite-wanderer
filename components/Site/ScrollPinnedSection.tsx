@@ -13,7 +13,7 @@ const features = [
       "Join an elite circle of global elite citizens. Access private events, networks, and privileges reserved for the few. Your passport to the extraordinary.",
     cta: {
       text: "Discover TEW Platinum",
-      href: "#platinum-club",
+      href: "/platinum-club",
     },
   },
   {
@@ -22,7 +22,7 @@ const features = [
       "Every journey is meticulously crafted to your tastes. From private islands to chartered jets, we design experiences that leave lasting memories",
     cta: {
       text: "Plan Your Journey",
-      href: "#travel",
+      href: "/travel",
     },
   },
   {
@@ -31,7 +31,7 @@ const features = [
       "Acquire the exceptional. A curated collection of rare assets, from off-market real estate to limited-edition timepieces and luxury vessels.",
     cta: {
       text: "Explore the Marketplace",
-      href: "#marketplace",
+      href: "/marketplace",
     },
   },
   {
@@ -40,7 +40,7 @@ const features = [
       "Create a life without borders. We facilitate dual citizenship, golden visas, and strategic property acquisition to secure your global legacy",
     cta: {
       text: "Unlock Global Access",
-      href: "#global-mobility",
+      href: "/global-mobility",
     },
   },
   {
@@ -49,7 +49,7 @@ const features = [
       "Access high-yield opportunities across emerging markets and luxury sectors. Exclusive deal flow for the discerning investor.",
     cta: {
       text: "View Investment Opportunities",
-      href: "#investment-showcase",
+      href: "/investments",
     },
   },
 ];
@@ -61,25 +61,25 @@ export function ScrollPinnedSection({ className }: { className?: string }) {
     <section
       ref={containerRef}
       className={cn(
-        "relative bg-white  dark:bg-neutral-950 text-black dark:text-neutral-200 py-24 md:py-48 px-6 md:px-12",
-        className
+        "relative bg-white px-6 py-24 text-black md:px-12 md:py-48 dark:bg-neutral-950 dark:text-neutral-200",
+        className,
       )}
     >
-      <div className="max-w-screen-2xl min-h-[150dvh] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-24">
+      <div className="mx-auto grid min-h-[150dvh] max-w-screen-2xl grid-cols-1 gap-12 md:grid-cols-3 md:gap-24">
         {/* Sticky Left Content */}
-        <div className="relative col-span-2 h-fit md:sticky md:pt-24 md:top-[10dvh]">
+        <div className="relative col-span-2 h-fit md:sticky md:top-[10dvh] md:pt-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-xs font-bold tracking-[0.3em] uppercase mb-4 text-neutral-500 dark:text-neutral-400">
+            <h2 className="mb-4 text-xs font-bold tracking-[0.3em] text-neutral-500 uppercase dark:text-neutral-400">
               The Philosophy
             </h2>
             <div className="mb-8">
               <BlurText
                 text="Luxury Beyond Boundaries."
-                className="font-heading text-4xl md:text-6xl font-black uppercase leading-[0.9]"
+                className="font-heading text-4xl leading-[0.9] font-black uppercase md:text-6xl"
                 delay={50}
               />
             </div>
@@ -103,7 +103,7 @@ export function ScrollPinnedSection({ className }: { className?: string }) {
             <Button
               asChild
               variant="default"
-              className="uppercase  tracking-widest text-xs rounded-none bg-black text-white  hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 lg:px-8 lg:py-6"
+              className="rounded-none bg-black text-xs tracking-widest text-white uppercase hover:bg-neutral-800 lg:px-8 lg:py-6 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
             >
               <Link href="#about">Learn More About Us</Link>
             </Button>
@@ -111,7 +111,7 @@ export function ScrollPinnedSection({ className }: { className?: string }) {
         </div>
 
         {/* Scrolling Right Content */}
-        <div className="flex flex-col col-span-1 gap-24 md:gap-48 pt-12 md:pt-0">
+        <div className="col-span-1 flex flex-col gap-24 pt-12 md:gap-48 md:pt-0">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -121,17 +121,17 @@ export function ScrollPinnedSection({ className }: { className?: string }) {
               viewport={{ margin: "-10% 0px -10% 0px" }}
               className="space-y-4"
             >
-              <h4 className="text-2xl font-bold uppercase tracking-wide">
+              <h4 className="text-2xl font-bold tracking-wide uppercase">
                 0{index + 1}. {feature.title}
               </h4>
-              <div className="h-px w-12 bg-black dark:bg-white/30 mb-4" />
-              <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed text-lg max-w-sm">
+              <div className="mb-4 h-px w-12 bg-black dark:bg-white/30" />
+              <p className="max-w-sm text-lg leading-relaxed text-neutral-500 dark:text-neutral-400">
                 {feature.description}
               </p>
               <Button
                 asChild={!!feature?.cta?.href}
                 variant="link"
-                className="p-0 h-auto text-black dark:text-white uppercase text-xs tracking-widest hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors"
+                className="h-auto p-0 text-xs tracking-widest text-black uppercase transition-colors hover:text-neutral-600 dark:text-white dark:hover:text-neutral-300"
               >
                 <Link href={feature?.cta?.href || "#"}>
                   {feature?.cta?.text ||
