@@ -239,7 +239,7 @@ export default function Home() {
                         className="object-cover transition-transform duration-700 group-hover/card:scale-110"
                       />
                       <div className="absolute inset-0 bg-black/20 transition-colors duration-500 group-hover/card:bg-black/40" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-80" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/90 via-transparent to-transparent opacity-80" />
 
                       <div className="absolute top-8 right-8 z-10">
                         <span className="text-xs font-bold tracking-[0.2em] text-white uppercase drop-shadow-md">
@@ -393,7 +393,6 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* global mobility and residency */}
       <ParallaxGallery />
 
       {/* Investment showcase */}

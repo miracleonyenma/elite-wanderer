@@ -37,7 +37,7 @@ export function ParallaxGallery({ className }: { className?: string }) {
         fill
         className="object-cover grayscale transition-all duration-700 group-hover:grayscale-0 focus:scale-110"
       />
-      <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 opacity-100 transition-opacity duration-500 md:opacity-0 md:group-hover:opacity-100">
+      <div className="absolute inset-0 flex flex-col justify-end bg-linear-to-t from-black/90 via-black/20 to-transparent p-6 opacity-100 transition-opacity duration-500 md:opacity-0 md:group-hover:opacity-100">
         <h4 className="translate-y-4 transform font-heading text-2xl font-bold text-white uppercase transition-transform duration-500 md:translate-y-8 md:group-hover:translate-y-0">
           {item.location}
         </h4>

@@ -3,6 +3,41 @@ import { marketplaceItems } from "./marketplace-data";
 import { residencyPrograms } from "./residency-data";
 import { investmentItems } from "./investments-data";
 
+export interface BaseItem {
+  title?: string;
+  description?: string;
+  image: string;
+}
+
+export interface DestinationItem extends BaseItem {
+  subtitle?: string;
+  price?: string;
+  buttonText?: string;
+  type?: string;
+}
+
+export interface MarketplaceItem extends BaseItem {
+  label?: string;
+  link?: string;
+}
+
+export interface ResidencyItem extends BaseItem {
+  location?: string;
+  type?: string;
+  price?: string;
+}
+
+export interface InvestmentItem extends BaseItem {
+  label?: string;
+  dark?: boolean;
+}
+
+export type CardinalItem =
+  | DestinationItem
+  | MarketplaceItem
+  | ResidencyItem
+  | InvestmentItem;
+
 export interface CardinalData {
   slug: string;
   title: string;
@@ -10,7 +45,7 @@ export interface CardinalData {
   description: string;
   heroImage: string;
   heroVideo?: string; // Optional video for hero
-  data: any[];
+  data: CardinalItem[];
   type: "travel" | "marketplace" | "residency" | "investment";
 }
 

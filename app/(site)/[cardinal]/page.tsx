@@ -1,5 +1,12 @@
 import { notFound } from "next/navigation";
-import { cardinalsData } from "../cardinals-data";
+import {
+  cardinalsData,
+  CardinalItem,
+  DestinationItem,
+  MarketplaceItem,
+  ResidencyItem,
+  InvestmentItem,
+} from "../cardinals-data";
 import { Metadata } from "next";
 import BlurText from "@/components/react-bits/BlurText";
 import { Button } from "@/components/ui/aevr/button";
@@ -96,16 +103,26 @@ export default async function CardinalPage({
       {/* Content Grid */}
       <Section className="bg-neutral-50 dark:bg-neutral-950">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {data.data.map((item: any, index: number) => {
-            // Normalize data properties since they might vary slightly between sources
-            // e.g. destinations might have 'price', marketplace might have 'label'
-            const title = item.title;
-            const description = item.description;
+          {data.data.map((item: CardinalItem, index: number) => {
+            // Helper to safe cast for property access
+            const asResidency = item as ResidencyItem;
+            const asMarketplace = item as MarketplaceItem;
+            const asDestination = item as DestinationItem;
+            const asInvestment = item as InvestmentItem;
+
+            // Normalize data properties
+            const title = item.title || asResidency.location || "Untitled";
+            const description = item.description || asResidency.type || "";
             const image = item.image;
-            const label = item.label || item.subtitle || item.price; // Fallback for label
+            const label =
+              asMarketplace.label ||
+              asDestination.subtitle ||
+              asResidency.price ||
+              asInvestment.label ||
+              "";
 
             // Specific handling for 'create' type in destinations
-            if (item.type === "create") {
+            if (asDestination.type === "create") {
               return (
                 <div
                   key={index}
@@ -132,7 +149,7 @@ export default async function CardinalPage({
                       variant="outline"
                       className="rounded-none border-white px-8 py-6 text-sm tracking-widest text-white uppercase hover:bg-white hover:text-black"
                     >
-                      {item.buttonText || "Get Started"}
+                      {asDestination.buttonText || "Get Started"}
                     </Button>
                   </div>
                 </div>
