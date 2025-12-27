@@ -25,6 +25,7 @@ import { BlogList } from "@/components/Site/BlogList";
 import { CTASection } from "@/components/Site/CTASection";
 import { destinations } from "./destinations-data";
 import { marketplaceItems } from "./marketplace-data";
+import { investmentItems } from "./investments-data";
 
 export default function Home() {
   const [servicesApi, setServicesApi] = useState<CarouselApi>();
@@ -429,35 +430,25 @@ export default function Home() {
             className="w-full"
           >
             <CarouselContent className="ml-0 gap-0">
-              <CarouselItem className="pl-0 md:basis-1/2 lg:basis-1/3">
-                <FeatureCard
-                  title="Private Travel"
-                  label="Explore"
-                  description="Charter jets, yachts, and exclusive access to the world's most remote and beautiful destinations."
-                  image="/images/products-investments/pexels-heyho-6394590.webp"
-                  dark
-                  className="h-[600px] border-r border-white/10"
-                />
-              </CarouselItem>
-              <CarouselItem className="pl-0 md:basis-1/2 lg:basis-1/3">
-                <FeatureCard
-                  title="Global Relocation"
-                  label="Settle"
-                  description="Seamless transition to your new life. From visa processing to property acquisition and school placement."
-                  image="/images/products-investments/pexels-pixabay-358189.webp"
-                  className="h-[600px] border-r border-black/5"
-                />
-              </CarouselItem>
-              <CarouselItem className="pl-0 md:basis-1/2 lg:basis-1/3">
-                <FeatureCard
-                  title="Concierge"
-                  label="Live"
-                  description="24/7 dedicated lifestyle management. Reservations, access, and desires fulfilled instantly."
-                  image="/images/pexels-absstpg-35255039.webp"
-                  dark
-                  className="h-[600px]"
-                />
-              </CarouselItem>
+              {investmentItems.map((item, index) => (
+                <CarouselItem
+                  key={index}
+                  className="pl-0 md:basis-1/2 lg:basis-1/3"
+                >
+                  <FeatureCard
+                    title={item.title}
+                    label={item.label}
+                    description={item.description}
+                    image={item.image}
+                    dark={item.dark}
+                    className={cn(
+                      "h-[600px]",
+                      index !== investmentItems.length - 1 &&
+                        "border-r border-white/10",
+                    )}
+                  />
+                </CarouselItem>
+              ))}
             </CarouselContent>
             <div className="absolute top-1/2 left-4 z-10 block opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
               <CarouselPrevious className="relative left-0 size-12 translate-x-0 rounded-full border-white/20 bg-white/10 text-white hover:border-transparent hover:bg-white hover:text-black" />

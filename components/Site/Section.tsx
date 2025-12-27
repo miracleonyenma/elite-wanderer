@@ -1,4 +1,4 @@
-// ./components/Site/Section.tsx
+"use client";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 
@@ -18,7 +18,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn("py-24 md:py-32 site-section relative", className)}
+      className={cn("site-section relative py-24 md:py-32", className)}
     >
       <motion.div
         initial="hidden"
@@ -33,8 +33,8 @@ export function Section({
           },
         }}
         className={cn(
-          "wrapper mx-auto  ",
-          !fullWidth && "max-w-screen-2xl px-6 md:px-12"
+          "wrapper mx-auto",
+          !fullWidth && "max-w-screen-2xl px-6 md:px-12",
         )}
       >
         {children}
