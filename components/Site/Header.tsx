@@ -10,6 +10,7 @@ const navItems = [
   { name: "Contact", href: "/contact" },
   { name: "Global Mobility", href: "/global-mobility" },
   { name: "TEW Platinum", href: "/platinum-club" },
+  { name: "Events", href: "/events" },
   { name: "Marketplace", href: "/marketplace" },
   { name: "Destinations", href: "/travel" },
   { name: "Investment Showcase", href: "/investments" },

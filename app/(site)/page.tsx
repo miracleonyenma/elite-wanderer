@@ -119,13 +119,23 @@ export default function Home() {
               events, networks, and privileges reserved for the few. Your
               passport to the extraordinary.
             </p>
-            <Button
-              variant="secondary"
-              size={"lg"}
-              className="uppercase lg:px-12 lg:py-6"
-            >
-              Request Invitation
-            </Button>
+            <div className="flex justify-center gap-4">
+              <Button
+                variant="secondary"
+                size={"lg"}
+                className="uppercase lg:px-12 lg:py-6"
+              >
+                Request Invitation
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size={"lg"}
+                className="border-white px-8 py-6 text-xs tracking-widest text-white uppercase hover:bg-white hover:text-black"
+              >
+                <Link href="/events">View Events</Link>
+              </Button>
+            </div>
           </div>
         </div>
       </Section>
