@@ -1,25 +1,22 @@
 export const investmentItems = [
   {
-    title: "Private Travel",
-    label: "Explore",
+    title: "Tourism Growth",
     description:
-      "Charter jets, yachts, and exclusive access to the world's most remote and beautiful destinations.",
+      "Capitalise on Africa’s booming travel sector with high-demand experiences, luxury stays, and cultural destinations attracting both local and international visitors.",
     image: "/images/products-investments/pexels-heyho-6394590.webp",
     dark: true,
   },
   {
-    title: "Global Relocation",
-    label: "Settle",
+    title: "Property Value",
     description:
-      "Seamless transition to your new life. From visa processing to property acquisition and school placement.",
+      "Leverage urbanization and infrastructure expansion by investing in residential, commercial, and mixed-use real estate projects with long-term returns.",
     image: "/images/products-investments/pexels-pixabay-358189.webp",
     dark: false,
   },
   {
-    title: "Concierge",
-    label: "Live",
+    title: "Agri Potential",
     description:
-      "24/7 dedicated lifestyle management. Reservations, access, and desires fulfilled instantly.",
+      "Invest in Africa’s fertile agricultural market through modern farming, agritech solutions, and value-added processing to meet rising food and export demand.",
     image: "/images/pexels-absstpg-35255039.webp",
     dark: true,
   },

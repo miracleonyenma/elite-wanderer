@@ -413,7 +413,7 @@ export default function Home() {
           </h2>
           <div className="flex justify-center">
             <BlurText
-              text="Opportunities for the discerning investor"
+              text="Strategic Opportunities Advisory"
               className="justify-center text-center font-heading text-4xl font-bold text-neutral-900 uppercase md:text-5xl dark:text-white"
               delay={50}
             />
@@ -442,7 +442,6 @@ export default function Home() {
                 >
                   <FeatureCard
                     title={item.title}
-                    label={item.label}
                     description={item.description}
                     image={item.image}
                     dark={item.dark}
