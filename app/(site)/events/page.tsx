@@ -1,7 +1,7 @@
 "use client";
 
-import { Section } from "@/components/Site/Section";
-import BlurText from "@/components/react-bits/BlurText";
+// import { Section } from "@/components/Site/Section";
+// import BlurText from "@/components/react-bits/BlurText";
 import { Button } from "@/components/ui/aevr/button";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -10,32 +10,20 @@ import Link from "next/link";
 // Placeholder data for events
 const events = [
   {
-    title: "Summer Gala",
+    title: "Red & Bougie",
     description:
-      "An exclusive evening of networking and celebration under the stars. Join industry leaders and visionaries for a night of curated conversations and culinary excellence.",
-    image: "/images/pexels-absstpg-35255039.webp",
-    label: "Previous",
+      "Valentine experience that flows effortlessly from an elegant sea-front dining moment into a serene sunset yacht sail across the Lagos Lagoon, concluding with an intimate after-sail social lounge at the Lagos Motor Boat Club. Designed for couples and refined socialites, the experience blends fine dining, scenic sailing, and relaxed conversations in a setting of understated luxury.",
+    image: "/images/jfa-long-island-87-15664711/2200xxs.jpg",
+    label: "Feb 2026",
+    buttonText: "Sign Up",
   },
   {
-    title: "Investment Summit",
+    title: "Junior Elite Polo",
     description:
-      "Strategic discussions on global market trends and opportunities. Unlock insights from top-tier analysts and discover the next frontier of high-yield investments.",
-    image: "/images/products-investments/pexels-pixabay-358189.webp",
-    label: "Previous",
-  },
-  {
-    title: "Art & Culture",
-    description:
-      "Private viewing of contemporary masterpieces. Immerse yourself in the world of fine art with guided tours by renowned curators.",
-    image: "/images/pexels-tracvu-35255960.webp",
-    label: "Previous",
-  },
-  {
-    title: "Yacht Week",
-    description:
-      "A week of sailing and luxury lifestyle in the Mediterranean. Experience the ultimate freedom of the open seas with bespoke itineraries and world-class service.",
-    image: "/images/products-investments/pexels-heyho-6394590.webp",
-    label: "Upcoming",
+      "A luxury experience for elite families, combining junior polo matches with refined parent networking. While young riders compete and learn under professional guidance, parents enjoy VIP hospitality, curated brand showcases, and relaxed social connections within a premier polo setting.",
+    image: "/images/pexels-code-mnml-185553186-35205820.webp",
+    label: "Apr 2026",
+    buttonText: "Sign Up",
   },
 ];
 
@@ -64,18 +52,11 @@ export default function EventsPage() {
           <p className="mb-10 max-w-xl text-sm font-bold tracking-[0.2em] text-white uppercase md:text-base">
             A record of gatherings and experiences hosted by The Elite Wanderer
           </p>
-          <Button
-            asChild
-            variant="outline"
-            className="rounded-none border-white px-8 py-6 text-xs tracking-widest text-white uppercase hover:bg-white hover:text-black"
-          >
-            <Link href="#listings">View Events</Link>
-          </Button>
         </div>
       </div>
 
       {/* Alternating Events Layout */}
-      <div>
+      <div id="listings">
         {events.map((event, index) => (
           <div
             key={index}
@@ -96,6 +77,11 @@ export default function EventsPage() {
 
             {/* Text Side */}
             <div className="flex w-full flex-col justify-center bg-white px-8 py-16 md:w-1/2 md:px-16 lg:px-24 dark:bg-neutral-950">
+              {event.label && (
+                <span className="mb-4 text-xs font-bold tracking-[0.2em] text-neutral-500 uppercase dark:text-neutral-400">
+                  {event.label}
+                </span>
+              )}
               <h3 className="mb-6 font-heading text-3xl font-bold tracking-wide text-neutral-900 uppercase md:text-4xl lg:text-5xl dark:text-white">
                 {event.title}
               </h3>
@@ -107,7 +93,7 @@ export default function EventsPage() {
                 variant="default"
                 className="w-fit rounded-none bg-black px-8 py-6 text-xs tracking-widest text-white uppercase hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
               >
-                <Link href="#">Find Out More</Link>
+                <Link href="#">{event.buttonText || "Find Out More"}</Link>
               </Button>
             </div>
           </div>
