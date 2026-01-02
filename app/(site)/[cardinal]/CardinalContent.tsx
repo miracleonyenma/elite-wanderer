@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/aevr/button";
 import { FeatureCard } from "@/components/Site/FeatureCard";
 import { Section } from "@/components/Site/Section";
 import Image from "next/image";
+import { ImmigrationContactForm } from "@/components/Site/ImmigrationContactForm";
 import {
   Carousel,
   CarouselContent,
@@ -144,7 +145,7 @@ export function CardinalContent({
         fullWidth
       >
         {/* Header */}
-        <div className="mx-auto mb-12 flex w-full max-w-screen-2xl flex-col items-end justify-between px-6 pt-16 md:mb-16 md:flex-row md:px-12 md:pt-24">
+        <div className="mx-auto mb-12 flex w-full max-w-screen-2xl flex-col items-start justify-between gap-8 px-6 pt-16 md:mb-16 md:flex-row md:items-end md:px-12 md:pt-24">
           <div>
             <h2 className="mb-2 text-xs font-bold tracking-[0.3em] text-neutral-500 uppercase dark:text-neutral-400">
               {data.subtitle}
@@ -155,37 +156,37 @@ export function CardinalContent({
               delay={50}
             />
           </div>
-        </div>
 
-        {/* Filter Section - Only for global-mobility */}
-        {cardinal === "global-mobility" && (
-          <div className="mx-auto mb-12 flex w-full max-w-screen-2xl justify-center gap-4 px-6 md:px-12">
-            <Button
-              variant={filter === "citizenship" ? "default" : "outline"}
-              onClick={() => setFilter("citizenship")}
-              className={cn(
-                "rounded-none px-8 py-6 text-xs tracking-widest uppercase transition-all",
-                filter === "citizenship"
-                  ? "bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
-                  : "border-black text-black hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black",
-              )}
-            >
-              Citizenship
-            </Button>
-            <Button
-              variant={filter === "residency" ? "default" : "outline"}
-              onClick={() => setFilter("residency")}
-              className={cn(
-                "rounded-none px-8 py-6 text-xs tracking-widest uppercase transition-all",
-                filter === "residency"
-                  ? "bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
-                  : "border-black text-black hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black",
-              )}
-            >
-              Residency
-            </Button>
-          </div>
-        )}
+          {/* Filter Section - Only for global-mobility */}
+          {cardinal === "global-mobility" && (
+            <div className="flex gap-4">
+              <Button
+                variant={filter === "citizenship" ? "default" : "outline"}
+                onClick={() => setFilter("citizenship")}
+                className={cn(
+                  "rounded-none px-8 py-6 text-xs tracking-widest uppercase transition-all",
+                  filter === "citizenship"
+                    ? "bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+                    : "border-black text-black hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black",
+                )}
+              >
+                Citizenship
+              </Button>
+              <Button
+                variant={filter === "residency" ? "default" : "outline"}
+                onClick={() => setFilter("residency")}
+                className={cn(
+                  "rounded-none px-8 py-6 text-xs tracking-widest uppercase transition-all",
+                  filter === "residency"
+                    ? "bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
+                    : "border-black text-black hover:bg-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-black",
+                )}
+              >
+                Residency
+              </Button>
+            </div>
+          )}
+        </div>
 
         {/* Carousel */}
         <div className="group relative pb-12">
@@ -295,6 +296,9 @@ export function CardinalContent({
           </div>
         </div>
       </Section>
+
+      {/* Contact Form - Only for global-mobility */}
+      {cardinal === "global-mobility" && <ImmigrationContactForm />}
 
       {/* Footer CTA */}
       <div className="bg-black py-24 text-center text-white">
