@@ -97,14 +97,14 @@ export const residencyPrograms = [
     location: "UAE",
     type: "Residency by investment program",
     price: "Starting from AED 2,000,000",
-    image: "/images/global-residency/uae.jpg",
+    image: "/images/uae.webp",
     slug: "uae",
   },
   {
     location: "Australia",
     type: "Residency by investment program",
     price: "No minimum investment",
-    image: "/images/global-residency/australia.jpg",
+    image: "/images/australia.jpg",
     slug: "australia",
   },
 ];

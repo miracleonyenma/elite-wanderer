@@ -15,7 +15,6 @@ const navItems = [
   { name: "Marketplace", href: "/marketplace" },
   { name: "Destinations", href: "/travel" },
   { name: "Investment Showcase", href: "/investments" },
-  { name: "Residency", href: "/residency" },
 ];
 
 export function Header() {
@@ -49,7 +48,8 @@ export function Header() {
         The Elite Wanderer
       </Link>
 
-      <nav className="hidden items-center gap-8 xl:flex">
+      {/* <nav className="hidden items-center gap-8 2xl:flex"> */}
+      <nav className="hidden items-center gap-8">
         {navItems.map((item) => (
           <Link
             key={item.name}
@@ -74,7 +74,8 @@ export function Header() {
 
       {/* Mobile Menu Button */}
       <button
-        className="group relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 xl:hidden"
+        // className="group relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 2xl:hidden"
+        className="group relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5"
         onClick={() => setIsOpen(!isOpen)}
       >
         <motion.span
