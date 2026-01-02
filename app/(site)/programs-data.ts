@@ -32,7 +32,7 @@ export const programsData: Record<string, ProgramData> = {
     country: "St. Lucia",
     type: "citizenship",
     tagline: "Expand your global reach with a top-tier Caribbean passport",
-    heroImage: "/images/st-lucia.webp",
+    heroImage: "/images/st-lucia.jpg",
     highlights: [
       "Citizenship for life",
       "Cost efficient investment options",
@@ -247,7 +247,7 @@ export const programsData: Record<string, ProgramData> = {
     country: "Turkey",
     type: "citizenship",
     tagline: "Increase your wealth in a safe haven between Europe and Asia",
-    heroImage: "/images/turkey.webp",
+    heroImage: "/images/turkey.jpg",
     highlights: [
       "Citizenship for life",
       "Crucial business location between Asia and Europe",
@@ -447,7 +447,7 @@ export const programsData: Record<string, ProgramData> = {
     type: "citizenship",
     tagline:
       "Citizenship with soul, in the South Pacific. Welcome to your Pacific haven with Vanuatu citizenship.",
-    heroImage: "/images/vanuatu.webp",
+    heroImage: "/images/vanuatu.jpg",
     highlights: [
       "Citizenship for life",
       "Family Friendly",
@@ -542,7 +542,7 @@ export const programsData: Record<string, ProgramData> = {
     country: "Antigua & Barbuda",
     type: "citizenship",
     tagline: "Enjoy the 365 marvelous island beaches for 365 days.",
-    heroImage: "/images/antigua-barbuda.webp",
+    heroImage: "/images/antigua-barbuda.jpg",
     highlights: [
       "Citizenship for life",
       "Most cost efficient CBI for large families",
@@ -963,7 +963,7 @@ export const programsData: Record<string, ProgramData> = {
     country: "Grenada",
     type: "citizenship",
     tagline: "Benefit from the advantages of the Spice Island of the Caribbean",
-    heroImage: "/images/grenada.webp",
+    heroImage: "/images/grenada.jpeg",
     highlights: [
       "Citizenship for life",
       "Cost efficient investment options",
@@ -1426,7 +1426,7 @@ export const programsData: Record<string, ProgramData> = {
     country: "Portugal",
     type: "residency",
     tagline: "Achieve your dream life in Europe through Portugal Golden Visa",
-    heroImage: "/images/portugal.webp",
+    heroImage: "/images/portugal.jpg",
     highlights: [
       "Physical presence 7 days a year",
       "Minimum € 250,000 Contribution",
@@ -1494,7 +1494,7 @@ export const programsData: Record<string, ProgramData> = {
     type: "residency",
     tagline:
       "Establish your business in the heart of the financial business location",
-    heroImage: "/images/uk-start-up-visa.webp",
+    heroImage: "/images/uk-start-up-visa.jpg",
     highlights: [
       "Viable pathway to British citizenship",
       "Financial Business Centre",
@@ -1652,7 +1652,7 @@ export const programsData: Record<string, ProgramData> = {
     country: "Greece",
     type: "residency",
     tagline: "Marvelous destination to live with your family beyond investment",
-    heroImage: "/images/greece.webp",
+    heroImage: "/images/greece.jpeg",
     highlights: [
       "Crucial business location at the crossroads of Africa, Asia, and Europe",
       "Minimum € 250,000 Investment",
@@ -1783,7 +1783,7 @@ export const programsData: Record<string, ProgramData> = {
     country: "Australia",
     type: "residency",
     tagline: "The top destination for global talent and innovation",
-    heroImage: "/images/australia.webp",
+    heroImage: "/images/australia.jpg",
     highlights: [
       "No Investment Required",
       "Fast-Track to Permanent Residency",
