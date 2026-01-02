@@ -26,6 +26,7 @@ export interface ResidencyItem extends BaseItem {
   location?: string;
   type?: string;
   price?: string;
+  slug?: string;
 }
 
 export interface InvestmentItem extends BaseItem {

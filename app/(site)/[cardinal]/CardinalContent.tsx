@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/aevr/button";
 import { FeatureCard } from "@/components/Site/FeatureCard";
 import { Section } from "@/components/Site/Section";
 import Image from "next/image";
+import Link from "next/link";
 import { ImmigrationContactForm } from "@/components/Site/ImmigrationContactForm";
 import {
   Carousel,
@@ -260,14 +261,27 @@ export function CardinalContent({
                     key={index}
                     className="pl-0 md:basis-1/2 lg:basis-2/5"
                   >
-                    <FeatureCard
-                      title={title}
-                      description={description}
-                      image={image}
-                      label={label}
-                      dark={asInvestment.dark || false}
-                      className="min-h-[600px]"
-                    />
+                    {cardinal === "global-mobility" && asResidency.slug ? (
+                      <Link href={`/global-mobility/${asResidency.slug}`}>
+                        <FeatureCard
+                          title={title}
+                          description={description}
+                          image={image}
+                          label={label}
+                          dark={asInvestment.dark || false}
+                          className="min-h-[600px] cursor-pointer"
+                        />
+                      </Link>
+                    ) : (
+                      <FeatureCard
+                        title={title}
+                        description={description}
+                        image={image}
+                        label={label}
+                        dark={asInvestment.dark || false}
+                        className="min-h-[600px]"
+                      />
+                    )}
                   </CarouselItem>
                 );
               })}
