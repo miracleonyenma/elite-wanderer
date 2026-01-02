@@ -1,3 +1,5 @@
+"use client";
+
 import { notFound } from "next/navigation";
 import {
   cardinalsData,
@@ -7,12 +9,22 @@ import {
   ResidencyItem,
   InvestmentItem,
 } from "../cardinals-data";
-import { Metadata } from "next";
 import BlurText from "@/components/react-bits/BlurText";
 import { Button } from "@/components/ui/aevr/button";
 import { FeatureCard } from "@/components/Site/FeatureCard";
 import { Section } from "@/components/Site/Section";
 import Image from "next/image";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import { cn } from "@/lib/utils";
+import { useState, useEffect } from "react";
+import type { CarouselApi } from "@/components/ui/carousel";
 
 // Generate static params for all defined cardinals
 export function generateStaticParams() {
@@ -21,33 +33,37 @@ export function generateStaticParams() {
   }));
 }
 
-// Dynamic metadata
-export async function generateMetadata({
+export default function CardinalPage({
   params,
 }: {
-  params: { cardinal: string };
-}): Promise<Metadata> {
-  const { cardinal } = await params;
-  const data = cardinalsData[cardinal];
+  params: Promise<{ cardinal: string }>;
+}) {
+  const [cardinal, setCardinal] = useState<string>("");
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
 
-  if (!data) {
-    return {
-      title: "Page Not Found",
-    };
+  useEffect(() => {
+    params.then((p) => setCardinal(p.cardinal));
+  }, [params]);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
+
+  if (!cardinal) {
+    return null;
   }
 
-  return {
-    title: `${data.title} | The Elite Wanderer`,
-    description: data.description,
-  };
-}
-
-export default async function CardinalPage({
-  params,
-}: {
-  params: { cardinal: string };
-}) {
-  const { cardinal } = await params;
   const data = cardinalsData[cardinal];
 
   if (!data) {
@@ -124,78 +140,135 @@ export default async function CardinalPage({
         </Section>
       )}
 
-      {/* Content Grid */}
-      <Section className="bg-neutral-50 dark:bg-neutral-950">
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {data.data.map((item: CardinalItem, index: number) => {
-            // Helper to safe cast for property access
-            const asResidency = item as ResidencyItem;
-            const asMarketplace = item as MarketplaceItem;
-            const asDestination = item as DestinationItem;
-            const asInvestment = item as InvestmentItem;
+      {/* Content Section with Header */}
+      <Section
+        className="overflow-hidden bg-neutral-50 p-0 dark:bg-neutral-950"
+        fullWidth
+      >
+        {/* Header */}
+        <div className="mx-auto mb-12 flex w-full max-w-screen-2xl flex-col items-end justify-between px-6 pt-16 md:mb-16 md:flex-row md:px-12 md:pt-24">
+          <div>
+            <h2 className="mb-2 text-xs font-bold tracking-[0.3em] text-neutral-500 uppercase dark:text-neutral-400">
+              {data.subtitle}
+            </h2>
+            <BlurText
+              text={data.title}
+              className="font-heading text-4xl font-bold text-neutral-900 uppercase md:text-5xl dark:text-white"
+              delay={50}
+            />
+          </div>
+        </div>
 
-            // Normalize data properties
-            const title = item.title || asResidency.location || "Untitled";
-            const description = item.description || asResidency.type || "";
-            const image = item.image;
-            const label =
-              asMarketplace.label ||
-              asDestination.subtitle ||
-              asResidency.price ||
-              asInvestment.label ||
-              "";
+        {/* Carousel */}
+        <div className="group relative pb-12">
+          <Carousel
+            setApi={setApi}
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            plugins={[Autoplay({ delay: 4000 })]}
+            className="w-full"
+          >
+            <CarouselContent className="ml-0 gap-0">
+              {data.data.map((item: CardinalItem, index: number) => {
+                // Helper to safe cast for property access
+                const asResidency = item as ResidencyItem;
+                const asMarketplace = item as MarketplaceItem;
+                const asDestination = item as DestinationItem;
+                const asInvestment = item as InvestmentItem;
 
-            // Specific handling for 'create' type in destinations
-            if (asDestination.type === "create") {
-              return (
-                <div
-                  key={index}
-                  className="group relative flex min-h-[500px] w-full cursor-pointer flex-col items-center justify-center overflow-hidden bg-[#0a2332] p-8 text-center"
-                >
-                  <Image
-                    src={image}
-                    alt="Create"
-                    fill
-                    className="object-cover opacity-20 transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-[#0a2332]/60" />
-                  <div className="relative z-10 flex flex-col items-center">
-                    <span className="mb-6 text-xs font-bold tracking-[0.2em] text-white/70 uppercase">
-                      Custom Trips
-                    </span>
-                    <h3 className="mb-8 max-w-xs font-heading text-3xl leading-tight font-bold text-white uppercase md:text-4xl">
-                      {title}
-                    </h3>
-                    <p className="mb-8 hidden max-w-xs text-sm leading-relaxed text-neutral-300 md:block">
-                      {description}
-                    </p>
-                    <Button
-                      variant="outline"
-                      className="rounded-none border-white px-8 py-6 text-sm tracking-widest text-white uppercase hover:bg-white hover:text-black"
+                // Normalize data properties
+                const title = item.title || asResidency.location || "Untitled";
+                const description = item.description || asResidency.type || "";
+                const image = item.image;
+                const label =
+                  asMarketplace.label ||
+                  asDestination.subtitle ||
+                  asResidency.price ||
+                  asInvestment.label ||
+                  "";
+
+                // Specific handling for 'create' type in destinations
+                if (asDestination.type === "create") {
+                  return (
+                    <CarouselItem
+                      key={index}
+                      className="pl-0 md:basis-1/2 lg:basis-2/5"
                     >
-                      {asDestination.buttonText || "Get Started"}
-                    </Button>
-                  </div>
-                </div>
-              );
-            }
+                      <div className="group/create relative flex h-[600px] w-full cursor-pointer flex-col items-center justify-center overflow-hidden bg-[#0a2332] p-8 text-center">
+                        <Image
+                          src={image}
+                          alt="Create"
+                          fill
+                          className="object-cover opacity-20 transition-transform duration-700 group-hover/create:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-[#0a2332]/60" />
+                        <div className="relative z-10 flex flex-col items-center">
+                          <span className="mb-6 text-xs font-bold tracking-[0.2em] text-white/70 uppercase">
+                            Custom Trips
+                          </span>
+                          <h3 className="mb-8 max-w-xs font-heading text-3xl leading-tight font-bold text-white uppercase md:text-4xl">
+                            {title}
+                          </h3>
+                          <p className="mb-8 hidden max-w-xs text-sm leading-relaxed text-neutral-300 md:block">
+                            {description}
+                          </p>
+                          <Button
+                            variant="outline"
+                            className="rounded-none border-white px-8 py-6 text-sm tracking-widest text-white uppercase hover:bg-white hover:text-black"
+                          >
+                            {asDestination.buttonText || "Get Started"}
+                          </Button>
+                        </div>
+                      </div>
+                    </CarouselItem>
+                  );
+                }
 
-            return (
-              <FeatureCard
+                return (
+                  <CarouselItem
+                    key={index}
+                    className="pl-0 md:basis-1/2 lg:basis-2/5"
+                  >
+                    <FeatureCard
+                      title={title}
+                      description={description}
+                      image={image}
+                      label={label}
+                      dark={asInvestment.dark || false}
+                      className="min-h-[600px]"
+                    />
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            <div className="absolute top-1/2 left-4 z-10 block opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
+              <CarouselPrevious className="relative left-0 size-12 translate-x-0 rounded-full border-none bg-white/10 text-white hover:bg-white hover:text-black dark:hover:bg-black/90 dark:hover:text-white" />
+            </div>
+            <div className="absolute top-1/2 right-4 z-10 block opacity-100 transition-opacity duration-300 md:opacity-0 md:group-hover:opacity-100">
+              <CarouselNext className="relative right-0 size-12 translate-x-0 rounded-full border-none bg-white/10 text-white hover:bg-white hover:text-black dark:hover:bg-black/90 dark:hover:text-white" />
+            </div>
+          </Carousel>
+          {/* Dots Indicator */}
+          <div className="absolute right-0 bottom-0 left-0 z-20 flex justify-center gap-2">
+            {Array.from({ length: count }).map((_, index) => (
+              <button
                 key={index}
-                title={title}
-                description={description}
-                image={image}
-                label={label}
-                dark={false} // Default to light/image card style
-                className="min-h-[500px]"
+                className={cn(
+                  "h-1.5 cursor-pointer rounded-full transition-all duration-300",
+                  index + 1 === current
+                    ? "w-8 bg-neutral-900 dark:bg-white"
+                    : "w-1.5 bg-neutral-300 hover:bg-neutral-400 dark:bg-neutral-700 dark:hover:bg-neutral-500",
+                )}
+                onClick={() => api?.scrollTo(index)}
               />
-            );
-          })}
+            ))}
+          </div>
         </div>
       </Section>
 
-      {/* Footer CTA (Reused from page design or similar) */}
+      {/* Footer CTA */}
       <div className="bg-black py-24 text-center text-white">
         <h2 className="mb-8 text-xs font-bold tracking-[0.3em] uppercase">
           Ready to Begin?
