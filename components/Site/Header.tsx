@@ -49,7 +49,7 @@ export function Header() {
         The Elite Wanderer
       </Link>
 
-      <nav className="hidden items-center gap-8 md:flex">
+      <nav className="hidden items-center gap-8 xl:flex">
         {navItems.map((item) => (
           <Link
             key={item.name}
@@ -74,7 +74,7 @@ export function Header() {
 
       {/* Mobile Menu Button */}
       <button
-        className="group relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+        className="group relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 xl:hidden"
         onClick={() => setIsOpen(!isOpen)}
       >
         <motion.span

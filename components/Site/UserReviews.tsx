@@ -3,6 +3,14 @@
 import { Section } from "./Section";
 import BlurText from "../react-bits/BlurText";
 import { Quote } from "lucide-react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const reviews = [
   {
@@ -37,7 +45,7 @@ const reviews = [
   },
   {
     quote:
-      "I was introduced to a curated short-let opportunity in Bali through TEW, and it turned out to be one of my smartest decisions. Beyond the returns, I gained clarity on the tourism market, asset structuring, and long-term income potential. TEW didn’t just show me an opportunity, they guided me through a well-thought-out investment.",
+      "I was introduced to a curated short-let opportunity in Bali through TEW, and it turned out to be one of my smartest decisions. Beyond the returns, I gained clarity on the tourism market, asset structuring, and long-term income potential. TEW didn't just show me an opportunity, they guided me through a well-thought-out investment.",
     name: "Dapson. R",
     tier: "Hospitality Investor",
   },
@@ -58,28 +66,51 @@ export function UserReviews() {
           />
         </div>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-12">
-          {reviews.map((review, index) => (
-            <div
-              key={index}
-              className="group flex flex-col items-center space-y-6 text-center"
-            >
-              <div className="rounded-full bg-neutral-100 p-4 text-app-theme-500 transition-colors duration-300 group-hover:bg-app-theme-100 dark:bg-neutral-900 dark:text-app-theme-400 dark:group-hover:bg-app-theme-900/30">
-                <Quote size={24} className="fill-current" />
-              </div>
-              <p className="text-lg leading-relaxed font-light text-neutral-600 italic md:text-xl dark:text-neutral-300">
-                &quot;{review.quote}&quot;
-              </p>
-              <div>
-                <h4 className="font-heading text-lg font-bold tracking-wide text-neutral-900 uppercase dark:text-white">
-                  {review.name}
-                </h4>
-                <p className="mt-1 text-xs font-bold tracking-[0.2em] text-app-theme-600 uppercase dark:text-app-theme-400">
-                  {review.tier}
-                </p>
-              </div>
+        <div className="group relative">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            plugins={[
+              Autoplay({
+                delay: 5000,
+              }),
+            ]}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {reviews.map((review, index) => (
+                <CarouselItem
+                  key={index}
+                  className="pl-4 md:basis-1/2 lg:basis-1/3"
+                >
+                  <div className="group/card flex h-full flex-col items-center space-y-6 text-center">
+                    <div className="rounded-full bg-neutral-100 p-4 text-app-theme-500 transition-colors duration-300 group-hover/card:bg-app-theme-100 dark:bg-neutral-900 dark:text-app-theme-400 dark:group-hover/card:bg-app-theme-900/30">
+                      <Quote size={24} className="fill-current" />
+                    </div>
+                    <p className="text-lg leading-relaxed font-light text-neutral-600 italic md:text-xl dark:text-neutral-300">
+                      &quot;{review.quote}&quot;
+                    </p>
+                    <div>
+                      <h4 className="font-heading text-lg font-bold tracking-wide text-neutral-900 uppercase dark:text-white">
+                        {review.name}
+                      </h4>
+                      <p className="mt-1 text-xs font-bold tracking-[0.2em] text-app-theme-600 uppercase dark:text-app-theme-400">
+                        {review.tier}
+                      </p>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="absolute top-1/2 left-4 z-10 hidden opacity-0 transition-opacity duration-300 md:block md:group-hover:opacity-100">
+              <CarouselPrevious className="relative left-0 size-12 translate-x-0 rounded-full border-none bg-neutral-200 text-neutral-900 hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700" />
             </div>
-          ))}
+            <div className="absolute top-1/2 right-4 z-10 hidden opacity-0 transition-opacity duration-300 md:block md:group-hover:opacity-100">
+              <CarouselNext className="relative right-0 size-12 translate-x-0 rounded-full border-none bg-neutral-200 text-neutral-900 hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700" />
+            </div>
+          </Carousel>
         </div>
       </div>
     </Section>

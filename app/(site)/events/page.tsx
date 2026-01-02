@@ -18,6 +18,22 @@ const events = [
     buttonText: "Sign Up",
   },
   {
+    title: "Easter Escape",
+    description:
+      "Refined lifestyle gathering designed for reflection, wellness, and meaningful connection. Set in a serene garden setting, the experience blends gentle mindfulness, guided conversations, and a curated Easter brunch in an atmosphere of calm elegance. Thoughtfully paced and intentionally intimate, it offers guests space to reset, connect, and engage with a like-minded community in a soulful yet modern setting.",
+    image: "/images/pexels-lamkien-35255292.webp",
+    label: "Mar 2026",
+    buttonText: "Sign Up",
+  },
+  {
+    title: "Summer Social",
+    description:
+      "Lifestyle and networking experience curated for stylish, ambitious individuals. Set within a chic garden environment, the event blends signature cocktails, light bites, music, and free-flow socialising from golden hour into the evening. Designed for visibility, connection, and community, it brings together a curated crowd in a relaxed yet elevated atmosphere where meaningful conversations and summer moments unfold naturally.",
+    image: "/images/pexels-freestockpro-1008155.webp",
+    label: "Apr 2026",
+    buttonText: "Sign Up",
+  },
+  {
     title: "Junior Elite Polo",
     description:
       "A luxury experience for elite families, combining junior polo matches with refined parent networking. While young riders compete and learn under professional guidance, parents enjoy VIP hospitality, curated brand showcases, and relaxed social connections within a premier polo setting.",

@@ -100,6 +100,30 @@ export default async function CardinalPage({
         </div>
       </div>
 
+      {/* Access Without Borders Section - Only for global-mobility */}
+      {cardinal === "global-mobility" && (
+        <Section className="bg-white py-24 md:py-32 dark:bg-neutral-950">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="mb-4 text-xs font-bold tracking-[0.3em] text-neutral-500 uppercase dark:text-neutral-400">
+              The Opportunity
+            </h2>
+            <BlurText
+              text="Access Without Borders"
+              className="mb-8 justify-center font-heading text-4xl font-bold text-neutral-900 uppercase md:text-5xl dark:text-white"
+              delay={50}
+            />
+            <p className="text-lg leading-relaxed font-light text-neutral-600 md:text-xl dark:text-neutral-300">
+              Through approved investment routes, individuals can obtain second
+              residency or citizenship, unlocking enhanced travel mobility,
+              business flexibility, and family security. Designed for those
+              seeking stability, opportunity, and optionality in a global world,
+              these programs offer a structured approach to mobility and wealth
+              preservation.
+            </p>
+          </div>
+        </Section>
+      )}
+
       {/* Content Grid */}
       <Section className="bg-neutral-50 dark:bg-neutral-950">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
