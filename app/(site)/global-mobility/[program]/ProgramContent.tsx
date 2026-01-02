@@ -148,8 +148,8 @@ export function ProgramContent({ data }: { data: ProgramData }) {
           </p>
           <div className="mt-8 flex justify-center">
             <Button
-              variant="outline"
-              className="rounded-none border-white px-12 py-6 text-xs tracking-widest uppercase hover:bg-white hover:text-black"
+              variant="default"
+              className="rounded-none px-12 py-6 text-xs tracking-widest uppercase"
             >
               Let&apos;s take the first step together
             </Button>
