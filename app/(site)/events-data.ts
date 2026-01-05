@@ -20,6 +20,12 @@ export interface EventData {
     }[];
     closing?: string;
   };
+  guidelineHighlights?: {
+    title: string;
+    description: string;
+    image?: string;
+    link?: string;
+  }[];
   furtherInfo: {
     title: string;
     content: string;
@@ -86,9 +92,25 @@ export const activeEvents: EventData[] = [
         { label: "Capacity", value: "200 tickets" },
         { label: "Tickets", value: "80" },
       ],
+
       closing:
         "No road transfers required. The experience is seamless from start to finish.",
     },
+    guidelineHighlights: [
+      {
+        title: "Dress Code",
+        description: "Elegant Chic / Resort Luxe",
+      },
+      {
+        title: "Arrival",
+        description: "Guests arrive from 2:00 PM",
+      },
+      {
+        title: "Directions",
+        description: "View Map to Sea-Front",
+        image: "/images/pexels-freestockpro-1008155.webp",
+      },
+    ],
     furtherInfo: {
       title: "FURTHER INFORMATION",
       content:
@@ -165,6 +187,21 @@ export const activeEvents: EventData[] = [
       closing:
         "This is a slow-paced, seated experience designed for ease and presence.",
     },
+    guidelineHighlights: [
+      {
+        title: "Dress Code",
+        description: "Elegant Daywear",
+      },
+      {
+        title: "Arrival",
+        description: "Guests arrive from 8:30 AM",
+      },
+      {
+        title: "Location",
+        description: "View Map to Ikoyi",
+        image: "/images/pexels-lamkien-35255292.webp",
+      },
+    ],
     furtherInfo: {
       title: "FURTHER INFORMATION",
       content:
@@ -259,6 +296,21 @@ export const activeEvents: EventData[] = [
       closing:
         "This is a family-friendly, prestige-driven experience with dedicated spaces for children and parents.",
     },
+    guidelineHighlights: [
+      {
+        title: "Dress Code",
+        description: "Smart Casual / Polo Chic",
+      },
+      {
+        title: "Duration",
+        description: "One Full Weekend Day",
+      },
+      {
+        title: "Venue",
+        description: "View Polo Club Map",
+        image: "/images/pexels-code-mnml-185553186-35205820.webp",
+      },
+    ],
     furtherInfo: {
       title: "FURTHER INFORMATION",
       content:

@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import { EventData } from "../../../events-data";
 import Image from "next/image";
 import { Button } from "@/components/ui/aevr/button";
@@ -87,50 +88,76 @@ export default function EventClient({ event }: { event: EventData }) {
       {/* 3. PICTURE GALLERY */}
       {event.gallery.length > 0 && (
         <section className="bg-neutral-100 py-12 dark:bg-neutral-900">
-          <div className="mx-auto max-w-7xl px-6">
-            <Carousel className="w-full">
-              <CarouselContent>
-                {event.gallery.map((img, idx) => (
-                  <CarouselItem key={idx} className="md:basis-2/3 lg:basis-1/2">
-                    <div className="relative aspect-video overflow-hidden rounded-lg">
-                      <Image
-                        src={img}
-                        alt={`Gallery ${idx}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="left-4" />
-              <CarouselNext className="right-4" />
-            </Carousel>
-            <p className="mt-6 text-center text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase">
-              Picture Gallery
-            </p>
-          </div>
+          {/* Reusing a similar style to the home page Personalized Travel carousel */}
+          <Carousel className="w-full">
+            <CarouselContent className="ml-0 gap-0">
+              {event.gallery.map((img, idx) => (
+                <CarouselItem
+                  key={idx}
+                  className="pl-0 md:basis-2/3 lg:basis-3/5"
+                >
+                  <div className="group relative h-[500px] w-full cursor-pointer overflow-hidden border-r border-white/10">
+                    <Image
+                      src={img}
+                      alt={`Gallery ${idx}`}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/20 transition-colors duration-500 group-hover:bg-black/40" />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-4 border-none bg-white/10 text-white hover:bg-white hover:text-black" />
+            <CarouselNext className="right-4 border-none bg-white/10 text-white hover:bg-white hover:text-black" />
+          </Carousel>
+          <p className="mt-8 text-center text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase">
+            Event Gallery
+          </p>
         </section>
       )}
 
       {/* 4. EVENT GUIDELINES */}
       <section className="mx-auto max-w-7xl px-6 py-20 md:px-12 lg:px-24">
-        <div className="grid items-start gap-12 md:grid-cols-2">
-          <div className="bg-[#5EEAD4] p-12 text-black">
-            <h3 className="mb-4 font-heading text-3xl font-bold md:text-4xl">
-              Opening hours
-            </h3>
-            <p className="font-light">artbasel.com</p>
+        {/* Guidelines Highlights Grid */}
+        {event.guidelineHighlights && (
+          <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+            {event.guidelineHighlights.map((highlight, idx) => (
+              <div
+                key={idx}
+                className={cn(
+                  "relative flex min-h-[240px] flex-col justify-end overflow-hidden p-8",
+                  highlight.image
+                    ? "text-white"
+                    : "bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white",
+                )}
+              >
+                {highlight.image && (
+                  <>
+                    <Image
+                      src={highlight.image}
+                      alt={highlight.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/40" />
+                  </>
+                )}
+                <div className="relative z-10">
+                  <h4 className="mb-2 font-heading text-2xl font-bold uppercase">
+                    {highlight.title}
+                  </h4>
+                  <p className="text-sm font-light tracking-widest uppercase opacity-80">
+                    {highlight.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="bg-[#FDE047] p-12 text-black">
-            <h3 className="mb-4 font-heading text-3xl font-bold md:text-4xl">
-              Tickets online
-            </h3>
-            <p className="font-light">artbasel.com</p>
-          </div>
-        </div>
+        )}
 
-        <div className="mt-16 rounded-lg border border-neutral-200 bg-neutral-50 p-8 md:p-12 dark:border-neutral-800 dark:bg-neutral-900">
+        {/* Removed colorful blocks, replaced with clean layout */}
+        <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-8 md:p-12 dark:border-neutral-800 dark:bg-neutral-900">
           <h3 className="mb-8 border-b pb-4 text-sm font-bold tracking-widest text-neutral-500 uppercase dark:border-neutral-700">
             {event.guidelines.title}
           </h3>
@@ -157,7 +184,7 @@ export default function EventClient({ event }: { event: EventData }) {
       </section>
 
       {/* 5. FURTHER INFORMATION */}
-      <section className="bg-neutral-50 px-6 py-20 dark:bg-neutral-950">
+      <section className="bg-white px-6 py-20 dark:bg-black">
         <div className="mx-auto max-w-4xl text-center">
           <span className="mb-6 block text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase">
             {event.furtherInfo.title}
@@ -168,42 +195,107 @@ export default function EventClient({ event }: { event: EventData }) {
         </div>
       </section>
 
-      {/* 6. TICKET BOOKING */}
-      <section className="relative overflow-hidden bg-black px-6 py-20 text-white">
-        <div className="absolute inset-0 bg-neutral-900/50" />
-        <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center justify-between gap-8 border border-white/20 p-8 backdrop-blur-sm md:flex-row md:p-12">
-          <div>
-            <span className="mb-2 block text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase">
-              {event.booking.title}
-            </span>
-            <h3 className="mb-2 font-heading text-3xl font-bold">
-              {event.booking.type}
-            </h3>
-            <p className="font-light text-neutral-300">
-              Includes: {event.booking.includes}
-            </p>
-          </div>
-          <div className="flex min-w-[200px] flex-col gap-2">
-            {event.booking.capacity && (
-              <div className="flex justify-between text-sm text-neutral-400">
-                <span>Capacity</span>
-                <span>{event.booking.capacity}</span>
+      {/* 6. EVENT VIDEO */}
+      {event.videoUrl && (
+        <section className="relative flex h-[60vh] w-full items-center justify-center overflow-hidden bg-black md:h-[80vh]">
+          <video
+            src={event.videoUrl}
+            className="h-full w-full object-cover opacity-80"
+            controls
+            playsInline
+            muted
+            loop
+            autoPlay
+          />
+          <div className="absolute inset-0 bg-black/20" />
+        </section>
+      )}
+
+      {/* 7. BOOKING WIDGET */}
+      <section className="relative z-10 -mt-20 bg-white px-6 py-24 text-center dark:bg-neutral-950">
+        <div className="mx-auto max-w-4xl">
+          <div className="flex flex-col items-center rounded-sm border border-neutral-100 bg-white p-8 shadow-2xl dark:border-neutral-800 dark:bg-neutral-900">
+            <h2 className="mb-8 text-sm font-bold tracking-[0.2em] text-neutral-500 uppercase">
+              Plan your experience
+            </h2>
+
+            <div className="mb-8 flex w-full flex-col items-center justify-between gap-4 md:flex-row">
+              <div className="flex w-full flex-1 flex-col items-start border-b border-neutral-200 pb-4 md:border-r md:border-b-0 md:pr-4 md:pb-0 dark:border-neutral-700">
+                <span className="mb-1 text-xs tracking-wider text-neutral-400 uppercase">
+                  Date
+                </span>
+                <span className="font-heading text-xl font-bold">
+                  {event.date}
+                </span>
               </div>
-            )}
-            {event.booking.ticketsAvailable && (
-              <div className="flex justify-between text-sm font-bold text-white">
-                <span>Available</span>
-                <span>{event.booking.ticketsAvailable}</span>
+              <div className="flex w-full flex-1 flex-col items-start border-b border-neutral-200 pb-4 md:border-r md:border-b-0 md:pr-4 md:pb-0 dark:border-neutral-700">
+                <span className="mb-1 text-xs tracking-wider text-neutral-400 uppercase">
+                  Guests
+                </span>
+                {/* Mock Select */}
+                <div className="flex w-full items-center justify-between">
+                  <span className="font-heading text-xl font-bold">
+                    2 Guests
+                  </span>
+                  <span className="text-xs text-neutral-400">▼</span>
+                </div>
               </div>
-            )}
-            <Button className="mt-4 w-full rounded-none bg-white py-6 font-bold tracking-widest text-black uppercase hover:bg-neutral-200">
-              Buy Now
-            </Button>
+              <Button className="w-full rounded-none bg-[#4ADE80] px-12 py-6 font-bold tracking-wider text-black uppercase hover:bg-[#22c55e] md:w-auto">
+                Search
+              </Button>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-6 text-xs font-bold tracking-widest text-neutral-400 uppercase">
+              <span className="flex items-center gap-2">
+                <span className="text-[#4ADE80]">✓</span> Instant Confirmation
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="text-[#4ADE80]">✓</span> Authentic Reviews
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="text-[#4ADE80]">✓</span> 100% Secure
+              </span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 7. FAQ */}
+      {/* 8. MORE GALLERY */}
+      {event.moreGallery && (
+        <section className="bg-neutral-50 px-4 py-20 md:px-8 dark:bg-neutral-900">
+          <div className="mx-auto grid max-w-7xl auto-rows-[300px] grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {event.moreGallery.map((item, idx) => (
+              <div
+                key={idx}
+                className={cn(
+                  "group relative overflow-hidden",
+                  idx === 0 ? "md:col-span-2" : "",
+                )}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-80" />
+                <div className="absolute bottom-6 left-6 translate-y-2 text-white transition-transform duration-500 group-hover:translate-y-0">
+                  <h3 className="mb-1 font-heading text-xl font-bold uppercase">
+                    {item.title}
+                  </h3>
+                  {item.description && (
+                    <p className="text-xs font-light opacity-80">
+                      {item.description}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* 9. FAQ */}
       {event.faq.length > 0 && (
         <section className="mx-auto max-w-3xl px-6 py-20">
           <h2 className="mb-12 text-center font-heading text-3xl font-bold uppercase">
