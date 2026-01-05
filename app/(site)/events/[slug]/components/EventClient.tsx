@@ -112,7 +112,7 @@ export default function EventClient({ event }: { event: EventData }) {
 
       {/* 3. PICTURE GALLERY */}
       {event.gallery.length > 0 && (
-        <section className="bg-neutral-100 py-12 dark:bg-neutral-900">
+        <section className="py-12">
           {/* Reusing a similar style to the home page Personalized Travel carousel */}
           <Carousel className="w-full">
             <CarouselContent className="ml-0 gap-0">
