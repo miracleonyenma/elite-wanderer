@@ -1,52 +1,14 @@
 "use client";
 
-// import { Section } from "@/components/Site/Section";
-// import BlurText from "@/components/react-bits/BlurText";
 import { Button } from "@/components/ui/aevr/button";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-
-// Placeholder data for events
-const events = [
-  {
-    title: "Red & Bougie",
-    description:
-      "Valentine experience that flows effortlessly from an elegant sea-front dining moment into a serene sunset yacht sail across the Lagos Lagoon, concluding with an intimate after-sail social lounge at the Lagos Motor Boat Club. Designed for couples and refined socialites, the experience blends fine dining, scenic sailing, and relaxed conversations in a setting of understated luxury.",
-    image: "/images/jfa-long-island-87-15664711/2200xxs.jpg",
-    label: "Feb 2026",
-    buttonText: "Sign Up",
-  },
-  {
-    title: "Easter Escape",
-    description:
-      "Refined lifestyle gathering designed for reflection, wellness, and meaningful connection. Set in a serene garden setting, the experience blends gentle mindfulness, guided conversations, and a curated Easter brunch in an atmosphere of calm elegance. Thoughtfully paced and intentionally intimate, it offers guests space to reset, connect, and engage with a like-minded community in a soulful yet modern setting.",
-    image: "/images/pexels-lamkien-35255292.webp",
-    label: "Mar 2026",
-    buttonText: "Sign Up",
-  },
-  {
-    title: "Summer Social",
-    description:
-      "Lifestyle and networking experience curated for stylish, ambitious individuals. Set within a chic garden environment, the event blends signature cocktails, light bites, music, and free-flow socialising from golden hour into the evening. Designed for visibility, connection, and community, it brings together a curated crowd in a relaxed yet elevated atmosphere where meaningful conversations and summer moments unfold naturally.",
-    image: "/images/pexels-freestockpro-1008155.webp",
-    label: "Apr 2026",
-    buttonText: "Sign Up",
-  },
-  {
-    title: "Junior Elite Polo",
-    description:
-      "A luxury experience for elite families, combining junior polo matches with refined parent networking. While young riders compete and learn under professional guidance, parents enjoy VIP hospitality, curated brand showcases, and relaxed social connections within a premier polo setting.",
-    image: "/images/pexels-code-mnml-185553186-35205820.webp",
-    label: "Apr 2026",
-    buttonText: "Sign Up",
-  },
-];
+import { activeEvents } from "../events-data";
 
 export default function EventsPage() {
   return (
     <main>
-      {/* Hero Section */}
       {/* Hero Section */}
       <div className="relative h-[80vh] w-full overflow-hidden bg-neutral-900 text-white md:h-[90vh]">
         <Image
@@ -73,9 +35,9 @@ export default function EventsPage() {
 
       {/* Alternating Events Layout */}
       <div id="listings">
-        {events.map((event, index) => (
+        {activeEvents.map((event, index) => (
           <div
-            key={index}
+            key={event.id}
             className={cn(
               "flex min-h-[600px] flex-col md:flex-row",
               index % 2 !== 0 ? "md:flex-row-reverse" : "",
@@ -84,7 +46,7 @@ export default function EventsPage() {
             {/* Image Side */}
             <div className="relative min-h-[400px] w-full md:min-h-[600px] md:w-1/2">
               <Image
-                src={event.image}
+                src={event.heroImage}
                 alt={event.title}
                 fill
                 className="object-cover"
@@ -93,11 +55,9 @@ export default function EventsPage() {
 
             {/* Text Side */}
             <div className="flex w-full flex-col justify-center bg-white px-8 py-16 md:w-1/2 md:px-16 lg:px-24 dark:bg-neutral-950">
-              {event.label && (
-                <span className="mb-4 text-xs font-bold tracking-[0.2em] text-neutral-500 uppercase dark:text-neutral-400">
-                  {event.label}
-                </span>
-              )}
+              <span className="mb-4 text-xs font-bold tracking-[0.2em] text-neutral-500 uppercase dark:text-neutral-400">
+                {event.date}
+              </span>
               <h3 className="mb-6 font-heading text-3xl font-bold tracking-wide text-neutral-900 uppercase md:text-4xl lg:text-5xl dark:text-white">
                 {event.title}
               </h3>
@@ -109,7 +69,7 @@ export default function EventsPage() {
                 variant="default"
                 className="w-fit rounded-none bg-black px-8 py-6 text-xs tracking-widest text-white uppercase hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200"
               >
-                <Link href="#">{event.buttonText || "Find Out More"}</Link>
+                <Link href={`/events/${event.id}`}>Find Out More</Link>
               </Button>
             </div>
           </div>
