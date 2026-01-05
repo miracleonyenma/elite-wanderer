@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { EventData } from "../../../events-data";
 import Image from "next/image";
 import { Button } from "@/components/ui/aevr/button";
+import { useState } from "react";
 // unused imports removed
 import {
   Carousel,
@@ -18,9 +19,33 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { motion } from "motion/react";
 
 export default function EventClient({ event }: { event: EventData }) {
+  const [guests, setGuests] = useState(2);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [bookingStep, setBookingStep] = useState<"form" | "success">("form");
+
+  const handleSearch = () => {
+    if (event.booking.link && event.booking.link !== "#") {
+      window.open(event.booking.link, "_blank");
+    } else {
+      setIsBookingOpen(true);
+    }
+  };
+
+  const handleOpenChange = (open: boolean) => {
+    setIsBookingOpen(open);
+    if (!open) setTimeout(() => setBookingStep("form"), 300);
+  };
+
   return (
     <div className="bg-white text-black dark:bg-black dark:text-white">
       {/* 1. HERO SECTION */}
@@ -232,17 +257,47 @@ export default function EventClient({ event }: { event: EventData }) {
                 <span className="mb-1 text-xs tracking-wider text-neutral-400 uppercase">
                   Guests
                 </span>
-                {/* Mock Select */}
-                <div className="flex w-full items-center justify-between">
-                  <span className="font-heading text-xl font-bold">
-                    2 Guests
+                <div className="relative flex w-full items-center justify-between">
+                  <select
+                    value={guests}
+                    onChange={(e) => setGuests(Number(e.target.value))}
+                    className="z-10 w-full cursor-pointer appearance-none bg-transparent text-left font-heading text-xl font-bold focus:outline-none"
+                  >
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                      <option key={num} value={num} className="text-black">
+                        {num} Guest{num > 1 ? "s" : ""}
+                      </option>
+                    ))}
+                  </select>
+                  <span className="pointer-events-none absolute right-0 text-xs text-neutral-400">
+                    ▼
                   </span>
-                  <span className="text-xs text-neutral-400">▼</span>
                 </div>
               </div>
-              <Button className="w-full rounded-none bg-[#4ADE80] px-12 py-6 font-bold tracking-wider text-black uppercase hover:bg-[#22c55e] md:w-auto">
-                Search
-              </Button>
+
+              <div className="flex w-full flex-col items-center gap-2 md:w-auto md:items-end">
+                {event.booking.price && (
+                  <div className="mr-4 hidden border-r border-neutral-200 pr-4 text-right md:block dark:border-neutral-700">
+                    <p className="mb-1 text-[10px] font-bold tracking-widest text-neutral-400 uppercase">
+                      Price
+                    </p>
+                    <p className="text-sm font-bold">{event.booking.price}</p>
+                  </div>
+                )}
+                <Button
+                  onClick={handleSearch}
+                  className="w-full rounded-none bg-[#4ADE80] px-12 py-6 font-bold tracking-wider text-black uppercase hover:bg-[#22c55e] md:w-auto"
+                >
+                  {event.booking.link && event.booking.link !== "#"
+                    ? "Book Now"
+                    : "Request Spot"}
+                </Button>
+                {event.booking.price && (
+                  <div className="mt-2 w-full text-center md:hidden">
+                    <p className="text-sm font-bold">{event.booking.price}</p>
+                  </div>
+                )}
+              </div>
             </div>
 
             <div className="flex flex-wrap justify-center gap-6 text-xs font-bold tracking-widest text-neutral-400 uppercase">
@@ -259,6 +314,102 @@ export default function EventClient({ event }: { event: EventData }) {
           </div>
         </div>
       </section>
+
+      {/* Booking Modal */}
+      <Dialog open={isBookingOpen} onOpenChange={handleOpenChange}>
+        <DialogContent className="border-neutral-200 bg-white text-black sm:max-w-[425px] dark:border-neutral-800 dark:bg-neutral-900 dark:text-white">
+          {bookingStep === "form" ? (
+            <>
+              <DialogHeader>
+                <DialogTitle className="font-heading text-2xl uppercase">
+                  Reserve your spot
+                </DialogTitle>
+                <DialogDescription>
+                  Requesting {guests} ticket{guests > 1 ? "s" : ""} for{" "}
+                  {event.title}.
+                </DialogDescription>
+              </DialogHeader>
+              <form
+                className="grid gap-4 py-4"
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setBookingStep("success");
+                }}
+              >
+                <div className="grid gap-2">
+                  <label
+                    htmlFor="name"
+                    className="text-xs font-bold tracking-wider text-neutral-500 uppercase"
+                  >
+                    Full Name
+                  </label>
+                  <input
+                    id="name"
+                    required
+                    className="border-b border-neutral-300 bg-transparent py-2 transition-colors outline-none focus:border-black dark:border-neutral-700 dark:focus:border-white"
+                    placeholder="Full Name"
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <label
+                    htmlFor="email"
+                    className="text-xs font-bold tracking-wider text-neutral-500 uppercase"
+                  >
+                    Email Address
+                  </label>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    className="border-b border-neutral-300 bg-transparent py-2 transition-colors outline-none focus:border-black dark:border-neutral-700 dark:focus:border-white"
+                    placeholder="name@example.com"
+                  />
+                </div>
+                <div className="grid gap-2">
+                  <label
+                    htmlFor="phone"
+                    className="text-xs font-bold tracking-wider text-neutral-500 uppercase"
+                  >
+                    Phone (Optional)
+                  </label>
+                  <input
+                    id="phone"
+                    type="tel"
+                    className="border-b border-neutral-300 bg-transparent py-2 transition-colors outline-none focus:border-black dark:border-neutral-700 dark:focus:border-white"
+                    placeholder="+123..."
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  className="mt-4 w-full rounded-none bg-black py-6 font-bold tracking-widest text-white uppercase hover:bg-neutral-800 dark:bg-white dark:text-black"
+                >
+                  Complete Request
+                </Button>
+              </form>
+            </>
+          ) : (
+            <div className="flex flex-col items-center justify-center py-8 text-center">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#4ADE80]">
+                <span className="text-3xl text-black">✓</span>
+              </div>
+              <h3 className="mb-2 font-heading text-2xl font-bold uppercase">
+                Request Received
+              </h3>
+              <p className="mb-8 font-light text-neutral-500">
+                Thank you! Our concierge team will contact you shortly to
+                finalize your reservation for {event.title}.
+              </p>
+              <Button
+                onClick={() => handleOpenChange(false)}
+                variant="ghost"
+                className="font-bold tracking-widest uppercase"
+              >
+                Close
+              </Button>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* 8. MORE GALLERY */}
       {event.moreGallery && (

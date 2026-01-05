@@ -37,6 +37,7 @@ export interface EventData {
     link: string;
     capacity?: string;
     ticketsAvailable?: string;
+    price?: string;
   };
   faq: {
     question: string;
@@ -244,24 +245,95 @@ export const activeEvents: EventData[] = [
   },
   {
     id: "summer-social",
-    title: "Summer Social",
-    date: "Apr 2026",
-    location: "Garden Environment",
+    title: "TEW Summer Social",
+    subtitle: "The Summer Edit",
+    date: "9 August 2026",
+    dateTime: "Sunday, 9 August 2026",
+    location: "Amore Gardens, Lekki Phase I",
     heroImage: "/images/pexels-freestockpro-1008155.webp",
     description:
-      "Lifestyle and networking experience curated for stylish, ambitious individuals. Set within a chic garden environment, the event blends signature cocktails, light bites, music, and free-flow socialising from golden hour into the evening. Designed for visibility, connection, and community, it brings together a curated crowd in a relaxed yet elevated atmosphere where meaningful conversations and summer moments unfold naturally.",
+      "TEW Summer Social is a vibrant lifestyle and networking experience curated for stylish, ambitious individuals who value connection, visibility, and community. Set in a chic garden environment, the event blends music, cocktails, and effortless socialising from golden hour into the evening, creating a relaxed yet elevated summer atmosphere.",
     introduction: {
-      title: "Event Introduction",
-      content: "Summer Social is a lifestyle and networking experience...",
+      title: "EVENT INTRODUCTION",
+      content:
+        "TEW Summer Social is a vibrant lifestyle and networking experience curated for stylish, ambitious individuals who value connection, visibility, and community. Set in a chic garden environment, the event blends music, cocktails, and effortless socialising from golden hour into the evening, creating a relaxed yet elevated summer atmosphere.",
     },
-    gallery: [],
+    gallery: [
+      "/images/pexels-freestockpro-1008155.webp",
+      "/images/pexels-lamkien-35255292.webp",
+    ],
     guidelines: {
-      title: "Guidelines",
-      items: [],
+      title: "EVENT GUIDELINES (WHAT TO KNOW)",
+      items: [
+        { label: "Date", value: "Sunday, 9 August 2026" },
+        { label: "Opening Time", value: "Guests arrive from 4:00 PM" },
+        { label: "Venue", value: "Amore Gardens, Lekki Phase I" },
+        {
+          label: "Experience Style",
+          value: "Open-air social, lounge-style networking",
+        },
+        { label: "Dress Code", value: "Summer Chic / Stylish Casual" },
+        { label: "Capacity", value: "Curated guest list, limited attendance" },
+        { label: "Tickets", value: "Limited availability" },
+      ],
+      closing:
+        "This is a standing and lounge-style experience designed for easy movement and conversation.",
     },
-    furtherInfo: { title: "Info", content: "" },
-    booking: { title: "Booking", type: "", includes: "", link: "" },
-    faq: [],
+    guidelineHighlights: [
+      {
+        title: "Dress Code",
+        description: "Summer Chic / Stylish Casual",
+      },
+      {
+        title: "Time",
+        description: "Guests arrive from 4:00 PM",
+      },
+      {
+        title: "Venue",
+        description: "View Map to Lekki",
+        image: "/images/pexels-freestockpro-1008155.webp",
+      },
+    ],
+    furtherInfo: {
+      title: "FURTHER INFORMATION",
+      content:
+        "Guests can expect signature summer drinks, light bites, live DJ sets, and multiple social zones for relaxed interaction. The experience is intentionally unstructured, allowing conversations, networking, and organic connections to flow naturally in a high-energy yet tasteful setting.",
+    },
+    booking: {
+      title: "TICKET BOOKING",
+      type: "TEW Summer Social Pass",
+      price: "₦100,000 – ₦150,000 per person",
+      includes: "Entry, drinks, light bites, entertainment",
+      link: "#",
+      capacity: "Limited slots",
+      ticketsAvailable: "Limited slots",
+    },
+    faq: [
+      {
+        question: "Who is this event for?",
+        answer:
+          "Stylish professionals, creatives, founders, and socially active individuals.",
+      },
+      {
+        question: "Is seating guaranteed?",
+        answer:
+          "Limited lounge seating is available. Guests are encouraged to move and mingle.",
+      },
+      {
+        question: "Can I attend alone?",
+        answer:
+          "Yes. The event is designed for open networking and easy social interaction.",
+      },
+      {
+        question: "What time does the event end?",
+        answer: "The experience closes around 8:30 PM.",
+      },
+      {
+        question: "Are tickets refundable?",
+        answer:
+          "Tickets are non-refundable but may be transferable with prior notice.",
+      },
+    ],
   },
   {
     id: "junior-elite-polo",
