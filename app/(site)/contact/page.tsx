@@ -26,25 +26,23 @@ export default function ContactPage() {
               <h3 className="mb-2 text-sm font-bold tracking-widest text-neutral-500 uppercase">
                 General Inquiries
               </h3>
-              <p className="text-xl">concierge@elitewanderer.com</p>
+              <p className="text-xl">support@theelitewanderer.com</p>
             </div>
             <div>
               <h3 className="mb-2 text-sm font-bold tracking-widest text-neutral-500 uppercase">
                 Global Headquarters
               </h3>
               <p className="text-xl">
-                1 Knightsbridge Green
+                22 Glover Road
                 <br />
-                London, SW1X 7QA
-                <br />
-                United Kingdom
+                Ikoyi, Lagos
               </p>
             </div>
             <div>
               <h3 className="mb-2 text-sm font-bold tracking-widest text-neutral-500 uppercase">
                 Phone
               </h3>
-              <p className="text-xl">+44 20 7123 4567</p>
+              <p className="text-xl">+234 912 153 5952</p>
             </div>
           </div>
 

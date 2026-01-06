@@ -34,6 +34,14 @@ export function Footer() {
             few.
           </p>
 
+          <div className="flex flex-col gap-1 text-sm text-neutral-500">
+            <p className="font-medium text-black dark:text-white">
+              22 Glover Road, Ikoyi, Lagos
+            </p>
+            <p>+234 912 153 5952</p>
+            <p>support@theelitewanderer.com</p>
+          </div>
+
           <form
             onSubmit={formik.handleSubmit}
             className="flex max-w-xs flex-col gap-1 pt-4"
@@ -95,7 +103,7 @@ export function Footer() {
             </li>
             <li>
               <Link
-                href="#"
+                href="/marketplace"
                 className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Private Jets
@@ -103,7 +111,7 @@ export function Footer() {
             </li>
             <li>
               <Link
-                href="#"
+                href="/marketplace"
                 className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Real Estate
@@ -135,7 +143,7 @@ export function Footer() {
             </li>
             <li>
               <Link
-                href="#"
+                href="/platinum-club"
                 className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Membership
@@ -143,7 +151,7 @@ export function Footer() {
             </li>
             <li>
               <Link
-                href="#"
+                href="/contact"
                 className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Careers
@@ -167,7 +175,7 @@ export function Footer() {
           <ul className="space-y-3 text-sm text-neutral-600">
             <li>
               <Link
-                href="#"
+                href="/legal/privacy"
                 className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Privacy Policy
@@ -175,7 +183,7 @@ export function Footer() {
             </li>
             <li>
               <Link
-                href="#"
+                href="/legal/terms"
                 className="transition-colors hover:text-black dark:hover:text-white"
               >
                 Terms of Service
