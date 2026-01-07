@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/aevr/button";
 import { useState } from "react";
 import { EventCountdown } from "@/components/Site/EventCountdown";
 import { BrandReviews } from "@/components/Site/BrandReviews";
+import { toast } from "sonner";
 // unused imports removed
 import {
   Carousel,
@@ -31,9 +32,63 @@ import {
 import { motion } from "motion/react";
 
 export default function EventClient({ event }: { event: EventData }) {
-  const [guests, setGuests] = useState(2);
+  const [guests, setGuests] = useState(1);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [bookingStep, setBookingStep] = useState<"form" | "success">("form");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Form states
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
+  const handleBookingSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      // Determine the API URL based on environment
+      // In production (static export), we hit the deployed Vercel app
+      // In development, we hit the local API
+      const apiUrl =
+        process.env.NODE_ENV === "development"
+          ? "/api/bookings/create"
+          : "https://elite-wanderer.vercel.app/api/bookings/create";
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          eventId: event.id,
+          guests,
+          customer: formData,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit booking");
+      }
+
+      setBookingStep("success");
+    } catch (error) {
+      console.error("Booking error:", error);
+      toast.error("Something went wrong. Please try again or contact support.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const handleSearch = () => {
     if (event.booking.link && event.booking.link !== "#") {
@@ -45,7 +100,13 @@ export default function EventClient({ event }: { event: EventData }) {
 
   const handleOpenChange = (open: boolean) => {
     setIsBookingOpen(open);
-    if (!open) setTimeout(() => setBookingStep("form"), 300);
+    if (!open) {
+      // Reset form on close after a delay
+      setTimeout(() => {
+        setBookingStep("form");
+        setFormData({ name: "", email: "", phone: "" });
+      }, 300);
+    }
   };
 
   return (
@@ -373,13 +434,7 @@ export default function EventClient({ event }: { event: EventData }) {
                   {event.title}.
                 </DialogDescription>
               </DialogHeader>
-              <form
-                className="grid gap-4 py-4"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setBookingStep("success");
-                }}
-              >
+              <form className="grid gap-4 py-4" onSubmit={handleBookingSubmit}>
                 <div className="grid gap-2">
                   <label
                     htmlFor="name"
@@ -389,9 +444,12 @@ export default function EventClient({ event }: { event: EventData }) {
                   </label>
                   <input
                     id="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
                     required
                     className="border-b border-neutral-300 bg-transparent py-2 transition-colors outline-none focus:border-black dark:border-neutral-700 dark:focus:border-white"
                     placeholder="Full Name"
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div className="grid gap-2">
@@ -404,9 +462,12 @@ export default function EventClient({ event }: { event: EventData }) {
                   <input
                     id="email"
                     type="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     required
                     className="border-b border-neutral-300 bg-transparent py-2 transition-colors outline-none focus:border-black dark:border-neutral-700 dark:focus:border-white"
                     placeholder="name@example.com"
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div className="grid gap-2">
@@ -419,15 +480,19 @@ export default function EventClient({ event }: { event: EventData }) {
                   <input
                     id="phone"
                     type="tel"
+                    value={formData.phone}
+                    onChange={handleInputChange}
                     className="border-b border-neutral-300 bg-transparent py-2 transition-colors outline-none focus:border-black dark:border-neutral-700 dark:focus:border-white"
                     placeholder="+123..."
+                    disabled={isSubmitting}
                   />
                 </div>
                 <Button
                   type="submit"
-                  className="mt-4 w-full rounded-none bg-black py-6 font-bold tracking-widest text-white uppercase hover:bg-neutral-800 dark:bg-white dark:text-black"
+                  disabled={isSubmitting}
+                  className="mt-4 w-full rounded-none bg-black py-6 font-bold tracking-widest text-white uppercase hover:bg-neutral-800 disabled:opacity-50 dark:bg-white dark:text-black"
                 >
-                  Complete Request
+                  {isSubmitting ? "Processing..." : "Complete Request"}
                 </Button>
               </form>
             </>
