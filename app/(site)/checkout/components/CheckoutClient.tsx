@@ -33,7 +33,7 @@ export default function CheckoutClient() {
   const [name, setName] = useState(searchParams.get("name") || "");
   const [phone, setPhone] = useState(searchParams.get("phone") || "");
   const [paymentSuccess, setPaymentSuccess] = useState(false);
-  const [orderId] = useState(generateOrderId());
+  const [orderId] = useState(searchParams.get("orderId") || generateOrderId());
 
   if (!mounted) return null;
 
@@ -202,6 +202,12 @@ export default function CheckoutClient() {
             <div className="flex justify-between">
               <span className="text-neutral-300">Guests</span>
               <span className="font-bold">{guests}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-neutral-300">Order ID</span>
+              <span className="font-mono text-xs font-bold tracking-wider">
+                {orderId}
+              </span>
             </div>
             <div className="flex justify-between border-t border-white/20 pt-4 text-2xl">
               <span className="">Total</span>

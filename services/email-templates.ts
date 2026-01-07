@@ -10,6 +10,7 @@ export interface BookingDetails {
   guests: number;
   totalPrice: string; // Pre-formatted currency string
   paymentLink: string;
+  orderId: string;
 }
 
 const styles = {
@@ -78,6 +79,10 @@ export const generateCustomerEmail = (details: BookingDetails): string => {
         <div style="${styles.sectionTitle}">Reservation Details</div>
         <table width="100%" cellpadding="0" cellspacing="0">
           <tr>
+            <td style="padding: 5px 0; color: #666;">Order ID</td>
+            <td style="padding: 5px 0; font-weight: bold; text-align: right; font-family: monospace;">${details.orderId}</td>
+          </tr>
+          <tr>
             <td style="padding: 5px 0; color: #666;">Guests</td>
             <td style="padding: 5px 0; font-weight: bold; text-align: right;">${details.guests} Person${details.guests > 1 ? "s" : ""}</td>
           </tr>
@@ -127,6 +132,7 @@ export const generateAdminEmail = (details: BookingDetails): string => {
     
     <div style="background-color: #f8f8f8; padding: 20px; margin: 20px 0;">
       <h3 style="margin-top: 0; font-size: 16px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">Customer Information</h3>
+      <p style="margin: 5px 0;"><strong>Order ID:</strong> ${details.orderId}</p>
       <p style="margin: 5px 0;"><strong>Name:</strong> ${details.customerName}</p>
       <p style="margin: 5px 0;"><strong>Email:</strong> ${details.customerEmail}</p>
       <p style="margin: 5px 0;"><strong>Phone:</strong> ${details.customerPhone || "N/A"}</p>

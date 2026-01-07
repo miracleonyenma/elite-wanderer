@@ -5,6 +5,7 @@ import {
   generateCustomerEmail,
   generateAdminEmail,
 } from "@/services/email-templates";
+import { generateOrderId } from "@/utils/order-id";
 
 const ALLOWED_ORIGINS = [
   "https://theelitewanderer.com",
@@ -98,9 +99,12 @@ export async function POST(request: NextRequest) {
       ? `Approx. ${numericPrice.toLocaleString()}`
       : "Contact for Pricing";
 
+    // Generate Order ID
+    const orderId = generateOrderId();
+
     // Construct Payment Link
     // Construct Payment Links
-    const relativePaymentLink = `/checkout?type=event&slug=${eventId}&guests=${guests}&name=${encodeURIComponent(customer.name)}&email=${encodeURIComponent(customer.email)}&phone=${encodeURIComponent(customer.phone)}`;
+    const relativePaymentLink = `/checkout?type=event&slug=${eventId}&guests=${guests}&name=${encodeURIComponent(customer.name)}&email=${encodeURIComponent(customer.email)}&phone=${encodeURIComponent(customer.phone)}&orderId=${orderId}`;
     const absolutePaymentLink = `https://theelitewanderer.com${relativePaymentLink}`;
 
     // Use the relative link for the frontend response (cleaner redirect)
@@ -119,6 +123,7 @@ export async function POST(request: NextRequest) {
       guests,
       totalPrice: formattedTotal,
       paymentLink: absolutePaymentLink, // critical for email to be actionable
+      orderId,
     };
 
     const emailService = new MonitoringEmailService();
