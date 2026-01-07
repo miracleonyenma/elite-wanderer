@@ -10,6 +10,7 @@ export interface EventContactInfo {
   ticketCount: number;
   ticketPrice: string;
   totalCost: string;
+  orderId?: string;
 }
 
 /**
@@ -26,6 +27,7 @@ export const generateWhatsAppLink = ({
   ticketCount,
   ticketPrice,
   totalCost,
+  orderId,
 }: Omit<EventContactInfo, "contactEmail">): string => {
   const message = `Hi! I'm interested in attending *${eventTitle}* on ${eventDate} in ${eventLocation}.
 
@@ -36,6 +38,7 @@ Phone: ${customerPhone}
 Tickets: ${ticketCount}
 Price per Ticket: ${ticketPrice}
 Total Cost: ${totalCost}
+${orderId ? `Order ID: ${orderId}` : ""}
 
 Could you please provide information on how to complete the payment manually?`;
 
@@ -59,8 +62,9 @@ export const generateEmailLink = ({
   ticketCount,
   ticketPrice,
   totalCost,
+  orderId,
 }: Omit<EventContactInfo, "whatsappNumber">): string => {
-  const subject = `Booking Inquiry: ${eventTitle}`;
+  const subject = `Booking Inquiry: ${eventTitle} ${orderId ? `[${orderId}]` : ""}`;
 
   const body = `Hi,
 
@@ -73,6 +77,7 @@ Here are my booking details:
 - Tickets: ${ticketCount}
 - Price per Ticket: ${ticketPrice}
 - Total Cost: ${totalCost}
+${orderId ? `- Order ID: ${orderId}` : ""}
 
 Could you please provide information on how to complete the payment manually?
 

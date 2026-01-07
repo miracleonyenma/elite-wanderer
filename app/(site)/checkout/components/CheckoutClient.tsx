@@ -14,6 +14,7 @@ const PaystackButton = dynamic(
 import Image from "next/image";
 import Link from "next/link";
 import { generateWhatsAppLink, generateEmailLink } from "@/lib/contact-links";
+import { generateOrderId } from "@/utils/order-id";
 
 export default function CheckoutClient() {
   const searchParams = useSearchParams();
@@ -32,6 +33,7 @@ export default function CheckoutClient() {
   const [name, setName] = useState(searchParams.get("name") || "");
   const [phone, setPhone] = useState(searchParams.get("phone") || "");
   const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [orderId] = useState(generateOrderId());
 
   if (!mounted) return null;
 
@@ -62,7 +64,7 @@ export default function CheckoutClient() {
   const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "";
 
   const paystackConfig = {
-    reference: new Date().getTime().toString(),
+    reference: orderId,
     email,
     amount: amountInKobo,
     publicKey,
@@ -88,6 +90,11 @@ export default function CheckoutClient() {
           display_name: "Customer Name",
           variable_name: "customer_name",
           value: name,
+        },
+        {
+          display_name: "Order ID",
+          variable_name: "order_id",
+          value: orderId,
         },
       ],
     },
@@ -290,6 +297,7 @@ export default function CheckoutClient() {
                               ticketCount: guests,
                               ticketPrice: `₦${pricePerTicket.toLocaleString()}`,
                               totalCost: `₦${totalAmount.toLocaleString()}`,
+                              orderId,
                             });
                             window.open(link, "_blank");
                           }}
@@ -318,6 +326,7 @@ export default function CheckoutClient() {
                               ticketCount: guests,
                               ticketPrice: `₦${pricePerTicket.toLocaleString()}`,
                               totalCost: `₦${totalAmount.toLocaleString()}`,
+                              orderId,
                             });
                             window.open(link, "_blank");
                           }}
