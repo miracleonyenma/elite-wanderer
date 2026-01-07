@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
       : "Contact for Pricing";
 
     // Construct Payment Link
-    const paymentLink = `https://theelitewanderer.com/checkout?type=event&slug=${eventId}&guests=${guests}`;
+    const paymentLink = `/checkout?type=event&slug=${eventId}&guests=${guests}&name=${encodeURIComponent(customer.name)}&email=${encodeURIComponent(customer.email)}&phone=${encodeURIComponent(customer.phone)}`;
 
     const bookingDetails = {
       eventId,
@@ -127,7 +127,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(
-      { success: true, message: "Booking request processed" },
+      { success: true, message: "Booking request processed", paymentLink },
       {
         status: 200,
         headers: ALLOWED_ORIGINS.includes(origin) ? corsHeaders(origin) : {},

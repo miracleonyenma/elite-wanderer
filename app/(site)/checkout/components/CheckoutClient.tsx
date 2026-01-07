@@ -4,8 +4,13 @@ import { useSyncExternalStore, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { activeEvents } from "@/app/(site)/events-data";
 import { Button } from "@/components/ui/button";
-import { PaystackButton } from "react-paystack";
+import dynamic from "next/dynamic";
 import { toast } from "sonner";
+
+const PaystackButton = dynamic(
+  () => import("react-paystack").then((mod) => mod.PaystackButton),
+  { ssr: false },
+);
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,9 +27,9 @@ export default function CheckoutClient() {
     () => false,
   );
 
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState(searchParams.get("email") || "");
+  const [name, setName] = useState(searchParams.get("name") || "");
+  const [phone, setPhone] = useState(searchParams.get("phone") || "");
   const [paymentSuccess, setPaymentSuccess] = useState(false);
 
   if (!mounted) return null;
@@ -134,65 +139,65 @@ export default function CheckoutClient() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50 px-4 py-20 dark:bg-neutral-900">
-      <div className="mx-auto max-w-5xl overflow-hidden rounded-2xl bg-white shadow-xl dark:bg-neutral-800">
-        <div className="grid md:grid-cols-2">
-          {/* Event Summary Column */}
-          <div className="relative flex flex-col justify-between bg-neutral-900 p-8 text-white md:p-12">
-            <div className="absolute inset-0 z-0 opacity-40">
-              <Image
-                src={event.heroImage}
-                alt={event.title}
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-black/60" />
-            </div>
-
-            <div className="relative z-10">
-              <div className="mb-6 inline-block bg-theme-800 px-3 py-1 text-xs font-bold tracking-widest text-black uppercase">
-                Checkout
-              </div>
-              <h1 className="mb-2 font-heading text-3xl font-bold uppercase">
-                {event.title}
-              </h1>
-              <p className="font-light text-neutral-300">{event.date}</p>
-            </div>
-
-            <div className="relative z-10 mt-12 space-y-4 border-t border-white/20 pt-6">
-              <div className="flex justify-between">
-                <span className="text-neutral-300">Ticket Price</span>
-                <span className="font-bold">
-                  ₦{pricePerTicket.toLocaleString()}
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-neutral-300">Guests</span>
-                <span className="font-bold">{guests}</span>
-              </div>
-              <div className="flex justify-between border-t border-white/20 pt-4 text-xl">
-                <span className="">Total</span>
-                <span className="font-bold text-theme-800">
-                  ₦{totalAmount.toLocaleString()}
-                </span>
-              </div>
-            </div>
+    <div className="flex min-h-screen bg-white text-black dark:bg-black dark:text-white">
+      <div className="flex w-full flex-col md:flex-row">
+        {/* Event Summary Column */}
+        <div className="relative flex w-full flex-col justify-between bg-neutral-900 p-8 text-white md:w-1/2 md:p-20">
+          <div className="absolute inset-0 z-0 opacity-40">
+            <Image
+              src={event.heroImage}
+              alt={event.title}
+              fill
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-black/60" />
           </div>
 
-          {/* Payment Form Column */}
-          <div className="p-8 md:p-12">
-            <h2 className="mb-6 text-xl font-bold tracking-wider text-neutral-800 uppercase dark:text-white">
+          <div className="relative z-10">
+            <div className="mb-6 inline-block bg-theme-200 px-3 py-1 text-xs font-bold tracking-widest text-black uppercase">
+              Checkout
+            </div>
+            <h1 className="mb-2 font-heading text-4xl font-bold uppercase md:text-5xl">
+              {event.title}
+            </h1>
+            <p className="font-light text-neutral-300">{event.date}</p>
+          </div>
+
+          <div className="relative z-10 mt-12 space-y-4 border-t border-white/20 pt-6">
+            <div className="flex justify-between">
+              <span className="text-neutral-300">Ticket Price</span>
+              <span className="font-bold">
+                ₦{pricePerTicket.toLocaleString()}
+              </span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-neutral-300">Guests</span>
+              <span className="font-bold">{guests}</span>
+            </div>
+            <div className="flex justify-between border-t border-white/20 pt-4 text-2xl">
+              <span className="">Total</span>
+              <span className="font-bold text-theme-200">
+                ₦{totalAmount.toLocaleString()}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Payment Form Column */}
+        <div className="flex w-full items-center justify-center p-8 md:w-1/2 md:p-20">
+          <div className="w-full max-w-lg">
+            <h2 className="mb-8 font-heading text-3xl font-bold tracking-wider text-neutral-800 uppercase dark:text-white">
               Customer Details
             </h2>
 
-            <div className="space-y-4">
+            <div className="space-y-6">
               <div className="space-y-2">
                 <label className="text-xs font-bold tracking-widest text-neutral-500 uppercase">
                   Full Name
                 </label>
                 <input
                   type="text"
-                  className="w-full border-b border-neutral-300 bg-transparent py-2 transition-colors outline-none focus:border-black dark:border-neutral-700 dark:text-white dark:focus:border-white"
+                  className="w-full border-b border-neutral-300 bg-transparent py-4 text-lg transition-colors outline-none focus:border-black dark:border-neutral-700 dark:text-white dark:focus:border-white"
                   placeholder="John Doe"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -205,7 +210,7 @@ export default function CheckoutClient() {
                 </label>
                 <input
                   type="email"
-                  className="w-full border-b border-neutral-300 bg-transparent py-2 transition-colors outline-none focus:border-black dark:border-neutral-700 dark:text-white dark:focus:border-white"
+                  className="w-full border-b border-neutral-300 bg-transparent py-4 text-lg transition-colors outline-none focus:border-black dark:border-neutral-700 dark:text-white dark:focus:border-white"
                   placeholder="john@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -218,23 +223,18 @@ export default function CheckoutClient() {
                 </label>
                 <input
                   type="tel"
-                  className="w-full border-b border-neutral-300 bg-transparent py-2 transition-colors outline-none focus:border-black dark:border-neutral-700 dark:text-white dark:focus:border-white"
+                  className="w-full border-b border-neutral-300 bg-transparent py-4 text-lg transition-colors outline-none focus:border-black dark:border-neutral-700 dark:text-white dark:focus:border-white"
                   placeholder="+234..."
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
 
-              <div className="pt-8">
-                {/* 
-                            We only enable the button if fields are filled.
-                            Since react-paystack provides a button component, we wrap it or style it.
-                            We'll use component props to style it like our Button.
-                        */}
+              <div className="pt-12">
                 {pricePerTicket > 0 ? (
                   <PaystackButton
                     {...paystackConfig}
-                    className="w-full bg-black py-4 font-bold tracking-widest text-white uppercase transition-colors hover:bg-neutral-800 disabled:opacity-50 dark:bg-white dark:text-black"
+                    className="w-full bg-black py-6 font-bold tracking-widest text-white uppercase transition-colors hover:bg-neutral-800 disabled:opacity-50 dark:bg-white dark:text-black"
                     text={`Pay ₦${totalAmount.toLocaleString()}`}
                     disabled={!email || !name || !phone}
                     onSuccess={onSuccess}

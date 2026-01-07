@@ -8,6 +8,7 @@ import { useState } from "react";
 import { EventCountdown } from "@/components/Site/EventCountdown";
 import { BrandReviews } from "@/components/Site/BrandReviews";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 // unused imports removed
 import {
   Carousel,
@@ -32,6 +33,7 @@ import {
 import { motion } from "motion/react";
 
 export default function EventClient({ event }: { event: EventData }) {
+  const router = useRouter();
   const [guests, setGuests] = useState(1);
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [bookingStep, setBookingStep] = useState<"form" | "success">("form");
@@ -77,11 +79,20 @@ export default function EventClient({ event }: { event: EventData }) {
         }),
       });
 
+      const data = await response.json();
+
       if (!response.ok) {
         throw new Error("Failed to submit booking");
       }
 
       setBookingStep("success");
+
+      if (data.paymentLink) {
+        toast.success("Redirecting to secure payment...");
+        setTimeout(() => {
+          router.push(data.paymentLink);
+        }, 2000);
+      }
     } catch (error) {
       console.error("Booking error:", error);
       toast.error("Something went wrong. Please try again or contact support.");
