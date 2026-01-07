@@ -7,6 +7,7 @@ export interface EventData {
   targetDate?: string; // ISO date string for countdown (e.g., "2026-02-07T14:00:00")
   location: string;
   heroImage: string;
+  heroVideo?: string; // Optional video URL for hero background
   description: string; // Short description for the list page
   introduction: {
     title: string;
@@ -65,6 +66,7 @@ export const activeEvents: EventData[] = [
     targetDate: "2026-02-07T14:00:00",
     location: "Lagos",
     heroImage: "/images/jfa-long-island-87-15664711/2200xxs.jpg", // Using the image from the existing page
+    heroVideo: "/videos/5167964-hd_1080_1920_30fps.mp4",
     description:
       "Valentine experience that flows effortlessly from an elegant sea-front dining moment into a serene sunset yacht sail across the Lagos Lagoon, concluding with an intimate after-sail social lounge at the Lagos Motor Boat Club. Designed for couples and refined socialites, the experience blends fine dining, scenic sailing, and relaxed conversations in a setting of understated luxury.",
     introduction: {

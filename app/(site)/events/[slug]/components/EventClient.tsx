@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/aevr/button";
 import { useState } from "react";
 import { EventCountdown } from "@/components/Site/EventCountdown";
+import { BrandReviews } from "@/components/Site/BrandReviews";
 // unused imports removed
 import {
   Carousel,
@@ -51,13 +52,26 @@ export default function EventClient({ event }: { event: EventData }) {
     <div className="bg-white text-black dark:bg-black dark:text-white">
       {/* 1. HERO SECTION */}
       <section className="relative h-[80vh] w-full overflow-hidden">
-        <Image
-          src={event.heroImage}
-          alt={event.title}
-          fill
-          priority
-          className="object-cover"
-        />
+        {/* Video or Image Background */}
+        {event.heroVideo ? (
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute top-0 left-0 h-full w-full object-cover"
+          >
+            <source src={event.heroVideo} type="video/mp4" />
+          </video>
+        ) : (
+          <Image
+            src={event.heroImage}
+            alt={event.title}
+            fill
+            priority
+            className="object-cover"
+          />
+        )}
         <div className="absolute inset-0 bg-black/40" />
         <div className="absolute inset-0 bg-linear-to-t from-black via-transparent to-transparent opacity-80" />
 
@@ -485,7 +499,10 @@ export default function EventClient({ event }: { event: EventData }) {
         </section>
       )}
 
-      {/* 10. FAQ */}
+      {/* 10. TRUSTED PARTNERS */}
+      <BrandReviews />
+
+      {/* 11. FAQ */}
       {event.faq.length > 0 && (
         <section className="mx-auto max-w-3xl px-6 py-20">
           <h2 className="mb-12 text-center font-heading text-3xl font-bold uppercase">
