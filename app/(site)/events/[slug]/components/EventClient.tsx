@@ -200,6 +200,19 @@ export default function EventClient({ event }: { event: EventData }) {
               </p>
             </div>
           )}
+
+          {/* Countdown in Guidelines */}
+          {event.targetDate && (
+            <div className="mt-8 border-t border-neutral-200 pt-8 dark:border-neutral-700">
+              <p className="mb-4 text-center text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase">
+                Event Starts In
+              </p>
+              <EventCountdown
+                targetDate={event.targetDate}
+                className="flex justify-center"
+              />
+            </div>
+          )}
         </div>
       </section>
 
@@ -272,6 +285,15 @@ export default function EventClient({ event }: { event: EventData }) {
                 <span className="font-heading text-xl font-bold">
                   {event.date}
                 </span>
+                {/* Mini countdown */}
+                {event.targetDate && (
+                  <div className="mt-2">
+                    <EventCountdown
+                      targetDate={event.targetDate}
+                      className="origin-left scale-75"
+                    />
+                  </div>
+                )}
               </div>
               <div className="flex w-full flex-1 flex-col items-start border-b border-neutral-200 pb-4 md:border-r md:border-b-0 md:pr-4 md:pb-0 dark:border-neutral-700">
                 <span className="mb-1 text-xs tracking-wider text-neutral-400 uppercase">
