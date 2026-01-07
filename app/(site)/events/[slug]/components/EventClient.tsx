@@ -156,7 +156,7 @@ export default function EventClient({ event }: { event: EventData }) {
       )}
 
       {/* 4. EVENT GUIDELINES */}
-      <section className="mx-auto max-w-7xl px-6 py-20 md:px-12 lg:px-24">
+      <section className="mx-auto max-w-392 px-6 py-20 md:px-12 lg:px-24">
         {/* Guidelines Highlights Grid */}
         {event.guidelineHighlights && (
           <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -195,7 +195,7 @@ export default function EventClient({ event }: { event: EventData }) {
         )}
 
         {/* Removed colorful blocks, replaced with clean layout */}
-        <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-8 md:p-12 dark:border-neutral-800 dark:bg-neutral-900">
+        <div className="mx-auto max-w-6xl rounded-lg border border-neutral-200 bg-neutral-50 p-8 md:p-12 dark:border-neutral-800 dark:bg-neutral-900">
           <h3 className="mb-8 border-b pb-4 text-sm font-bold tracking-widest text-neutral-500 uppercase dark:border-neutral-700">
             {event.guidelines.title}
           </h3>
