@@ -164,7 +164,7 @@ export default function EventClient({ event }: { event: EventData }) {
               <div
                 key={idx}
                 className={cn(
-                  "relative flex min-h-[240px] flex-col justify-end overflow-hidden p-8",
+                  "relative flex min-h-[440px] flex-col justify-end overflow-hidden p-8",
                   highlight.image
                     ? "text-white"
                     : "bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white",
