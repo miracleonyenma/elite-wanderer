@@ -1,7 +1,6 @@
 // ./src/services/email.service.ts
 
-import nodemailer from "nodemailer";
-import { Transporter } from "nodemailer";
+import nodemailer, { Transporter } from "nodemailer";
 import { Attachment } from "nodemailer/lib/mailer/index.js";
 
 // Event types for monitoring
@@ -83,69 +82,55 @@ export class MonitoringEmailService {
     });
   }
 
-  // Get color and icon based on event type
+  // Get modern palette based on event type
   private getEventStyling(eventType: EventType): {
     color: string;
-    icon: string;
-    bgColor: string;
+    label: string;
   } {
     switch (eventType) {
       case EventType.ERROR:
-        return {
-          color: "#dc3545",
-          bgColor: "#f8d7da",
-          icon: "⛔",
-        };
+        return { color: "#E11D48", label: "Error" }; // Rose Red
       case EventType.SUCCESS:
-        return {
-          color: "#28a745",
-          bgColor: "#d4edda",
-          icon: "✅",
-        };
+        return { color: "#16A34A", label: "Success" }; // Green
       case EventType.WARNING:
-        return {
-          color: "#ffc107",
-          bgColor: "#fff3cd",
-          icon: "⚠️",
-        };
+        return { color: "#D97706", label: "Warning" }; // Amber
       case EventType.INFO:
       default:
-        return {
-          color: "#17a2b8",
-          bgColor: "#d1ecf1",
-          icon: "ℹ️",
-        };
+        return { color: "#2563EB", label: "Info" }; // Blue
     }
   }
 
-  // Generate impact badge
+  // Generate a minimal pill badge for impact
   private getImpactBadge(impactLevel?: ImpactLevel): string {
     if (!impactLevel) return "";
 
-    const styles: Record<ImpactLevel, { color: string; bgColor: string }> = {
-      [ImpactLevel.CRITICAL]: { color: "white", bgColor: "#721c24" },
-      [ImpactLevel.HIGH]: { color: "white", bgColor: "#dc3545" },
-      [ImpactLevel.MEDIUM]: { color: "black", bgColor: "#ffc107" },
-      [ImpactLevel.LOW]: { color: "white", bgColor: "#6c757d" },
+    const styles: Record<ImpactLevel, { bg: string; text: string }> = {
+      [ImpactLevel.CRITICAL]: { bg: "#991B1B", text: "#ffffff" },
+      [ImpactLevel.HIGH]: { bg: "#DC2626", text: "#ffffff" },
+      [ImpactLevel.MEDIUM]: { bg: "#F59E0B", text: "#ffffff" },
+      [ImpactLevel.LOW]: { bg: "#E5E7EB", text: "#374151" },
     };
 
     const style = styles[impactLevel];
     return `
       <span style="
-        background-color: ${style.bgColor};
-        color: ${style.color};
-        padding: 3px 8px;
-        border-radius: 4px;
-        font-size: 12px;
-        font-weight: bold;
-        margin-left: 10px;
+        background-color: ${style.bg};
+        color: ${style.text};
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-left: 8px;
+        vertical-align: middle;
       ">
-        ${impactLevel.toUpperCase()}
+        ${impactLevel}
       </span>
     `;
   }
 
-  // Format JSON for display
+  // Format JSON as a clean properties list
   private formatJSON(json: Record<string, unknown>): string {
     if (!json || Object.keys(json).length === 0) return "";
 
@@ -155,29 +140,24 @@ export class MonitoringEmailService {
         typeof value === "object" ? JSON.stringify(value, null, 2) : value;
 
       rows += `
-        <tr>
-          <td style="padding: 8px; border: 1px solid #ddd; font-weight: bold;">${key}</td>
-          <td style="padding: 8px; border: 1px solid #ddd; font-family: monospace;">${displayValue}</td>
-        </tr>
+        <div style="border-bottom: 1px solid #f0f0f0; padding: 10px 0;">
+          <dt style="font-size: 11px; text-transform: uppercase; color: #888; font-weight: 600; margin-bottom: 4px;">${key}</dt>
+          <dd style="margin: 0; font-family: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace; font-size: 13px; color: #333; word-break: break-all;">${displayValue}</dd>
+        </div>
       `;
     }
 
     return `
-      <table style="width: 100%; border-collapse: collapse; margin-top: 20px; margin-bottom: 20px;">
-        <thead>
-          <tr>
-            <th style="padding: 8px; background-color: #f8f9fa; border: 1px solid #ddd; text-align: left;">Key</th>
-            <th style="padding: 8px; background-color: #f8f9fa; border: 1px solid #ddd; text-align: left;">Value</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div style="background-color: #fafafa; border-radius: 8px; padding: 16px; margin-top: 24px;">
+        <h4 style="margin: 0 0 12px 0; font-size: 12px; color: #555; text-transform: uppercase; letter-spacing: 0.5px;">Event Metadata</h4>
+        <dl style="margin: 0;">
           ${rows}
-        </tbody>
-      </table>
+        </dl>
+      </div>
     `;
   }
 
-  // Create HTML template for email
+  // Create Minimal HTML template
   private createEmailTemplate(payload: MonitoringEmailPayload): string {
     const {
       subject,
@@ -193,64 +173,95 @@ export class MonitoringEmailService {
     const impactBadge = this.getImpactBadge(impactLevel);
     const metadataSection = metadata ? this.formatJSON(metadata) : "";
     const appSource = sourceApplication || "System";
+    const formattedDate = timestamp.toLocaleString("en-US", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
 
     return `
       <!DOCTYPE html>
       <html>
         <head>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <style>
-            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
-            .container { max-width: 650px; margin: 0 auto; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; }
-            .header { background-color: ${
-              styling.bgColor
-            }; padding: 20px; border-bottom: 5px solid ${styling.color}; }
-            .title { display: flex; align-items: center; margin: 0; }
-            .event-type { font-size: 14px; font-weight: bold; background-color: ${
-              styling.color
-            }; color: white; padding: 4px 8px; border-radius: 4px; margin-right: 10px; }
-            .content { padding: 20px; background-color: white; }
-            .message { background-color: #f8f9fa; border-left: 4px solid ${
-              styling.color
-            }; padding: 15px; margin-bottom: 20px; }
-            .metadata { background-color: #f8f9fa; padding: 15px; border-radius: 4px; margin-top: 20px; }
-            .footer { text-align: center; padding: 15px; color: #6c757d; background-color: #f8f9fa; font-size: 12px; }
-            .info-row { display: flex; margin-bottom: 10px; font-size: 13px; color: #666; }
-            .info-label { font-weight: bold; width: 100px; }
-            .code { font-family: monospace; background-color: #f8f9fa; padding: 2px 4px; border-radius: 2px; }
+            body { 
+              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+              background-color: #f4f4f7; 
+              color: #4a4a4a; 
+              margin: 0; 
+              padding: 0; 
+              -webkit-text-size-adjust: none; 
+            }
+            .container { 
+              max-width: 600px; 
+              margin: 40px auto; 
+              background: #ffffff; 
+              border-radius: 8px; 
+              overflow: hidden; 
+              box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            }
+            .accent-bar {
+              height: 4px;
+              width: 100%;
+              background-color: ${styling.color};
+            }
+            .content { 
+              padding: 40px; 
+            }
+            .header-meta {
+              display: flex;
+              justify-content: space-between;
+              font-size: 12px;
+              color: #888;
+              margin-bottom: 20px;
+              text-transform: uppercase;
+              letter-spacing: 0.5px;
+            }
+            h1 {
+              font-size: 22px;
+              font-weight: 700;
+              color: #1a1a1a;
+              margin: 0 0 24px 0;
+              line-height: 1.4;
+            }
+            .message-body {
+              font-size: 16px;
+              line-height: 1.6;
+              color: #374151;
+            }
+            .footer { 
+              text-align: center; 
+              padding: 24px; 
+              color: #9ca3af; 
+              font-size: 12px; 
+            }
           </style>
         </head>
         <body>
           <div class="container">
-            <div class="header">
-              <div class="title">
-                <span style="font-size: 24px; margin-right: 10px;">${
-                  styling.icon
-                }</span>
-                <h2 style="margin: 0;">${subject} ${impactBadge}</h2>
-              </div>
-              <div style="margin-top: 10px;">
-                <span class="event-type">${eventType.toUpperCase()}</span>
-              </div>
-            </div>
+            <div class="accent-bar"></div>
             <div class="content">
-              <div class="info-row">
-                <span class="info-label">Source:</span>
+              <div class="header-meta">
                 <span>${appSource}</span>
+                <span>${formattedDate}</span>
               </div>
-              <div class="info-row">
-                <span class="info-label">Time:</span>
-                <span>${timestamp.toLocaleString()}</span>
-              </div>
+
+              <h1>
+                <span style="color: ${styling.color}; margin-right: 6px;">●</span>
+                ${subject} 
+                ${impactBadge}
+              </h1>
               
-              <div class="message">
+              <div class="message-body">
                 ${content}
               </div>
               
               ${metadataSection}
             </div>
-            <div class="footer">
-              <p>This is an automated monitoring email - please do not reply</p>
-            </div>
+          </div>
+          
+          <div class="footer">
+            <p style="margin: 0;">Automated Notification • ${styling.label} Level Event</p>
           </div>
         </body>
       </html>
@@ -271,7 +282,6 @@ export class MonitoringEmailService {
   // Send email with monitoring information
   async sendMonitoringEmail(payload: MonitoringEmailPayload): Promise<void> {
     try {
-      // If custom credentials provided, reinitialize transporter
       if (payload.customCredentials) {
         this.initializeTransporter(payload.customCredentials);
       }
@@ -288,14 +298,15 @@ export class MonitoringEmailService {
           payload.customCredentials?.user || this.defaultConfig.user
         }>`,
         to,
-        subject: `[${payload.eventType.toUpperCase()}] ${payload.subject}`,
+        subject: `${
+          payload.eventType === EventType.ERROR ? "🚨" : ""
+        } ${payload.subject}`,
         html: htmlTemplate,
         attachments: payload.attachments || [],
       };
 
       await this.transporter.sendMail(mailOptions);
 
-      // If using custom credentials, reset to default transporter after sending
       if (payload.customCredentials) {
         this.initializeTransporter();
       }
@@ -305,7 +316,7 @@ export class MonitoringEmailService {
     }
   }
 
-  // Helper methods for common event types
+  // Helper methods
   async sendErrorAlert(
     options: Omit<MonitoringEmailPayload, "eventType">,
   ): Promise<void> {

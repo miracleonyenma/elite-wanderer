@@ -42,6 +42,7 @@ export interface EventData {
     capacity?: string;
     ticketsAvailable?: string;
     price?: string;
+    priceValue?: number; // Numeric price in kobo/minor units or base currency? Let's assume base currency (Naira) for clarity, Paystack expects kobo usually but we can convert. Let's store as bare number.
   };
   faq: {
     question: string;
@@ -131,6 +132,8 @@ export const activeEvents: EventData[] = [
       link: "#", // Placeholder
       capacity: "200 tickets",
       ticketsAvailable: "80",
+      price: "₦1,200,000",
+      priceValue: 1200000,
     },
     faq: [
       {
