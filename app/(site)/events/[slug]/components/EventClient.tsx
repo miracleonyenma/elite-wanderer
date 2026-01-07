@@ -123,38 +123,6 @@ export default function EventClient({ event }: { event: EventData }) {
         </div>
       </section>
 
-      {/* 3. PICTURE GALLERY */}
-      {event.gallery.length > 0 && (
-        <section className="py-12">
-          {/* Reusing a similar style to the home page Personalized Travel carousel */}
-          <Carousel className="w-full">
-            <CarouselContent className="ml-0 gap-0">
-              {event.gallery.map((img, idx) => (
-                <CarouselItem
-                  key={idx}
-                  className="pl-0 md:basis-2/3 lg:basis-3/5"
-                >
-                  <div className="group relative h-[500px] w-full cursor-pointer overflow-hidden border-r border-white/10">
-                    <Image
-                      src={img}
-                      alt={`Gallery ${idx}`}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-black/20 transition-colors duration-500 group-hover:bg-black/40" />
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="left-4 border-none bg-white/10 text-white hover:bg-white hover:text-black" />
-            <CarouselNext className="right-4 border-none bg-white/10 text-white hover:bg-white hover:text-black" />
-          </Carousel>
-          <p className="mt-8 text-center text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase">
-            Event Gallery
-          </p>
-        </section>
-      )}
-
       {/* 4. EVENT GUIDELINES */}
       <section className="mx-auto max-w-392 px-6 py-20 md:px-12 lg:px-24">
         {/* Guidelines Highlights Grid */}
@@ -222,7 +190,7 @@ export default function EventClient({ event }: { event: EventData }) {
       </section>
 
       {/* 5. MESSAGE FROM THE CURATOR */}
-      <section className="bg-[#6B8DD6] px-6 py-24 text-white dark:bg-[#4A6BC2]">
+      <section className="bg-theme-800 px-6 py-24 text-white dark:bg-theme-800">
         <div className="mx-auto max-w-4xl text-center">
           {/* Curator Photo */}
           {event.curatorMessage.image && (
@@ -324,7 +292,7 @@ export default function EventClient({ event }: { event: EventData }) {
                 )}
                 <Button
                   onClick={handleSearch}
-                  className="w-full rounded-none bg-[#4ADE80] px-12 py-6 font-bold tracking-wider text-black uppercase hover:bg-[#22c55e] md:w-auto"
+                  className="w-full rounded-none px-12 py-6 font-bold tracking-wider uppercase md:w-auto"
                 >
                   {event.booking.link && event.booking.link !== "#"
                     ? "Book Now"
@@ -340,13 +308,15 @@ export default function EventClient({ event }: { event: EventData }) {
 
             <div className="flex flex-wrap justify-center gap-6 text-xs font-bold tracking-widest text-neutral-400 uppercase">
               <span className="flex items-center gap-2">
-                <span className="text-[#4ADE80]">✓</span> Instant Confirmation
+                <span className="text-thebg-theme-800">✓</span> Instant
+                Confirmation
               </span>
               <span className="flex items-center gap-2">
-                <span className="text-[#4ADE80]">✓</span> Authentic Reviews
+                <span className="text-thebg-theme-800">✓</span> Authentic
+                Reviews
               </span>
               <span className="flex items-center gap-2">
-                <span className="text-[#4ADE80]">✓</span> 100% Secure
+                <span className="text-thebg-theme-800">✓</span> 100% Secure
               </span>
             </div>
           </div>
@@ -427,7 +397,7 @@ export default function EventClient({ event }: { event: EventData }) {
             </>
           ) : (
             <div className="flex flex-col items-center justify-center py-8 text-center">
-              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-[#4ADE80]">
+              <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-theme-800">
                 <span className="text-3xl text-black">✓</span>
               </div>
               <h3 className="mb-2 font-heading text-2xl font-bold uppercase">
@@ -484,7 +454,38 @@ export default function EventClient({ event }: { event: EventData }) {
         </section>
       )}
 
-      {/* 9. FAQ */}
+      {/* 9. PICTURE GALLERY */}
+      {event.gallery.length > 0 && (
+        <section className="py-12">
+          <Carousel className="w-full">
+            <CarouselContent className="ml-0 gap-0">
+              {event.gallery.map((img, idx) => (
+                <CarouselItem
+                  key={idx}
+                  className="pl-0 md:basis-2/3 lg:basis-3/5"
+                >
+                  <div className="group relative h-[500px] w-full cursor-pointer overflow-hidden border-r border-white/10">
+                    <Image
+                      src={img}
+                      alt={`Gallery ${idx}`}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/20 transition-colors duration-500 group-hover:bg-black/40" />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="left-4 border-none bg-white/10 text-white hover:bg-white hover:text-black" />
+            <CarouselNext className="right-4 border-none bg-white/10 text-white hover:bg-white hover:text-black" />
+          </Carousel>
+          <p className="mt-8 text-center text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase">
+            Event Gallery
+          </p>
+        </section>
+      )}
+
+      {/* 10. FAQ */}
       {event.faq.length > 0 && (
         <section className="mx-auto max-w-3xl px-6 py-20">
           <h2 className="mb-12 text-center font-heading text-3xl font-bold uppercase">
