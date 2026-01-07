@@ -342,7 +342,7 @@ export default function EventClient({ event }: { event: EventData }) {
       )}
 
       {/* 7. BOOKING WIDGET */}
-      <section className="relative z-10 -mt-20 bg-white px-6 py-24 text-center dark:bg-neutral-950">
+      <section className="relative z-10 bg-white px-6 py-24 text-center dark:bg-neutral-950">
         <div className="mx-auto max-w-4xl">
           <div className="flex flex-col items-center rounded-sm border border-neutral-100 bg-white p-8 shadow-2xl dark:border-neutral-800 dark:bg-neutral-900">
             <h2 className="mb-8 text-sm font-bold tracking-[0.2em] text-neutral-500 uppercase">

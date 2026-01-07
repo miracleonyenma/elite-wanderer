@@ -284,6 +284,12 @@ export default function CheckoutClient() {
                               eventDate: event.date,
                               eventLocation: event.location,
                               whatsappNumber: event.contact.whatsappNumber,
+                              customerName: name,
+                              customerEmail: email,
+                              customerPhone: phone,
+                              ticketCount: guests,
+                              ticketPrice: `₦${pricePerTicket.toLocaleString()}`,
+                              totalCost: `₦${totalAmount.toLocaleString()}`,
                             });
                             window.open(link, "_blank");
                           }}
@@ -306,6 +312,12 @@ export default function CheckoutClient() {
                               eventDate: event.date,
                               eventLocation: event.location,
                               contactEmail: event.contact.email,
+                              customerName: name,
+                              customerEmail: email,
+                              customerPhone: phone,
+                              ticketCount: guests,
+                              ticketPrice: `₦${pricePerTicket.toLocaleString()}`,
+                              totalCost: `₦${totalAmount.toLocaleString()}`,
                             });
                             window.open(link, "_blank");
                           }}
