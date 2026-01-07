@@ -294,7 +294,7 @@ export class MonitoringEmailService {
       const htmlTemplate = this.createEmailTemplate(payload);
 
       const mailOptions = {
-        from: `"System Monitor" <${
+        from: `The Elite Wanderer <${
           payload.customCredentials?.user || this.defaultConfig.user
         }>`,
         to,
