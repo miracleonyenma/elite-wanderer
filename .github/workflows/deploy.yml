@@ -1,0 +1,46 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Usage
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 📦 Install PNPM
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: 📦 Install Dependencies
+        run: pnpm install
+
+      - name: 🔨 Build Project
+        run: pnpm run build
+        env:
+          NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY: ${{ secrets.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY }}
+
+      - name: 📂 Sync files (FTP)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./out/
+          server-dir: ./public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**

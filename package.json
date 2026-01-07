@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev -p 3098",
     "build": "next build",
+    "build:zip": "next build && zip -r out.zip out",
     "start": "next start",
     "lint": "eslint"
   },

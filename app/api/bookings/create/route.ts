@@ -16,8 +16,10 @@ const ALLOWED_ORIGINS = [
 const corsHeaders = (origin: string) => {
   return {
     "Access-Control-Allow-Origin": origin,
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers":
+      "Content-Type, Authorization, X-Requested-With",
+    "Access-Control-Allow-Credentials": "true",
   };
 };
 
@@ -27,14 +29,19 @@ export async function OPTIONS(request: NextRequest) {
   // Check if origin is allowed
   if (ALLOWED_ORIGINS.includes(origin)) {
     return new NextResponse(null, {
-      status: 200,
+      status: 204,
       headers: corsHeaders(origin),
     });
   }
 
   return new NextResponse(null, {
-    status: 403,
-    statusText: "Forbidden",
+    status: 204,
+    headers: {
+      "Access-Control-Allow-Origin": origin,
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+      "Access-Control-Allow-Headers":
+        "Content-Type, Authorization, X-Requested-With",
+    },
   });
 }
 
@@ -92,7 +99,13 @@ export async function POST(request: NextRequest) {
       : "Contact for Pricing";
 
     // Construct Payment Link
-    const paymentLink = `/checkout?type=event&slug=${eventId}&guests=${guests}&name=${encodeURIComponent(customer.name)}&email=${encodeURIComponent(customer.email)}&phone=${encodeURIComponent(customer.phone)}`;
+    // Construct Payment Links
+    const relativePaymentLink = `/checkout?type=event&slug=${eventId}&guests=${guests}&name=${encodeURIComponent(customer.name)}&email=${encodeURIComponent(customer.email)}&phone=${encodeURIComponent(customer.phone)}`;
+    const absolutePaymentLink = `https://theelitewanderer.com${relativePaymentLink}`;
+
+    // Use the relative link for the frontend response (cleaner redirect)
+    // Use the absolute link for the email (must work outside the app)
+    const paymentLink = relativePaymentLink;
 
     const bookingDetails = {
       eventId,
@@ -105,7 +118,7 @@ export async function POST(request: NextRequest) {
       customerPhone: customer.phone,
       guests,
       totalPrice: formattedTotal,
-      paymentLink,
+      paymentLink: absolutePaymentLink, // critical for email to be actionable
     };
 
     const emailService = new MonitoringEmailService();
