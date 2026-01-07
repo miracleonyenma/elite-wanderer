@@ -27,9 +27,11 @@ export interface EventData {
     image?: string;
     link?: string;
   }[];
-  furtherInfo: {
+  curatorMessage: {
+    quote: string;
+    name: string;
     title: string;
-    content: string;
+    image?: string;
   };
   booking: {
     title: string;
@@ -114,10 +116,11 @@ export const activeEvents: EventData[] = [
         image: "/images/pexels-freestockpro-1008155.webp",
       },
     ],
-    furtherInfo: {
-      title: "FURTHER INFORMATION",
-      content:
-        "Guests will enjoy a curated dining experience, sunset sailing across the lagoon, onboard refreshments, and an after-sail social lounge designed for relaxed conversations and elegant connections. This is a slow-paced, premium experience focused on atmosphere, romance, and social ease rather than high energy or crowds.",
+    curatorMessage: {
+      quote:
+        "We created Red & Bougie to capture the essence of Valentine's Day - romance, elegance, and the simple joy of shared moments. From the first course at the waterfront to the gentle sway of the yacht at sunset, every detail has been crafted with intention. This isn't just an event; it's a memory in the making.",
+      name: "The Elite Wanderer Team",
+      title: "Event Curators",
     },
     booking: {
       title: "TICKET BOOKING",
@@ -206,10 +209,11 @@ export const activeEvents: EventData[] = [
         image: "/images/pexels-lamkien-35255292.webp",
       },
     ],
-    furtherInfo: {
-      title: "FURTHER INFORMATION",
-      content:
-        "Guests will enjoy guided reflection, light movement, relaxed lounge moments, and a premium Easter brunch designed to encourage thoughtful conversations. The experience balances wellness and social connection without being overly spiritual, making it accessible and refined.",
+    curatorMessage: {
+      quote:
+        "Easter Escape was born from a simple belief - that stillness and intention can be the greatest luxuries. In a world that moves so fast, we wanted to create a space where guests could pause, breathe, and reconnect with themselves and others in a setting of calm beauty.",
+      name: "The Elite Wanderer Team",
+      title: "Event Curators",
     },
     booking: {
       title: "TICKET BOOKING",
@@ -301,10 +305,11 @@ export const activeEvents: EventData[] = [
         image: "/images/pexels-freestockpro-1008155.webp",
       },
     ],
-    furtherInfo: {
-      title: "FURTHER INFORMATION",
-      content:
-        "Guests can expect signature summer drinks, light bites, live DJ sets, and multiple social zones for relaxed interaction. The experience is intentionally unstructured, allowing conversations, networking, and organic connections to flow naturally in a high-energy yet tasteful setting.",
+    curatorMessage: {
+      quote:
+        "Summer Social is our love letter to Lagos energy. We wanted to bottle that feeling of a perfect summer evening - good music, great drinks, and even better company. It's where connections happen naturally and every conversation could lead to something meaningful.",
+      name: "The Elite Wanderer Team",
+      title: "Event Curators",
     },
     booking: {
       title: "TICKET BOOKING",
@@ -390,10 +395,11 @@ export const activeEvents: EventData[] = [
         image: "/images/pexels-code-mnml-185553186-35205820.webp",
       },
     ],
-    furtherInfo: {
-      title: "FURTHER INFORMATION",
-      content:
-        "Children participate in age-group polo matches and skill clinics under professional guidance, while parents enjoy champagne lounges, lifestyle showcases, and relaxed networking. The day concludes with awards, recognition moments, and an elegant social close, designed to honour both performance and family legacy.",
+    curatorMessage: {
+      quote:
+        "Junior Elite Polo represents our commitment to legacy - where young riders learn the sport of kings while their parents build connections that last. It's about family, tradition, and passing on a love for the extraordinary to the next generation.",
+      name: "The Elite Wanderer Team",
+      title: "Event Curators",
     },
     booking: {
       title: "TICKET BOOKING",

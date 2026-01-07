@@ -221,15 +221,40 @@ export default function EventClient({ event }: { event: EventData }) {
         </div>
       </section>
 
-      {/* 5. FURTHER INFORMATION */}
-      <section className="bg-white px-6 py-20 dark:bg-black">
+      {/* 5. MESSAGE FROM THE CURATOR */}
+      <section className="bg-[#6B8DD6] px-6 py-24 text-white dark:bg-[#4A6BC2]">
         <div className="mx-auto max-w-4xl text-center">
-          <span className="mb-6 block text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase">
-            {event.furtherInfo.title}
-          </span>
-          <p className="text-lg leading-relaxed font-light text-neutral-600 md:text-xl dark:text-neutral-300">
-            {event.furtherInfo.content}
-          </p>
+          {/* Curator Photo */}
+          {event.curatorMessage.image && (
+            <div className="mb-8 flex justify-center">
+              <div className="relative h-24 w-24 overflow-hidden rounded-full border-4 border-white/30">
+                <Image
+                  src={event.curatorMessage.image}
+                  alt={event.curatorMessage.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Quote */}
+          <blockquote className="mb-8">
+            <p className="text-xl leading-relaxed font-light md:text-2xl lg:text-3xl">
+              &ldquo;{event.curatorMessage.quote}&rdquo;
+            </p>
+          </blockquote>
+
+          {/* Attribution */}
+          <div className="space-y-1">
+            <p className="text-xs font-bold tracking-[0.2em] uppercase opacity-70">
+              A message from
+            </p>
+            <p className="font-heading text-lg font-bold">
+              {event.curatorMessage.name}
+            </p>
+            <p className="text-sm opacity-70">{event.curatorMessage.title}</p>
+          </div>
         </div>
       </section>
 
