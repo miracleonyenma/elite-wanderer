@@ -1,14 +1,21 @@
 # Enable URL Rewriting
 RewriteEngine On
+RewriteBase /
+
+# Protect data directories from direct access
+RewriteRule ^(about|contact|events|global-mobility|images|investments|legal|marketplace|platinum-club|travel|videos)/(.*\.txt|.*__next.*)$ - [F,L]
+
+# Remove trailing slashes (except for actual directories with index.html)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} (.+)/$
+RewriteRule ^ %1 [R=301,L]
 
 # Handle requests to directories - serve index.html if exists
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_FILENAME}/index.html -f
 RewriteRule ^(.*)$ $1/index.html [L]
 
-# Handle clean URLs - add .html extension
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+# Handle clean URLs - add .html extension (prioritize over directories)
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.*)$ $1.html [L]
 

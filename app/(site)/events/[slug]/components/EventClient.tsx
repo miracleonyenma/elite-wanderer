@@ -5,6 +5,7 @@ import { EventData } from "../../../events-data";
 import Image from "next/image";
 import { Button } from "@/components/ui/aevr/button";
 import { useState } from "react";
+import { EventCountdown } from "@/components/Site/EventCountdown";
 // unused imports removed
 import {
   Carousel,
@@ -80,6 +81,18 @@ export default function EventClient({ event }: { event: EventData }) {
             >
               {event.subtitle}
             </motion.p>
+          )}
+
+          {/* Countdown Timer */}
+          {event.targetDate && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="mb-8"
+            >
+              <EventCountdown targetDate={event.targetDate} />
+            </motion.div>
           )}
 
           <motion.div

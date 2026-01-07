@@ -4,6 +4,7 @@ export interface EventData {
   subtitle?: string;
   date: string;
   dateTime?: string;
+  targetDate?: string; // ISO date string for countdown (e.g., "2026-02-07T14:00:00")
   location: string;
   heroImage: string;
   description: string; // Short description for the list page
@@ -59,6 +60,7 @@ export const activeEvents: EventData[] = [
     subtitle: "From Shore to Sea: A Curated Valentine Journey",
     date: "7 February 2026",
     dateTime: "Saturday, 7 February 2026",
+    targetDate: "2026-02-07T14:00:00",
     location: "Lagos",
     heroImage: "/images/jfa-long-island-87-15664711/2200xxs.jpg", // Using the image from the existing page
     description:
@@ -90,8 +92,8 @@ export const activeEvents: EventData[] = [
           label: "Dress Code",
           value: "Elegant Chic / Resort Luxe / A Touch of Red",
         },
-        { label: "Capacity", value: "200 tickets" },
-        { label: "Tickets", value: "80" },
+        { label: "Tickets Left", value: "5 tickets" },
+        // { label: "Tickets", value: "80" },
       ],
 
       closing:
@@ -158,6 +160,7 @@ export const activeEvents: EventData[] = [
     subtitle: "Brunch & Blessings",
     date: "19 April 2026",
     dateTime: "Sunday, 19 April 2026",
+    targetDate: "2026-04-19T08:30:00",
     location: "Aimas Garden, Ikoyi",
     heroImage: "/images/pexels-lamkien-35255292.webp",
     description:
@@ -182,8 +185,8 @@ export const activeEvents: EventData[] = [
           value: "Wellness, brunch, and intimate conversations",
         },
         { label: "Dress Code", value: "Elegant Daywear / Soft Neutrals" },
-        { label: "Capacity", value: "Limited to preserve intimacy" },
-        { label: "Tickets", value: "Limited availability" },
+        { label: "Tickets Left", value: "Limited to preserve intimacy" },
+        // { label: "Tickets", value: "Limited availability" },
       ],
       closing:
         "This is a slow-paced, seated experience designed for ease and presence.",
@@ -249,6 +252,7 @@ export const activeEvents: EventData[] = [
     subtitle: "The Summer Edit",
     date: "9 August 2026",
     dateTime: "Sunday, 9 August 2026",
+    targetDate: "2026-08-09T16:00:00",
     location: "Amore Gardens, Lekki Phase I",
     heroImage: "/images/pexels-freestockpro-1008155.webp",
     description:
@@ -273,8 +277,11 @@ export const activeEvents: EventData[] = [
           value: "Open-air social, lounge-style networking",
         },
         { label: "Dress Code", value: "Summer Chic / Stylish Casual" },
-        { label: "Capacity", value: "Curated guest list, limited attendance" },
-        { label: "Tickets", value: "Limited availability" },
+        {
+          label: "Tickets Left",
+          value: "Curated guest list, limited attendance",
+        },
+        // { label: "Tickets", value: "Limited availability" },
       ],
       closing:
         "This is a standing and lounge-style experience designed for easy movement and conversation.",
@@ -363,7 +370,7 @@ export const activeEvents: EventData[] = [
           value: "Family-focused luxury sporting event",
         },
         { label: "Dress Code", value: "Smart Casual / Polo Chic" },
-        { label: "Capacity", value: "Invitation-led, limited attendance" },
+        { label: "Tickets Left", value: "Invitation-led, limited attendance" },
       ],
       closing:
         "This is a family-friendly, prestige-driven experience with dedicated spaces for children and parents.",
