@@ -157,7 +157,7 @@ export default function CheckoutClient() {
           <div className="relative z-10">
             <Link
               href={`/events/${slug}`}
-              className="mb-8 inline-flex items-center gap-2 text-sm text-neutral-400 transition-colors hover:text-white"
+              className="mb-8 flex items-center gap-2 text-sm text-neutral-400 transition-colors hover:text-white"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
