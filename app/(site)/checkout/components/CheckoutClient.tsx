@@ -13,6 +13,7 @@ const PaystackButton = dynamic(
 );
 import Image from "next/image";
 import Link from "next/link";
+import { generateWhatsAppLink, generateEmailLink } from "@/lib/contact-links";
 
 export default function CheckoutClient() {
   const searchParams = useSearchParams();
@@ -154,6 +155,27 @@ export default function CheckoutClient() {
           </div>
 
           <div className="relative z-10">
+            <Link
+              href={`/events/${slug}`}
+              className="mb-8 inline-flex items-center gap-2 text-sm text-neutral-400 transition-colors hover:text-white"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="h-4 w-4"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+                />
+              </svg>
+              Back to Event
+            </Link>
+
             <div className="mb-6 inline-block bg-theme-200 px-3 py-1 text-xs font-bold tracking-widest text-black uppercase">
               Checkout
             </div>
@@ -230,25 +252,79 @@ export default function CheckoutClient() {
                 />
               </div>
 
-              <div className="pt-12">
-                {pricePerTicket > 0 ? (
-                  <PaystackButton
-                    {...paystackConfig}
-                    className="w-full bg-black py-6 font-bold tracking-widest text-white uppercase transition-colors hover:bg-neutral-800 disabled:opacity-50 dark:bg-white dark:text-black"
-                    text={`Pay ₦${totalAmount.toLocaleString()}`}
-                    disabled={!email || !name || !phone}
-                    onSuccess={onSuccess}
-                    onClose={onClose}
-                  />
-                ) : (
-                  <div className="rounded bg-yellow-50 p-4 text-center text-yellow-800">
-                    Pricing not available for this event yet. Please contact
-                    support.
-                  </div>
-                )}
-                <p className="mt-4 text-center text-xs text-neutral-400">
-                  Secured by Paystack. Your payment information is encrypted.
-                </p>
+              <div className="pt-8">
+                <h3 className="mb-4 text-center text-sm font-bold tracking-widest text-neutral-500 uppercase">
+                  Select Payment Method
+                </h3>
+
+                <div className="space-y-4">
+                  {pricePerTicket > 0 ? (
+                    <>
+                      <PaystackButton
+                        {...paystackConfig}
+                        className="w-full bg-black py-4 font-bold tracking-widest text-white uppercase transition-colors hover:bg-neutral-800 disabled:opacity-50 dark:bg-white dark:text-black"
+                        text={`Pay ₦${totalAmount.toLocaleString()} via Paystack`}
+                        disabled={!email || !name || !phone}
+                        onSuccess={onSuccess}
+                        onClose={onClose}
+                      />
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <Button
+                          type="button"
+                          variant="outline"
+                          className="h-auto w-full flex-col gap-2 py-4 uppercase"
+                          onClick={() => {
+                            if (!event.contact?.whatsappNumber) {
+                              toast.error("WhatsApp contact not available");
+                              return;
+                            }
+                            const link = generateWhatsAppLink({
+                              eventTitle: event.title,
+                              eventDate: event.date,
+                              eventLocation: event.location,
+                              whatsappNumber: event.contact.whatsappNumber,
+                            });
+                            window.open(link, "_blank");
+                          }}
+                          disabled={!email || !name || !phone}
+                        >
+                          <span className="text-xs">Pay via WhatsApp</span>
+                        </Button>
+
+                        <Button
+                          type="button"
+                          variant="outline"
+                          className="h-auto w-full flex-col gap-2 py-4 uppercase"
+                          onClick={() => {
+                            if (!event.contact?.email) {
+                              toast.error("Support email not available");
+                              return;
+                            }
+                            const link = generateEmailLink({
+                              eventTitle: event.title,
+                              eventDate: event.date,
+                              eventLocation: event.location,
+                              contactEmail: event.contact.email,
+                            });
+                            window.open(link, "_blank");
+                          }}
+                          disabled={!email || !name || !phone}
+                        >
+                          <span className="text-xs">Pay via Email</span>
+                        </Button>
+                      </div>
+                    </>
+                  ) : (
+                    <div className="rounded bg-yellow-50 p-4 text-center text-yellow-800">
+                      Pricing not available for this event yet. Please contact
+                      support.
+                    </div>
+                  )}
+                  <p className="mt-4 text-center text-xs text-neutral-400">
+                    Secured by Paystack. Your payment information is encrypted.
+                  </p>
+                </div>
               </div>
             </div>
           </div>

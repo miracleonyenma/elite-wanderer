@@ -55,6 +55,10 @@ export interface EventData {
     description?: string;
     link?: string;
   }[];
+  contact?: {
+    whatsappNumber?: string;
+    email?: string;
+  };
 }
 
 export const activeEvents: EventData[] = [
@@ -134,6 +138,10 @@ export const activeEvents: EventData[] = [
       ticketsAvailable: "80",
       price: "₦1,200,000",
       priceValue: 1200000,
+    },
+    contact: {
+      whatsappNumber: "+2348123456789", // Placeholder
+      email: "support@theelitewanderer.com",
     },
     faq: [
       {
