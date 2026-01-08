@@ -236,7 +236,14 @@ export default function EventClient({ event }: { event: EventData }) {
                       <div className="absolute inset-0 bg-black/40" />
                     </>
                   )}
-                  <div className="relative z-10">
+                  <div
+                    className={`relative z-10 flex min-h-[440px] flex-col justify-end gap-1`}
+                  >
+                    {highlight.tag && (
+                      <span className="mb-auto block text-xs font-bold tracking-widest uppercase opacity-70">
+                        {highlight.tag}
+                      </span>
+                    )}
                     <h4 className="mb-2 font-heading text-2xl font-bold uppercase">
                       {highlight.title}
                     </h4>

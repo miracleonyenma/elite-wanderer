@@ -121,6 +121,17 @@ export const activeEvents: EventData[] = [
         description:
           "Connect with top professionals, investors, and industry leaders.",
       },
+      {
+        tag: "Luxury Dining at Radisson Blu",
+        title: "Arrival Time - 12:00pm",
+        description:
+          "Indulge in an exquisite culinary experience in an elegant setting.",
+      },
+      {
+        title: "Private Boat Cruise",
+        description: "Sail in style and unwind on an exclusive sunset cruise.",
+        image: "/images/private-boat-tour-in-paris-with-champagne-1024x682.jpg",
+      },
 
       {
         title: "Directions",
