@@ -122,8 +122,8 @@ export const activeEvents: EventData[] = [
           "Connect with top professionals, investors, and industry leaders.",
       },
       {
-        tag: "Luxury Dining at Radisson Blu",
-        title: "Arrival Time - 12:00pm",
+        tag: "Arrival Time - 12:00pm",
+        title: "Luxury Dining at Radisson Blu",
         description:
           "Indulge in an exquisite culinary experience in an elegant setting.",
       },

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { EventData } from "../../../events-data";
 import Image from "next/image";
 import { Button } from "@/components/ui/aevr/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { EventCountdown } from "@/components/Site/EventCountdown";
 import { BrandReviews } from "@/components/Site/BrandReviews";
 import { toast } from "sonner";
@@ -13,6 +13,7 @@ import Link from "next/link";
 // unused imports removed
 import {
   Carousel,
+  CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -39,6 +40,24 @@ export default function EventClient({ event }: { event: EventData }) {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [bookingStep, setBookingStep] = useState<"form" | "success">("form");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Carousel state
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
 
   // Form states
   const [formData, setFormData] = useState({
@@ -214,54 +233,112 @@ export default function EventClient({ event }: { event: EventData }) {
       <section className="mx-auto max-w-392 px-6 py-20 md:px-12 lg:px-24">
         {/* Guidelines Highlights Grid */}
         {event.guidelineHighlights && (
-          <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
-            {event.guidelineHighlights.map((highlight, idx) => {
-              const CardContent = (
-                <div
-                  className={cn(
-                    "relative flex min-h-[440px] flex-col justify-end overflow-hidden p-8 transition-transform duration-500 hover:scale-[1.02]",
-                    highlight.image
-                      ? "text-white"
-                      : "bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white",
-                  )}
-                >
-                  {highlight.image && (
-                    <>
-                      <Image
-                        src={highlight.image}
-                        alt={highlight.title}
-                        fill
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black/40" />
-                    </>
-                  )}
-                  <div
-                    className={`relative z-10 flex min-h-[440px] flex-col justify-end gap-1`}
+          <div className="relative mb-8 pb-12">
+            <Carousel setApi={setApi} className="w-full">
+              <CarouselContent className="">
+                {event.guidelineHighlights.map((highlight, idx) => (
+                  <CarouselItem
+                    key={idx}
+                    className="pl-4 md:basis-1/2 lg:basis-1/3"
                   >
-                    {highlight.tag && (
-                      <span className="mb-auto block text-xs font-bold tracking-widest uppercase opacity-70">
-                        {highlight.tag}
-                      </span>
+                    {highlight.link ? (
+                      <Link href={highlight.link} className="block h-full">
+                        <div
+                          className={cn(
+                            "relative flex min-h-[440px] flex-col justify-end overflow-hidden p-8 transition-transform duration-500 hover:scale-[1.02]",
+                            highlight.image
+                              ? "text-white"
+                              : "bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white",
+                          )}
+                        >
+                          {highlight.image && (
+                            <>
+                              <Image
+                                src={highlight.image}
+                                alt={highlight.title}
+                                fill
+                                className="object-cover"
+                              />
+                              <div className="absolute inset-0 bg-black/40" />
+                            </>
+                          )}
+                          <div
+                            className={`relative z-10 flex min-h-[440px] flex-col justify-end gap-1`}
+                          >
+                            {highlight.tag && (
+                              <span className="mb-auto block text-xl font-bold tracking-widest uppercase opacity-70">
+                                {highlight.tag}
+                              </span>
+                            )}
+                            <h4 className="mb-2 font-heading text-2xl font-bold uppercase">
+                              {highlight.title}
+                            </h4>
+                            <p className="text-sm font-light tracking-widest uppercase opacity-80">
+                              {highlight.description}
+                            </p>
+                          </div>
+                        </div>
+                      </Link>
+                    ) : (
+                      <div className="h-full">
+                        <div
+                          className={cn(
+                            "relative flex min-h-[440px] flex-col justify-end overflow-hidden p-8 transition-transform duration-500 hover:scale-[1.02]",
+                            highlight.image
+                              ? "text-white"
+                              : "bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white",
+                          )}
+                        >
+                          {highlight.image && (
+                            <>
+                              <Image
+                                src={highlight.image}
+                                alt={highlight.title}
+                                fill
+                                className="object-cover"
+                              />
+                              <div className="absolute inset-0 bg-black/40" />
+                            </>
+                          )}
+                          <div
+                            className={`relative z-10 flex min-h-[440px] flex-col justify-end gap-1`}
+                          >
+                            {highlight.tag && (
+                              <span className="mb-auto block text-xl font-bold tracking-widest uppercase opacity-70">
+                                {highlight.tag}
+                              </span>
+                            )}
+                            <h4 className="mb-2 font-heading text-2xl font-bold uppercase">
+                              {highlight.title}
+                            </h4>
+                            <p className="text-sm font-light tracking-widest uppercase opacity-80">
+                              {highlight.description}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     )}
-                    <h4 className="mb-2 font-heading text-2xl font-bold uppercase">
-                      {highlight.title}
-                    </h4>
-                    <p className="text-sm font-light tracking-widest uppercase opacity-80">
-                      {highlight.description}
-                    </p>
-                  </div>
-                </div>
-              );
-
-              return highlight.link ? (
-                <Link key={idx} href={highlight.link} className="block">
-                  {CardContent}
-                </Link>
-              ) : (
-                <div key={idx}>{CardContent}</div>
-              );
-            })}
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-4 hidden md:flex" />
+              <CarouselNext className="right-4 hidden md:flex" />
+            </Carousel>
+            {/* Dots Indicator */}
+            <div className="absolute right-0 bottom-0 left-0 z-20 flex justify-center gap-2">
+              {Array.from({ length: count }).map((_, index) => (
+                <button
+                  key={index}
+                  className={cn(
+                    "h-1.5 cursor-pointer rounded-full transition-all duration-300",
+                    index + 1 === current
+                      ? "w-8 bg-neutral-900 dark:bg-white"
+                      : "w-1.5 bg-neutral-300 hover:bg-neutral-400 dark:bg-neutral-700 dark:hover:bg-neutral-500",
+                  )}
+                  onClick={() => api?.scrollTo(index)}
+                />
+              ))}
+            </div>
           </div>
         )}
 
