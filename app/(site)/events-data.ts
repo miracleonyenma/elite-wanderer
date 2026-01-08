@@ -139,7 +139,7 @@ export const activeEvents: EventData[] = [
 
       {
         title: "Directions",
-        description: "View Map to Sea-Front",
+        description: "View Map to start point",
         image: "/images/pexels-freestockpro-1008155.webp",
       },
     ],
