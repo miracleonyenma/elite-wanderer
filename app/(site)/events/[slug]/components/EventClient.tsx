@@ -9,6 +9,7 @@ import { EventCountdown } from "@/components/Site/EventCountdown";
 import { BrandReviews } from "@/components/Site/BrandReviews";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 // unused imports removed
 import {
   Carousel,
@@ -214,37 +215,46 @@ export default function EventClient({ event }: { event: EventData }) {
         {/* Guidelines Highlights Grid */}
         {event.guidelineHighlights && (
           <div className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
-            {event.guidelineHighlights.map((highlight, idx) => (
-              <div
-                key={idx}
-                className={cn(
-                  "relative flex min-h-[440px] flex-col justify-end overflow-hidden p-8",
-                  highlight.image
-                    ? "text-white"
-                    : "bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white",
-                )}
-              >
-                {highlight.image && (
-                  <>
-                    <Image
-                      src={highlight.image}
-                      alt={highlight.title}
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/40" />
-                  </>
-                )}
-                <div className="relative z-10">
-                  <h4 className="mb-2 font-heading text-2xl font-bold uppercase">
-                    {highlight.title}
-                  </h4>
-                  <p className="text-sm font-light tracking-widest uppercase opacity-80">
-                    {highlight.description}
-                  </p>
+            {event.guidelineHighlights.map((highlight, idx) => {
+              const CardContent = (
+                <div
+                  className={cn(
+                    "relative flex min-h-[440px] flex-col justify-end overflow-hidden p-8 transition-transform duration-500 hover:scale-[1.02]",
+                    highlight.image
+                      ? "text-white"
+                      : "bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white",
+                  )}
+                >
+                  {highlight.image && (
+                    <>
+                      <Image
+                        src={highlight.image}
+                        alt={highlight.title}
+                        fill
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-black/40" />
+                    </>
+                  )}
+                  <div className="relative z-10">
+                    <h4 className="mb-2 font-heading text-2xl font-bold uppercase">
+                      {highlight.title}
+                    </h4>
+                    <p className="text-sm font-light tracking-widest uppercase opacity-80">
+                      {highlight.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+
+              return highlight.link ? (
+                <Link key={idx} href={highlight.link} className="block">
+                  {CardContent}
+                </Link>
+              ) : (
+                <div key={idx}>{CardContent}</div>
+              );
+            })}
           </div>
         )}
 
@@ -342,7 +352,10 @@ export default function EventClient({ event }: { event: EventData }) {
       )}
 
       {/* 7. BOOKING WIDGET */}
-      <section className="relative z-10 bg-white px-6 py-24 text-center dark:bg-neutral-950">
+      <section
+        id="booking"
+        className="relative z-10 bg-white px-6 py-24 text-center dark:bg-neutral-950"
+      >
         <div className="mx-auto max-w-4xl">
           <div className="flex flex-col items-center rounded-sm border border-neutral-100 bg-white p-8 shadow-2xl dark:border-neutral-800 dark:bg-neutral-900">
             <h2 className="mb-8 text-sm font-bold tracking-[0.2em] text-neutral-500 uppercase">

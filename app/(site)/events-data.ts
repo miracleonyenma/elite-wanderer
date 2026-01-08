@@ -65,7 +65,7 @@ export const activeEvents: EventData[] = [
   {
     id: "red-and-bougie",
     title: "Red & Bougie",
-    subtitle: "From Shore to Sea: A Curated Valentine Journey",
+    subtitle: "A Private Evening for Strategic Networking and Investment",
     date: "7 February 2026",
     dateTime: "Saturday, 7 February 2026",
     targetDate: "2026-02-07T14:00:00",
@@ -77,7 +77,7 @@ export const activeEvents: EventData[] = [
     introduction: {
       title: "EVENT INTRODUCTION",
       content:
-        "Red & Bougie is an intimate Valentine experience curated for couples and refined socialites who value elegance, connection, and seamless luxury. The journey flows effortlessly from an elevated sea-front dining moment into a serene sunset yacht sail, concluding with a relaxed social lounge by the water. Every detail is intentionally designed for romance, comfort, and understated sophistication.",
+        "Exclusive experience crafted for discerning professionals, investors, and socialites who value luxury, meaningful connections, and high-level opportunities. The evening unfolds from a refined luxury dining experience, transitions into a private boat cruise, and concludes with an intimate setting designed to foster networking, investment conversations, and lasting connections.",
     },
     gallery: [
       "/images/jfa-long-island-87-15664711/2200xxs.jpg", // Placeholder - reusing existing ones or new placeholders
@@ -110,13 +110,16 @@ export const activeEvents: EventData[] = [
     },
     guidelineHighlights: [
       {
-        title: "Dress Code",
-        description: "Elegant Chic / Resort Luxe",
+        title: "Book Ticket Online",
+        description: "₦200,000 | Limited Seats",
+        link: "#booking",
       },
       {
-        title: "Arrival",
-        description: "Guests arrive from 2:00 PM",
+        title: "High-Level Networking",
+        description:
+          "Connect with top professionals, investors, and industry leaders.",
       },
+
       {
         title: "Directions",
         description: "View Map to Sea-Front",
@@ -136,8 +139,8 @@ export const activeEvents: EventData[] = [
       link: "#", // Placeholder
       capacity: "200 tickets",
       ticketsAvailable: "80",
-      price: "₦1,200,000",
-      priceValue: 1200000,
+      price: "₦200,000",
+      priceValue: 200000,
     },
     contact: {
       whatsappNumber: "+2348123456789", // Placeholder
