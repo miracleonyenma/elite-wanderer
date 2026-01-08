@@ -23,6 +23,7 @@ export interface EventData {
     closing?: string;
   };
   guidelineHighlights?: {
+    tag?: string;
     title: string;
     description: string;
     image?: string;
@@ -110,8 +111,9 @@ export const activeEvents: EventData[] = [
     },
     guidelineHighlights: [
       {
-        title: "Book Ticket Online",
-        description: "₦200,000 | Limited Seats",
+        tag: "Book Ticket Online",
+        title: "₦200,000",
+        description: "Limited Seats Available | Paystack",
         link: "#booking",
       },
       {
