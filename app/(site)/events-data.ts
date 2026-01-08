@@ -128,6 +128,10 @@ export const activeEvents: EventData[] = [
           "Indulge in an exquisite culinary experience in an elegant setting.",
       },
       {
+        title: "Investment Capital Insight",
+        description: "Smart conversations around growth & opportunities",
+      },
+      {
         title: "Private Boat Cruise",
         description: "Sail in style and unwind on an exclusive sunset cruise.",
         image: "/images/private-boat-tour-in-paris-with-champagne-1024x682.jpg",

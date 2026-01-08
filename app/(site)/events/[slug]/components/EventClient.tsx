@@ -231,6 +231,9 @@ export default function EventClient({ event }: { event: EventData }) {
 
       {/* 4. EVENT GUIDELINES */}
       <section className="mx-auto max-w-392 px-6 py-20 md:px-12 lg:px-24">
+        <h2 className="mb-6 block text-center text-xs font-bold tracking-[0.2em] text-neutral-400 uppercase">
+          Event Highlights
+        </h2>
         {/* Guidelines Highlights Grid */}
         {event.guidelineHighlights && (
           <div className="relative mb-8 pb-12">
