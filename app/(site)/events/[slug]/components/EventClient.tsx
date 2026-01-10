@@ -483,25 +483,27 @@ export default function EventClient({ event }: { event: EventData }) {
 
             <div className="mb-8 flex w-full flex-col items-center justify-between gap-4 md:flex-row">
               <div className="flex w-full flex-1 flex-col items-start border-b border-neutral-200 pb-4 md:border-r md:border-b-0 md:pr-4 md:pb-0 dark:border-neutral-700">
-                <span className="mb-1 text-xs tracking-wider text-neutral-400 uppercase">
-                  Date
-                </span>
-                <span className="font-heading text-xl font-bold">
-                  {event.date}
-                </span>
                 {/* Mini countdown or Price */}
                 <div className="mt-2">
                   {event.booking.widgetDisplay === "price" &&
                   event.booking.price ? (
-                    <p className="font-heading text-xl font-bold text-neutral-900 dark:text-white">
+                    <p className="font-heading text-3xl font-bold text-neutral-900 dark:text-white">
                       {event.booking.price}
                     </p>
                   ) : (
                     event.targetDate && (
-                      <EventCountdown
-                        targetDate={event.targetDate}
-                        className="origin-left scale-75"
-                      />
+                      <>
+                        <span className="mb-1 text-xs tracking-wider text-neutral-400 uppercase">
+                          Date
+                        </span>
+                        <span className="font-heading text-xl font-bold">
+                          {event.date}
+                        </span>
+                        <EventCountdown
+                          targetDate={event.targetDate}
+                          className="origin-left scale-75"
+                        />
+                      </>
                     )
                   )}
                 </div>
@@ -529,14 +531,6 @@ export default function EventClient({ event }: { event: EventData }) {
               </div>
 
               <div className="flex w-full flex-col items-center gap-2 md:w-auto md:items-end">
-                {event.booking.price && (
-                  <div className="mr-4 hidden border-r border-neutral-200 pr-4 text-right md:block dark:border-neutral-700">
-                    <p className="mb-1 text-[10px] font-bold tracking-widest text-neutral-400 uppercase">
-                      Price
-                    </p>
-                    <p className="text-sm font-bold">{event.booking.price}</p>
-                  </div>
-                )}
                 <Button
                   onClick={handleSearch}
                   className="w-full rounded-none px-12 py-6 font-bold tracking-wider uppercase md:w-auto"
