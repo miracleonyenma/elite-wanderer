@@ -487,9 +487,16 @@ export default function EventClient({ event }: { event: EventData }) {
                 <div className="mt-2">
                   {event.booking.widgetDisplay === "price" &&
                   event.booking.price ? (
-                    <p className="font-heading text-3xl font-bold text-neutral-900 dark:text-white">
-                      {event.booking.price}
-                    </p>
+                    <>
+                      <div className="flex flex-col text-left">
+                        <span className="mb-1 text-xs tracking-wider text-neutral-400 uppercase">
+                          Price per guest
+                        </span>
+                        <p className="font-heading text-3xl font-bold text-neutral-900 dark:text-white">
+                          {event.booking.price}
+                        </p>
+                      </div>
+                    </>
                   ) : (
                     event.targetDate && (
                       <>

@@ -150,7 +150,7 @@ export const activeEvents: EventData[] = [
     ],
     curatorMessage: {
       quote:
-        "Red & Bougie is designed to bring together visionaries, investors, and professionals for an unforgettable evening of luxury, networking, and curated investment insights. Every detail has been crafted to ensure you enjoy a seamless and elevated experience from fine dining to a private boat cruise. We look forward to welcoming you!",
+        "Black and Boundless is designed to bring together visionaries, investors, and professionals for an unforgettable evening of luxury, networking, and curated investment insights. Every detail has been crafted to ensure you enjoy a seamless and elevated experience from fine dining to a private boat cruise. We look forward to welcoming you!",
       name: "The Elite Wanderer Team",
       title: "Event Curators",
     },
@@ -168,7 +168,7 @@ export const activeEvents: EventData[] = [
     ],
     booking: {
       title: "TICKET BOOKING",
-      type: "Red & Bougie Experience Pass",
+      type: "Black and Boundless Experience Pass",
       includes: "Dining, yacht sail, lounge access, refreshments",
       link: "#", // Placeholder
       capacity: "200 tickets",
@@ -190,7 +190,7 @@ export const activeEvents: EventData[] = [
       {
         question: "What is included in the ticket price?",
         answer:
-          "Your ticket grants access to the full Red & Bougie experience, including luxury dining at Radisson Blu, a private boat cruise, high-level networking, and curated investment capital insight sessions.",
+          "Your ticket grants access to the full Black and Boundless experience, including luxury dining at Radisson Blu, a private boat cruise, high-level networking, and curated investment capital insight sessions.",
       },
       {
         question: "Are tickets transferable?",
