@@ -183,28 +183,29 @@ export const activeEvents: EventData[] = [
     },
     faq: [
       {
-        question: "Is this event couples-only?",
+        question: "Who is this event for?",
         answer:
-          "Primarily designed for couples, but stylish singles are welcome.",
+          "For professionals, entrepreneurs, investors, and refined socialites who appreciate luxury experiences, meaningful connections, and value-driven conversations in an exclusive setting.",
       },
       {
-        question: "What time should I arrive?",
+        question: "What is included in the ticket price?",
         answer:
-          "Arrival opens at 12:00 PM. Guests are advised to arrive early for a smooth experience.",
+          "Your ticket grants access to the full Red & Bougie experience, including luxury dining at Radisson Blu, a private boat cruise, high-level networking, and curated investment capital insight sessions.",
       },
       {
-        question: "Is transportation included?",
+        question: "Are tickets transferable?",
         answer:
-          "No road transportation is required. The journey flows naturally from shore to sea.",
+          "Yes. Tickets are transferable. However, all transfers must be communicated in advance for proper guest accreditation.",
       },
       {
-        question: "What should I wear?",
-        answer: "Elegant chic or resort-luxe attire with a touch of red.",
+        question: "Is there a refund policy?",
+        answer:
+          "All ticket purchases are non-refundable. Please ensure your availability before confirming your booking.",
       },
       {
-        question: "Are tickets refundable?",
+        question: "Who can I contact for more information?",
         answer:
-          "Tickets are non-refundable but may be transferable with prior notice.",
+          "For inquiries or further details, please contact the The Elite Wanderer team via the official booking channel or designated event contact shared on our platforms.",
       },
     ],
   },
