@@ -81,7 +81,7 @@ export const activeEvents: EventData[] = [
     dateTime: "Saturday, 7 February 2026",
     targetDate: "2026-02-07T12:00:00",
     location: "Lagos",
-    heroImage: "/images/jfa-long-island-87-15664711/2200xxs.jpg", // Using the image from the existing page
+    heroImage: "/images/black-and-boundless.jpg", // Using the image from the existing page
     heroVideo: "/videos/black-and-boundless.mp4",
     description:
       "Valentine experience that flows effortlessly from an elegant sea-front dining moment into a serene sunset yacht sail across the Lagos Lagoon, concluding with an intimate after-sail social lounge at the Lagos Motor Boat Club. Designed for couples and refined socialites, the experience blends fine dining, scenic sailing, and relaxed conversations in a setting of understated luxury.",
