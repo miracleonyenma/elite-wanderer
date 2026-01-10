@@ -470,6 +470,37 @@ export default function EventClient({ event }: { event: EventData }) {
         </section>
       )}
 
+      {/* MAP SECTION */}
+      {event.mapEmbed && (
+        <section
+          id="map"
+          className="bg-neutral-50 px-6 py-24 dark:bg-neutral-900"
+        >
+          <div className="mx-auto max-w-6xl">
+            <h2 className="mb-8 text-center font-heading text-3xl font-bold uppercase">
+              Event Location
+            </h2>
+            {event.mapEmbed.title && (
+              <p className="mb-8 text-center text-lg text-neutral-600 dark:text-neutral-400">
+                {event.mapEmbed.title}
+              </p>
+            )}
+            <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow-lg">
+              <iframe
+                src={event.mapEmbed.src}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0 h-full w-full"
+              />
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* 7. BOOKING WIDGET */}
       <section
         id="booking"

@@ -66,6 +66,10 @@ export interface EventData {
     whatsappNumber?: string;
     email?: string;
   };
+  mapEmbed?: {
+    src: string; // Google Maps embed URL
+    title?: string;
+  };
 }
 
 export const activeEvents: EventData[] = [
@@ -78,7 +82,7 @@ export const activeEvents: EventData[] = [
     targetDate: "2026-02-07T12:00:00",
     location: "Lagos",
     heroImage: "/images/jfa-long-island-87-15664711/2200xxs.jpg", // Using the image from the existing page
-    heroVideo: "/videos/5167964-hd_1080_1920_30fps.mp4",
+    heroVideo: "/videos/black-and-boundless.mp4",
     description:
       "Valentine experience that flows effortlessly from an elegant sea-front dining moment into a serene sunset yacht sail across the Lagos Lagoon, concluding with an intimate after-sail social lounge at the Lagos Motor Boat Club. Designed for couples and refined socialites, the experience blends fine dining, scenic sailing, and relaxed conversations in a setting of understated luxury.",
     introduction: {
@@ -139,17 +143,19 @@ export const activeEvents: EventData[] = [
       {
         title: "Investment Capital Insight",
         description: "Smart conversations around growth & opportunities",
+        image: "/images/investment insight.jpg",
       },
       {
         title: "Private Boat Cruise",
         description: "Sail in style and unwind on an exclusive sunset cruise.",
-        image: "/images/private-boat-tour-in-paris-with-champagne-1024x682.jpg",
+        image: "/images/boat cruise.jpg",
       },
 
       {
         title: "Directions",
-        description: "View Map to start point",
+        description: "View Map to Radisson Blu Anchorage",
         image: "/images/pexels-freestockpro-1008155.webp",
+        link: "#map",
       },
     ],
     curatorMessage: {
@@ -212,6 +218,10 @@ export const activeEvents: EventData[] = [
           "For inquiries or further details, please contact the The Elite Wanderer team via the official booking channel or designated event contact shared on our platforms.",
       },
     ],
+    mapEmbed: {
+      src: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.5877831399!2d3.4146429!3d6.4366166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8ad5075e7367%3A0xe15ac0b07db08a37!2sRadisson%20Blu%20Anchorage%20Hotel%2C%20Lagos%2C%20V.I.!5e0!3m2!1sen!2sng!4v1234567890",
+      title: "Radisson Blu Anchorage Hotel, Lagos",
+    },
   },
   {
     id: "easter-escape",
