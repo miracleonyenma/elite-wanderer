@@ -87,9 +87,9 @@ export const activeEvents: EventData[] = [
         "Exclusive experience crafted for discerning professionals, investors, and socialites who value luxury, meaningful connections, and high-level opportunities. The evening unfolds from a refined luxury dining experience, transitions into a private boat cruise, and concludes with an intimate setting designed to foster networking, investment conversations, and lasting connections.",
     },
     gallery: [
-      "/images/jfa-long-island-87-15664711/2200xxs.jpg", // Placeholder - reusing existing ones or new placeholders
-      "/images/pexels-lamkien-35255292.webp",
-      "/images/pexels-freestockpro-1008155.webp",
+      "/images/jfa-long-island-87-15664711/2200xxs.jpg",
+      "/images/fine dining.jpg",
+      "/images/high level networking.jpg",
     ],
     guidelines: {
       title: "EVENT GUIDELINES (WHAT TO KNOW)",
@@ -134,6 +134,7 @@ export const activeEvents: EventData[] = [
         title: "₦200,000",
         description: "Limited Seats Available | Paystack",
         link: "#booking",
+        image: "/images/book  ticket .jpg",
       },
       {
         title: "Investment Capital Insight",
@@ -229,8 +230,8 @@ export const activeEvents: EventData[] = [
         "TEW Easter Escape is a soulful lifestyle gathering curated for reflection, wellness, and meaningful connection. Set in an intimate garden environment, the experience blends gentle mindfulness, guided conversations, and a thoughtfully curated Easter brunch, creating space for calm, clarity, and community.",
     },
     gallery: [
+      "/images/easter escape.jpg",
       "/images/pexels-lamkien-35255292.webp",
-      "/images/pexels-freestockpro-1008155.webp",
     ],
     guidelines: {
       title: "EVENT GUIDELINES (WHAT TO KNOW)",
@@ -261,7 +262,7 @@ export const activeEvents: EventData[] = [
       {
         title: "Location",
         description: "View Map to Ikoyi",
-        image: "/images/pexels-lamkien-35255292.webp",
+        image: "/images/easter escape.jpg",
       },
     ],
     curatorMessage: {
@@ -322,7 +323,7 @@ export const activeEvents: EventData[] = [
         "TEW Summer Social is a vibrant lifestyle and networking experience curated for stylish, ambitious individuals who value connection, visibility, and community. Set in a chic garden environment, the event blends music, cocktails, and effortless socialising from golden hour into the evening, creating a relaxed yet elevated summer atmosphere.",
     },
     gallery: [
-      "/images/pexels-freestockpro-1008155.webp",
+      "/images/summer social.jpg",
       "/images/pexels-lamkien-35255292.webp",
     ],
     guidelines: {
@@ -357,7 +358,7 @@ export const activeEvents: EventData[] = [
       {
         title: "Venue",
         description: "View Map to Lekki",
-        image: "/images/pexels-freestockpro-1008155.webp",
+        image: "/images/summer social.jpg",
       },
     ],
     curatorMessage: {
@@ -417,7 +418,7 @@ export const activeEvents: EventData[] = [
       content:
         "Junior Elite Polo is a refined family lifestyle experience designed to celebrate youth sport, legacy, and elite social connection. Set within a premier polo club or private estate, the event brings together young riders for professionally guided polo matches while parents enjoy VIP hospitality, curated brand experiences, and high-level networking.",
     },
-    gallery: ["/images/pexels-code-mnml-185553186-35205820.webp"],
+    gallery: ["/images/junior elite polo picture.jpg"],
     guidelines: {
       title: "EVENT GUIDELINES (WHAT TO KNOW)",
       items: [
@@ -447,7 +448,7 @@ export const activeEvents: EventData[] = [
       {
         title: "Venue",
         description: "View Polo Club Map",
-        image: "/images/pexels-code-mnml-185553186-35205820.webp",
+        image: "/images/junior elite polo picture.jpg",
       },
     ],
     curatorMessage: {
