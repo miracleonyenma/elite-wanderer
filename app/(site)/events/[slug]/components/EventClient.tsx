@@ -1,11 +1,12 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { EventData } from "../../../events-data";
+import { EventData, activeEvents } from "../../../events-data";
 import Image from "next/image";
 import { Button } from "@/components/ui/aevr/button";
 import { useState, useEffect } from "react";
 import { EventCountdown } from "@/components/Site/EventCountdown";
+import { FeatureCard } from "@/components/Site/FeatureCard";
 import { BrandReviews } from "@/components/Site/BrandReviews";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -386,39 +387,70 @@ export default function EventClient({ event }: { event: EventData }) {
       </section>
 
       {/* 5. MESSAGE FROM THE CURATOR */}
-      <section className="bg-theme-800 px-6 py-24 text-white dark:bg-theme-800">
-        <div className="mx-auto max-w-4xl text-center">
-          {/* Curator Photo */}
-          {event.curatorMessage.image && (
-            <div className="mb-8 flex justify-center">
-              <div className="relative h-24 w-24 overflow-hidden rounded-full border-4 border-white/30">
-                <Image
-                  src={event.curatorMessage.image}
-                  alt={event.curatorMessage.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
+      <section className="bg-theme-800 py-24 text-white dark:bg-theme-800">
+        <div className="mx-auto max-w-7xl px-6">
+          <Carousel
+            opts={{
+              align: "start",
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {/* Curators */}
+              {event.curators?.map((curator, idx) => (
+                <CarouselItem key={idx} className="md:basis-1/2 lg:basis-1/3">
+                  <FeatureCard
+                    title={curator.name}
+                    description={curator.role}
+                    image={curator.image}
+                    label="Event Curator"
+                    dark
+                    className="h-full min-h-[500px] border border-white/10"
+                  />
+                </CarouselItem>
+              ))}
+
+              {/* Message Card */}
+              <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                <div className="flex h-full min-h-[500px] flex-col justify-center bg-black/20 p-8 text-center backdrop-blur-sm md:p-12">
+                  {event.curatorMessage.image && (
+                    <div className="mb-8 flex justify-center">
+                      <div className="relative h-24 w-24 overflow-hidden rounded-full border-4 border-white/30">
+                        <Image
+                          src={event.curatorMessage.image}
+                          alt={event.curatorMessage.name}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  <blockquote className="mb-8 flex grow flex-col justify-center">
+                    <p className="text-xl leading-relaxed font-light md:text-2xl">
+                      &ldquo;{event.curatorMessage.quote}&rdquo;
+                    </p>
+                  </blockquote>
+
+                  <div className="space-y-1">
+                    <p className="text-xs font-bold tracking-[0.2em] uppercase opacity-70">
+                      A message from
+                    </p>
+                    <p className="font-heading text-lg font-bold">
+                      {event.curatorMessage.name}
+                    </p>
+                    <p className="text-sm opacity-70">
+                      {event.curatorMessage.title}
+                    </p>
+                  </div>
+                </div>
+              </CarouselItem>
+            </CarouselContent>
+            <div className="mt-8 flex justify-end gap-2 pr-4">
+              <CarouselPrevious className="static translate-y-0 border-white/20 bg-transparent text-white hover:bg-white hover:text-black" />
+              <CarouselNext className="static translate-y-0 border-white/20 bg-transparent text-white hover:bg-white hover:text-black" />
             </div>
-          )}
-
-          {/* Quote */}
-          <blockquote className="mb-8">
-            <p className="text-xl leading-relaxed font-light md:text-2xl lg:text-3xl">
-              &ldquo;{event.curatorMessage.quote}&rdquo;
-            </p>
-          </blockquote>
-
-          {/* Attribution */}
-          <div className="space-y-1">
-            <p className="text-xs font-bold tracking-[0.2em] uppercase opacity-70">
-              A message from
-            </p>
-            <p className="font-heading text-lg font-bold">
-              {event.curatorMessage.name}
-            </p>
-            <p className="text-sm opacity-70">{event.curatorMessage.title}</p>
-          </div>
+          </Carousel>
         </div>
       </section>
 
@@ -457,15 +489,22 @@ export default function EventClient({ event }: { event: EventData }) {
                 <span className="font-heading text-xl font-bold">
                   {event.date}
                 </span>
-                {/* Mini countdown */}
-                {event.targetDate && (
-                  <div className="mt-2">
-                    <EventCountdown
-                      targetDate={event.targetDate}
-                      className="origin-left scale-75"
-                    />
-                  </div>
-                )}
+                {/* Mini countdown or Price */}
+                <div className="mt-2">
+                  {event.booking.widgetDisplay === "price" &&
+                  event.booking.price ? (
+                    <p className="font-heading text-xl font-bold text-neutral-900 dark:text-white">
+                      {event.booking.price}
+                    </p>
+                  ) : (
+                    event.targetDate && (
+                      <EventCountdown
+                        targetDate={event.targetDate}
+                        className="origin-left scale-75"
+                      />
+                    )
+                  )}
+                </div>
               </div>
               <div className="flex w-full flex-1 flex-col items-start border-b border-neutral-200 pb-4 md:border-r md:border-b-0 md:pr-4 md:pb-0 dark:border-neutral-700">
                 <span className="mb-1 text-xs tracking-wider text-neutral-400 uppercase">
@@ -504,7 +543,7 @@ export default function EventClient({ event }: { event: EventData }) {
                 >
                   {event.booking.link && event.booking.link !== "#"
                     ? "Book Now"
-                    : "Request Spot"}
+                    : "Secure Spot"}
                 </Button>
                 {event.booking.price && (
                   <div className="mt-2 w-full text-center md:hidden">
@@ -724,6 +763,50 @@ export default function EventClient({ event }: { event: EventData }) {
           </Accordion>
         </section>
       )}
+
+      {/* 12. OTHER EVENTS */}
+      <section className="bg-neutral-50 px-6 py-24 dark:bg-neutral-900">
+        <div className="mx-auto max-w-7xl">
+          <h2 className="mb-12 text-center font-heading text-3xl font-bold uppercase">
+            Other Events from The Elite Wanderer
+          </h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {activeEvents
+              .filter((e) => e.id !== event.id)
+              .map((otherEvent) => (
+                <Link
+                  key={otherEvent.id}
+                  href={`/events/${otherEvent.id}`}
+                  className="group relative block overflow-hidden bg-white shadow-sm transition-all hover:shadow-md dark:bg-neutral-950"
+                >
+                  <div className="relative h-64 overflow-hidden">
+                    <Image
+                      src={otherEvent.heroImage}
+                      alt={otherEvent.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10" />
+                    <div className="absolute top-4 left-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold tracking-widest text-black uppercase backdrop-blur-sm">
+                      {otherEvent.date}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="mb-2 font-heading text-xl font-bold uppercase group-hover:text-theme-800">
+                      {otherEvent.title}
+                    </h3>
+                    <p className="mb-4 text-sm font-light text-neutral-600 dark:text-neutral-400">
+                      {otherEvent.subtitle || otherEvent.location}
+                    </p>
+                    <span className="text-xs font-bold tracking-[0.2em] text-theme-800 uppercase">
+                      View Event →
+                    </span>
+                  </div>
+                </Link>
+              ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

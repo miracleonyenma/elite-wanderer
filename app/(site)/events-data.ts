@@ -31,10 +31,15 @@ export interface EventData {
   }[];
   curatorMessage: {
     quote: string;
-    name: string;
+    name: string; // Keeping for backward compatibility if needed, or for the message card
     title: string;
     image?: string;
   };
+  curators?: {
+    name: string;
+    role: string;
+    image: string;
+  }[];
   booking: {
     title: string;
     type: string;
@@ -43,7 +48,8 @@ export interface EventData {
     capacity?: string;
     ticketsAvailable?: string;
     price?: string;
-    priceValue?: number; // Numeric price in kobo/minor units or base currency? Let's assume base currency (Naira) for clarity, Paystack expects kobo usually but we can convert. Let's store as bare number.
+    priceValue?: number;
+    widgetDisplay?: "countdown" | "price"; // defaults to countdown
   };
   faq: {
     question: string;
@@ -64,12 +70,12 @@ export interface EventData {
 
 export const activeEvents: EventData[] = [
   {
-    id: "red-and-bougie",
-    title: "Red & Bougie",
+    id: "black-and-boundless",
+    title: "Black and Boundless",
     subtitle: "A Private Evening for Strategic Networking and Investment",
     date: "7 February 2026",
     dateTime: "Saturday, 7 February 2026",
-    targetDate: "2026-02-07T14:00:00",
+    targetDate: "2026-02-07T12:00:00",
     location: "Lagos",
     heroImage: "/images/jfa-long-island-87-15664711/2200xxs.jpg", // Using the image from the existing page
     heroVideo: "/videos/5167964-hd_1080_1920_30fps.mp4",
@@ -89,21 +95,15 @@ export const activeEvents: EventData[] = [
       title: "EVENT GUIDELINES (WHAT TO KNOW)",
       items: [
         { label: "Date", value: "Saturday, 7 February 2026" },
-        { label: "Opening Time", value: "Guests arrive from 2:00 PM" },
+        { label: "Opening Time", value: "Guests arrive from 12:00 PM" },
         {
           label: "Venue Start Point",
-          value: "Selected Sea-Front Restaurant, Lagos",
+          value: "Radisson Blu",
         },
         {
           label: "Experience Flow",
-          value: "Shore → Yacht Sail → Private Club Lounge",
+          value: "Dining → Sail → Network → Insight",
         },
-        {
-          label: "Dress Code",
-          value: "Elegant Chic / Resort Luxe / A Touch of Red",
-        },
-        { label: "Tickets Left", value: "5 tickets" },
-        // { label: "Tickets", value: "80" },
       ],
 
       closing:
@@ -111,10 +111,9 @@ export const activeEvents: EventData[] = [
     },
     guidelineHighlights: [
       {
-        tag: "Book Ticket Online",
-        title: "₦200,000",
-        description: "Limited Seats Available | Paystack",
-        link: "#booking",
+        title: "Guest Profile",
+        description:
+          "Entrepreneurs | Founders | CEOs | Investment Bankers | Private Investors | Business Owners | Venture Partners | Senior Executives | Industry Leaders | High-Net-Worth Professionals | Decision-Makers | Capital Advisors | Corporate Directors",
       },
       {
         title: "High-Level Networking",
@@ -126,6 +125,12 @@ export const activeEvents: EventData[] = [
         title: "Luxury Dining at Radisson Blu",
         description:
           "Indulge in an exquisite culinary experience in an elegant setting.",
+      },
+      {
+        tag: "Book Ticket Online",
+        title: "₦200,000",
+        description: "Limited Seats Available | Paystack",
+        link: "#booking",
       },
       {
         title: "Investment Capital Insight",
@@ -145,10 +150,22 @@ export const activeEvents: EventData[] = [
     ],
     curatorMessage: {
       quote:
-        "We created Red & Bougie to capture the essence of Valentine's Day - romance, elegance, and the simple joy of shared moments. From the first course at the waterfront to the gentle sway of the yacht at sunset, every detail has been crafted with intention. This isn't just an event; it's a memory in the making.",
+        "Red & Bougie is designed to bring together visionaries, investors, and professionals for an unforgettable evening of luxury, networking, and curated investment insights. Every detail has been crafted to ensure you enjoy a seamless and elevated experience from fine dining to a private boat cruise. We look forward to welcoming you!",
       name: "The Elite Wanderer Team",
       title: "Event Curators",
     },
+    curators: [
+      {
+        name: "Martha Ellena Onwe",
+        role: "Lead Program Director",
+        image: "/images/pexels-freestockpro-1008155.webp", // Placeholder
+      },
+      {
+        name: "Victor Tubotamuno",
+        role: "CEO/MD",
+        image: "/images/pexels-lamkien-35255292.webp", // Placeholder
+      },
+    ],
     booking: {
       title: "TICKET BOOKING",
       type: "Red & Bougie Experience Pass",
@@ -158,6 +175,7 @@ export const activeEvents: EventData[] = [
       ticketsAvailable: "80",
       price: "₦200,000",
       priceValue: 200000,
+      widgetDisplay: "price",
     },
     contact: {
       whatsappNumber: "+2348123456789", // Placeholder
@@ -172,7 +190,7 @@ export const activeEvents: EventData[] = [
       {
         question: "What time should I arrive?",
         answer:
-          "Arrival opens at 2:00 PM. Guests are advised to arrive early for a smooth experience.",
+          "Arrival opens at 12:00 PM. Guests are advised to arrive early for a smooth experience.",
       },
       {
         question: "Is transportation included?",
