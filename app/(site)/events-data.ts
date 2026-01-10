@@ -158,12 +158,12 @@ export const activeEvents: EventData[] = [
       {
         name: "Martha Ellena Onwe",
         role: "Lead Program Director",
-        image: "/images/pexels-freestockpro-1008155.webp", // Placeholder
+        image: "/images/martha.png", // Placeholder
       },
       {
         name: "Victor Tubotamuno",
         role: "CEO/MD",
-        image: "/images/pexels-lamkien-35255292.webp", // Placeholder
+        image: "/images/victor-tams.png", // Placeholder
       },
     ],
     booking: {
