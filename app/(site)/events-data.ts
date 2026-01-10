@@ -114,17 +114,20 @@ export const activeEvents: EventData[] = [
         title: "Guest Profile",
         description:
           "Entrepreneurs | Founders | CEOs | Investment Bankers | Private Investors | Business Owners | Venture Partners | Senior Executives | Industry Leaders | High-Net-Worth Professionals | Decision-Makers | Capital Advisors | Corporate Directors",
+        image: "/images/guest profile.jpg",
       },
       {
         title: "High-Level Networking",
         description:
           "Connect with top professionals, investors, and industry leaders.",
+        image: "/images/high level networking.jpg",
       },
       {
         tag: "Arrival Time - 12:00pm",
         title: "Luxury Dining at Radisson Blu",
         description:
           "Indulge in an exquisite culinary experience in an elegant setting.",
+        image: "/images/fine dining.jpg",
       },
       {
         tag: "Book Ticket Online",
@@ -217,7 +220,7 @@ export const activeEvents: EventData[] = [
     dateTime: "Sunday, 19 April 2026",
     targetDate: "2026-04-19T08:30:00",
     location: "Aimas Garden, Ikoyi",
-    heroImage: "/images/pexels-lamkien-35255292.webp",
+    heroImage: "/images/easter escape.jpg",
     description:
       "Refined lifestyle gathering designed for reflection, wellness, and meaningful connection. Set in a serene garden setting, the experience blends gentle mindfulness, guided conversations, and a curated Easter brunch in an atmosphere of calm elegance. Thoughtfully paced and intentionally intimate, it offers guests space to reset, connect, and engage with a like-minded community in a soulful yet modern setting.",
     introduction: {
@@ -310,7 +313,7 @@ export const activeEvents: EventData[] = [
     dateTime: "Sunday, 9 August 2026",
     targetDate: "2026-08-09T16:00:00",
     location: "Amore Gardens, Lekki Phase I",
-    heroImage: "/images/pexels-freestockpro-1008155.webp",
+    heroImage: "/images/summer social.jpg",
     description:
       "TEW Summer Social is a vibrant lifestyle and networking experience curated for stylish, ambitious individuals who value connection, visibility, and community. Set in a chic garden environment, the event blends music, cocktails, and effortless socialising from golden hour into the evening, creating a relaxed yet elevated summer atmosphere.",
     introduction: {
@@ -406,7 +409,7 @@ export const activeEvents: EventData[] = [
     date: "Weekend Experience | Date TBC",
     dateTime: "Weekend Experience | Date TBC",
     location: "Premier Polo Club / Luxury Estate",
-    heroImage: "/images/pexels-code-mnml-185553186-35205820.webp",
+    heroImage: "/images/junior elite polo picture.jpg",
     description:
       "A luxury experience for elite families, combining junior polo matches with refined parent networking. While young riders compete and learn under professional guidance, parents enjoy VIP hospitality, curated brand showcases, and relaxed social connections within a premier polo setting.",
     introduction: {
