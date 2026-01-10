@@ -301,7 +301,7 @@ export default function EventClient({ event }: { event: EventData }) {
                                 fill
                                 className="object-cover"
                               />
-                              <div className="absolute inset-0 bg-black/40" />
+                              <div className="absolute inset-0 bg-black/70" />
                             </>
                           )}
                           <div
